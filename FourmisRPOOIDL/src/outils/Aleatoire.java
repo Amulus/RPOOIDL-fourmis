@@ -1,5 +1,7 @@
 package outils;
 
+import fourmilliere.Adulte;
+
 public class Aleatoire {
 
 	private static double GenererUnPoidDeLarveAleatoire(){
@@ -12,5 +14,8 @@ public class Aleatoire {
 		//Genere un nombre entre 1.5 et 2
 		return (double)Math.floor(Math.random() * 6 + 15)*0.1;
 
+	}
+	private static double GenererUnRole(Adulte UneFourmiAdulte){
+		return 1.0;
 	}
 }
