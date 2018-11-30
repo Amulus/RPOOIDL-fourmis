@@ -1,3 +1,4 @@
+package fourmilliere;
 
 public class Fourmilliere {
 
