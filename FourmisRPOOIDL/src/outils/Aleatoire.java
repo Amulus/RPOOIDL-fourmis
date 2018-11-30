@@ -16,6 +16,6 @@ public class Aleatoire {
 
 	}
 	private static double GenererUnRole(Adulte UneFourmiAdulte){
-		return 1.0;
+		return 2.0;
 	}
 }
