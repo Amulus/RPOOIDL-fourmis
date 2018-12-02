@@ -5,6 +5,7 @@ import outils.LireParametres;
 public class Adulte extends Evolution {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
+	private Role role = null;
 	Boolean EstEnVie;
 
 	public Adulte(Fourmilliere fourmilliere) {
@@ -13,29 +14,41 @@ public class Adulte extends Evolution {
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
-		this.EstEnVie=true;
+		this.EstEnVie = true;
+		GenererUnRole(this, (int) lecturefichier.ChercherParametre("PourcentageChanceOuvrier"),
+				(int) lecturefichier.ChercherParametre("PourcentageChanceSoldat"),
+				(int) lecturefichier.ChercherParametre("PourcentageChanceSexue"));
 	}
 
-	public double GenererUnRole(int PourcentageChanceOuvrier, int PourcentageChanceSoldat, int PourcentageChanceSexue) {
-
+	private void GenererUnRole(Adulte fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
+			int PourcentageChanceSexue) {
 		int RoleAleatoire = (int) Math
 				.floor(Math.random() * PourcentageChanceOuvrier + PourcentageChanceSoldat + PourcentageChanceSexue);
 		if (RoleAleatoire <= PourcentageChanceSexue)
-			// return ;
+			 fourmi.role = new FourmiSexue(fourmi);
+		else
 			if (RoleAleatoire <= PourcentageChanceSoldat)
-				// return;
-				if (RoleAleatoire <= PourcentageChanceOuvrier)
-					return RoleAleatoire;
-		return -1.0;
+				 fourmi.role = new FourmiSoldat(fourmi);
+			else
+				fourmi.role = new FourmiOuvriere(fourmi);
 	}
 
+	private void ChangerRole(Adulte fourmi,Boolean Soldat){
+		if(Soldat)
+			fourmi.role =new FourmiSoldat(fourmi);
+		else
+			fourmi.role =new FourmiOuvriere(fourmi);
+			
+	}
 	public double GenererUnPoidDeFourmi(int PoidFourmiMinimum, int PoidFourmiMaximum, double MultiplicateurDecimales) {
 		// Genere un nombre entre 1.5 et 2
 		return (double) Math.floor(Math.random() * (PoidFourmiMaximum - PoidFourmiMinimum) + 1 + PoidFourmiMinimum)
 				* MultiplicateurDecimales;
 
 	}
-	public void VerifierAlimentation(){
-		if(this.Poid/3<NouritureMangée) this.EstEnVie=false;
+
+	public void VerifierAlimentation() {
+		if (this.Poid / 3 < NouritureMangée)
+			this.EstEnVie = false;
 	}
 }
