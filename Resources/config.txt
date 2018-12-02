@@ -1,0 +1,8 @@
+MultiplicateurDecimales=0.1
+MultiplicateurPoidLarveMin=3
+MultiplicateurPoidLarveMax=4
+PourcentageChanceOuvrier=60
+PourcentageChanceSoldat=20
+PourcentageChanceReproducteurs=20
+PoidFourmiMaximum=20
+PoidFourmiMinimum=15
