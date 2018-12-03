@@ -16,7 +16,8 @@ public class Larve extends Evolution {
 				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie=true;
-		this.nombreDeJourAvantEvolution = (int) lecturefichier.ChercherParametre("dureEvolutionLarve");
+		this.nombreDeJourAvantEvolution = (int) lecturefichier.ChercherParametre("dureeEvolutionLarves");
+		this.identifiant = identifiant;
 	}
 
 	private double GenererUnPoidDeLarve(int MultiplicateurPoidLarveMin, int MultiplicateurPoidLarveMax,

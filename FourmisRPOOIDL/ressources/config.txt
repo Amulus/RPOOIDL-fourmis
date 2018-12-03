@@ -7,3 +7,6 @@ PourcentageChanceReproducteurs=20
 PoidFourmiMaximum=20
 PoidFourmiMinimum=15
 JoursLarveEvolution=9
+dureeEvolutionOeufs=3
+dureeEvolutionLarves=10
+dureeEvolutionNymphes=10

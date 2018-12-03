@@ -7,25 +7,21 @@ import outils.LireParametres;
 public class Fourmilliere {
 
 	private Hashtable<Integer,Adulte> fourmis = new Hashtable<Integer,Adulte>();
-	private Hashtable<Integer,Oeuf> oeufs = new Hashtable<Integer,Oeuf>();
-	private Hashtable<Integer,Nymphe> nymphes = new Hashtable<Integer,Nymphe>();
-	private Hashtable<Integer,Larve> larves = new Hashtable<Integer,Larve>();
 	
+	private Nid nid;
 	
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
 		this.fourmis = new Hashtable<Integer,Adulte>();
-		this.oeufs = new Hashtable<Integer,Oeuf>();
-		this.nymphes = new Hashtable<Integer,Nymphe>();
-		this.larves = new Hashtable<Integer,Larve>();
+		this.nid = new Nid();
 		
 		Adulte fourmi = new Adulte(this,0);
 		FourmiReine reine = new FourmiReine(fourmi);
 		Nymphe nymphe = new Nymphe(this,1);
 		
 		this.fourmis.put(fourmi.getIdentifiant(), fourmi);
-		this.nymphes.put(nymphe.getIdentifiant(),nymphe);
+		this.nid.getNymphes().put(nymphe.getIdentifiant(),nymphe);
 	}
 
 	public Adulte getPremierAdulte() {
@@ -36,48 +32,49 @@ public class Fourmilliere {
 		return this.lectureFichier;
 	}
 	
-	public void ajoutOeuf(Oeuf oeuf) {
-		this.oeufs.put(oeuf.getIdentifiant(),oeuf);
-	}
 	
-	public void ajoutLarve(Larve larve) {
-		this.larves.put(larve.getIdentifiant(), larve);
-	}
-	
-	public void ajoutNymphe(Nymphe nymphe) {
-		this.nymphes.put(nymphe.getIdentifiant(), nymphe);
-	}
 	
 	public Hashtable<Integer, Adulte> getFourmis() {
 		return fourmis;
 	}
 
 	public Hashtable<Integer, Oeuf> getOeufs() {
-		return oeufs;
+		return nid.getOeufs();
 	}
 
 	public Hashtable<Integer, Nymphe> getNymphes() {
-		return nymphes;
+		return nid.getNymphes();
 	}
 
 	public Hashtable<Integer, Larve> getLarves() {
-		return larves;
+		return nid.getLarves();
 	}
 
 	public int nombreDeLarve() {
-		return this.larves.size();
+		return this.getLarves().size();
 	}
 	
 	public int nombreDeFourmis() {
-		return this.fourmis.size();
+		return this.getFourmis().size();
 	}
 	
 	public int nombreDeNymphe() {
-		return this.nymphes.size();
+		return this.getNymphes().size();
 	}
 	
 	public int nombreOeuf() {
-		return this.oeufs.size();
+		return this.getOeufs().size();
 	}
 	
+	public void ajoutOeuf(Oeuf oeuf) {
+		this.nid.ajoutOeuf(oeuf);;
+	}
+	
+	public void ajoutLarve(Larve larve) {
+		this.nid.ajoutLarve(larve);
+	}
+	
+	public void ajoutNymphe(Nymphe nymphe) {
+		this.nid.ajoutNymphe(nymphe);
+	}
 }
