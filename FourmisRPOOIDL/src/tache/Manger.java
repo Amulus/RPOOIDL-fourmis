@@ -1,4 +1,4 @@
-package Taches;
+package tache;
 
 public class Manger extends Tache {
 
