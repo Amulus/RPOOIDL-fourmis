@@ -7,7 +7,17 @@ public class Adulte extends Evolution {
 	private double NouritureMangée = 0.0;
 	private Role role = null;
 	Boolean EstEnVie;
-
+	
+	public Adulte(Fourmilliere fourmilliere, Role role) {
+		super(fourmilliere);
+		LireParametres lecturefichier = fourmilliere.getLireParametres();
+		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
+				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
+				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
+		this.EstEnVie = true;
+		this.role = role;
+	}
+	
 	public Adulte(Fourmilliere fourmilliere) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
