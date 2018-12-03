@@ -29,7 +29,7 @@ public class Adulte extends Evolution {
 		this.EstEnVie = true;
 		GenererUnRole(this, (int) lecturefichier.ChercherParametre("PourcentageChanceOuvrier"),
 				(int) lecturefichier.ChercherParametre("PourcentageChanceSoldat"),
-				(int) lecturefichier.ChercherParametre("PourcentageChanceSexue"));
+				(int) lecturefichier.ChercherParametre("PourcentageChanceReproducteurs"));
 		this.identifiant = identifiant;
 	}
 

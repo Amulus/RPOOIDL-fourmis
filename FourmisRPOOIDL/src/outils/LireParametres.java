@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LireParametres {
-	private String CheminFichierParametres = "/Users/pierrebrunel/Documents/Cours/M1-Info/WorkspaceJava/RPOOIDL-fourmis/Resources/config.txt";
+	private String CheminFichierParametres = "ressources/config.txt";
 	private Scanner scanner = null;
 
 	public LireParametres() {

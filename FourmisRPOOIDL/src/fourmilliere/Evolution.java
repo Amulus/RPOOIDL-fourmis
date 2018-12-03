@@ -2,7 +2,7 @@ package fourmilliere;
 
 public abstract class Evolution {
 	Fourmilliere fourmilliere;
-	protected static int identifiantSuivant = 0;
+	protected static int identifiantSuivant = 2;
 	protected int identifiant;
 	public Evolution(Fourmilliere fourmilliere){
 		this.fourmilliere=fourmilliere;
