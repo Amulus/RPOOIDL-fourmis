@@ -2,18 +2,20 @@ package fourmilliere;
 
 public class Oeuf extends Evolution {
 	
-	private static int identifiantSuivant = 0;
-	private int identifiant;
+	
+	
 	public Oeuf(Fourmilliere fourmilliere) {
 		super(fourmilliere);
-		// TODO Auto-generated constructor stub
 		this.identifiant = identifiantSuivant;
 		identifiantSuivant++;
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
-		Larve larve = new Larve(this.fourmilliere);
+		Larve larve = new Larve(this.fourmilliere,this.identifiant);
+		this.fourmilliere.ajoutLarve(larve);
+		this.fourmilliere.getOeufs().remove(this.identifiant);
 		
 	}
 	@Override
@@ -21,7 +23,5 @@ public class Oeuf extends Evolution {
 		// TODO Auto-generated method stub
 		
 	}
-	public int getIdentifiant() {
-		return this.identifiant;
-	}
+
 }
