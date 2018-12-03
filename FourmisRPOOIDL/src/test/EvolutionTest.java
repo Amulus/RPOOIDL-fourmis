@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import evolution.Larve;
+import evolution.*;
 import evolution.Oeuf;
 import fourmilliere.*;
 
@@ -43,7 +43,6 @@ public class EvolutionTest {
 		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
 		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
-		
 	}
 
 	@Test
