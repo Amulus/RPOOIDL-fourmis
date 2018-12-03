@@ -2,6 +2,7 @@ package evolution;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 import role.FourmiOuvriere;
+import role.FourmiReine;
 import role.FourmiSexue;
 import role.FourmiSoldat;
 import role.Role;
@@ -79,6 +80,7 @@ public class Adulte extends Evolution {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	public Role getRole(){
 		return this.role;
 	}
@@ -94,5 +96,10 @@ public class Adulte extends Evolution {
 
 	public Fourmilliere getFourmilliere() {
 		return this.fourmilliere;
+	}
+
+	public void setReine() {
+		this.role = new FourmiReine(this);
+		
 	}
 }
