@@ -1,5 +1,5 @@
 
-package graphicLayer;
+package coucheGraphique;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,21 +10,21 @@ import role.FourmiOuvriere;
 import role.FourmiSexue;
 import role.FourmiSoldat;
 
-public abstract class Morph {
-	protected World world;
+public abstract class Transformateur {
+	protected Monde world;
 	protected Rectangle bounds;
 	protected Color color;
 	private boolean TableauFeromones[][];
-	protected List<Morph> submorphs = new ArrayList<Morph>();
+	protected List<Transformateur> submorphs = new ArrayList<Transformateur>();
 
-	public Morph(Color color, Point pos, Dimension dim) {
+	public Transformateur(Color color, Point pos, Dimension dim) {
 		this.color = color;
 		this.bounds = new Rectangle(dim);
 		setPosition(pos);
 
 	}
 
-	public void setWorld(World w) {
+	public void setWorld(Monde w) {
 		world = w;
 		Dimension d = w.getSize();
 		TableauFeromones = new boolean[(int) d.getHeight()][(int) d.getWidth()];
@@ -37,9 +37,9 @@ public abstract class Morph {
 	}
 	
 	public void draw(Graphics g) {
-		Iterator<Morph> itor = submorphs.iterator();
+		Iterator<Transformateur> itor = submorphs.iterator();
 		while (itor.hasNext()) {
-			Morph m = itor.next();
+			Transformateur m = itor.next();
 			m.draw(g);
 		}
 	}
@@ -48,7 +48,7 @@ public abstract class Morph {
 		return (Rectangle) bounds.clone();
 	}
 
-	public void addSubmorph(Morph m) {
+	public void addSubmorph(Transformateur m) {
 		if (submorphs.contains(m))
 			return;
 		submorphs.add(m);
