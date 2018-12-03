@@ -7,4 +7,5 @@ public abstract class Role {
 		this.fourmi=fourmi;
 	}
 	abstract public void setRole();
+	
 }

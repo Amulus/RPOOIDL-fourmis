@@ -31,6 +31,10 @@ public class Fourmilliere {
 		return this.lectureFichier;
 	}
 	
+	public void ajoutOeuf(Oeuf oeuf) {
+		this.oeufs.add(oeuf);
+	}
+	
 	public int nombreDeLarve() {
 		return this.larves.size();
 	}

@@ -1,11 +1,12 @@
 package fourmilliere;
-
+import Taches.*;
 import outils.LireParametres;
 
 public class Adulte extends Evolution {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private Role role = null;
+	private Tache tache = null;
 	Boolean EstEnVie;
 	
 	public Adulte(Fourmilliere fourmilliere, Role role) {
