@@ -6,6 +6,7 @@ public abstract class Role {
 	public Role(Adulte fourmi){
 		this.fourmi=fourmi;
 	}
-	abstract public void setRole();
+	abstract public void setNumeroRole();
+	abstract public int getNumeroRole();
 	
 }
