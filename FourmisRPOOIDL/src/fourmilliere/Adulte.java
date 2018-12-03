@@ -1,6 +1,6 @@
 package fourmilliere;
-import Taches.*;
 import outils.LireParametres;
+import taches.*;
 
 public class Adulte extends Evolution {
 	private double Poid = 0.0;

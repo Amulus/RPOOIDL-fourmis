@@ -1,6 +1,6 @@
-package Taches;
+package taches;
 
-public class Manger extends Tache {
+public class Pondre extends Tache {
 
 	@Override
 	void execute() {

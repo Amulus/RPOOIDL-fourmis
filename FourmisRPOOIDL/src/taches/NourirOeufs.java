@@ -1,4 +1,4 @@
-package Taches;
+package taches;
 
 public class NourirOeufs extends Tache {
 

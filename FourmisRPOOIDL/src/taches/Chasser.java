@@ -1,4 +1,4 @@
-package Taches;
+package taches;
 
 public class Chasser extends Tache {
 
