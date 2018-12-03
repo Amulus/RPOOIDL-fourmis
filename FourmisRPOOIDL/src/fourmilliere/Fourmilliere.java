@@ -25,7 +25,7 @@ public class Fourmilliere {
 	}
 
 	public Adulte getPremierAdulte() {
-		return this.fourmis.firstElement();
+		return this.fourmis.get(0);
 	}
 
 	public LireParametres getLireParametres() {
@@ -33,7 +33,7 @@ public class Fourmilliere {
 	}
 	
 	public void ajoutOeuf(Oeuf oeuf) {
-		this.oeufs.add(oeuf);
+		this.oeufs.put(oeuf.getIdentifiant(),oeuf);
 	}
 	
 	public int nombreDeLarve() {
