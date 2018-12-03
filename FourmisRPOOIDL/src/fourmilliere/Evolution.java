@@ -5,4 +5,6 @@ public abstract class Evolution {
 	public Evolution(Fourmilliere fourmilliere){
 		this.fourmilliere=fourmilliere;
 	}
+	public abstract void changerEtat();
+	public abstract void getEtat();
 }

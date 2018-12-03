@@ -6,6 +6,8 @@ public class Larve extends Evolution {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
+	private static int identifiantSuivant = 0;
+	private int identifiant;
 	public Larve(Fourmilliere fourmilliere) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
@@ -15,6 +17,8 @@ public class Larve extends Evolution {
 				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie=true;
+		this.identifiant = identifiantSuivant;
+		identifiantSuivant++;
 	}
 
 	private double GenererUnPoidDeLarve(int MultiplicateurPoidLarveMin, int MultiplicateurPoidLarveMax,
@@ -29,5 +33,20 @@ public class Larve extends Evolution {
 	}
 	public void VerifierAlimentation(){
 		if(this.Poid<NouritureMangée) this.EstEnVie=false;
+	}
+
+	@Override
+	public void changerEtat() {
+		// TODO Auto-generated method stub
+		Nymphe nymphe = new Nymphe(this.fourmilliere);
+	}
+
+	@Override
+	public void getEtat() {
+		// TODO Auto-generated method stub
+	}
+	
+	public int getIdentifiant() {
+		return this.identifiant;
 	}
 }

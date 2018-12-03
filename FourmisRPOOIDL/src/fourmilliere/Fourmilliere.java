@@ -1,17 +1,18 @@
 package fourmilliere;
 
+import java.util.Hashtable;
 import java.util.Vector;
 
 import outils.LireParametres;
 
 public class Fourmilliere {
 
-	private Vector<Adulte> fourmis;
-	private Vector<Oeuf> oeufs;
-	private Vector<Nymphe> nymphes;
-	private Vector<Larve> larves;
+	private Hashtable<Integer,Adulte> fourmis;
+	private Hashtable<Integer,Oeuf> oeufs;
+	private Hashtable<Integer,Nymphe> nymphes;
+	private Hashtable<Integer,Larve> larves;
 	
-
+	
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
@@ -19,8 +20,8 @@ public class Fourmilliere {
 		FourmiReine reine = new FourmiReine(fourmi);
 		Nymphe nymphe = new Nymphe(this);
 		
-		this.fourmis.addElement(fourmi);
-		this.nymphes.addElement(nymphe);
+		this.fourmis.put(fourmi.getIdentifiant(), fourmi);
+		this.nymphes.put(nymphe.getIdentifiant(),nymphe);
 	}
 
 	public Adulte getPremierAdulte() {
