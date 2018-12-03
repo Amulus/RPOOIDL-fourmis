@@ -8,10 +8,8 @@ public class Adulte extends Evolution {
 	private Role role = null;
 	private Tache tache = null;
 	Boolean EstEnVie;
-	private static int identifiantSuivant = 0;
-	private int identifiant;
 	
-	public Adulte(Fourmilliere fourmilliere, Role role) {
+	public Adulte(Fourmilliere fourmilliere, Role role, int identifiant) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
@@ -19,11 +17,10 @@ public class Adulte extends Evolution {
 				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie = true;
 		this.role = role;
-		this.identifiant = identifiantSuivant;
-		identifiantSuivant++;
+		this.identifiant = identifiant;
 	}
 	
-	public Adulte(Fourmilliere fourmilliere) {
+	public Adulte(Fourmilliere fourmilliere, int identifiant) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
@@ -32,9 +29,8 @@ public class Adulte extends Evolution {
 		this.EstEnVie = true;
 		GenererUnRole(this, (int) lecturefichier.ChercherParametre("PourcentageChanceOuvrier"),
 				(int) lecturefichier.ChercherParametre("PourcentageChanceSoldat"),
-				(int) lecturefichier.ChercherParametre("PourcentageChanceReproducteurs"));
-		this.identifiant = identifiantSuivant;
-		identifiantSuivant++;
+				(int) lecturefichier.ChercherParametre("PourcentageChanceSexue"));
+		this.identifiant = identifiant;
 	}
 
 	private void GenererUnRole(Adulte fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
@@ -72,15 +68,14 @@ public class Adulte extends Evolution {
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
-	
-	public Role getRole(){
-		return this.role;
-	}
-	
+
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
 		
+	}
+	public Role getRole(){
+		return this.role;
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Iterator;
 import java.util.List;
 
 import fourmilliere.Adulte;
@@ -30,7 +29,7 @@ public class Simulation extends Rect {
 		Fourmilliere Colonie = new Fourmilliere();
 		
 		for(int i=1; i<30;i++){
-			Colonie.getFourmis().put(i,new Adulte(Colonie));
+			Colonie.getFourmis().put(i,new Adulte(Colonie, i));
 			
 		}
 		for(int i=0; i<Colonie.getFourmis().size();i++){

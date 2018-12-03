@@ -15,9 +15,9 @@ public class Fourmilliere {
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
-		Adulte fourmi = new Adulte(this);
+		Adulte fourmi = new Adulte(this,0);
 		FourmiReine reine = new FourmiReine(fourmi);
-		Nymphe nymphe = new Nymphe(this);
+		Nymphe nymphe = new Nymphe(this,1);
 		
 		this.fourmis.put(fourmi.getIdentifiant(), fourmi);
 		this.nymphes.put(nymphe.getIdentifiant(),nymphe);

@@ -2,20 +2,20 @@ package fourmilliere;
 
 public class Nymphe extends Evolution {
 	
-	private static int identifiantSuivant = 0;
-	private int identifiant;
+
 	
-	public Nymphe(Fourmilliere fourmilliere) {
+	public Nymphe(Fourmilliere fourmilliere, int identifiant) {
 		super(fourmilliere);
 		// TODO Auto-generated constructor stub
-		this.identifiant = identifiantSuivant;
-		identifiantSuivant++;
+		this.identifiant = identifiant;
 	}
 
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
-		
+		Adulte fourmi = new Adulte(this.fourmilliere,this.identifiant);
+		this.fourmilliere.getFourmis().put(fourmi.getIdentifiant(), fourmi);
+		this.fourmilliere.getNymphes().remove(this.identifiant);
 	}
 
 	@Override
