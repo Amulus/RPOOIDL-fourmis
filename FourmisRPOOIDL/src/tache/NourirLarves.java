@@ -1,9 +1,11 @@
 package tache;
 
+import evolution.Adulte;
+
 public class NourirLarves extends Tache {
 
 	@Override
-	void execute() {
+	public void execute(Adulte fourmi) {
 		// TODO Auto-generated method stub
 
 	}

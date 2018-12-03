@@ -1,4 +1,4 @@
-package graphicLayer;
+package coucheGraphique;
 
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
@@ -10,16 +10,16 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class World extends JPanel {
+public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private List<Morph> drawables = new LinkedList<Morph>();
+	private List<Transformateur> drawables = new LinkedList<Transformateur>();
 	String name = "";
 	
-	public World(String name) {
+	public Monde(String name) {
 		this.name = name;
 	}
 	
-	public List<Morph> contents() {
+	public List<Transformateur> contents() {
 		return drawables;
 	}
 	
@@ -37,25 +37,25 @@ public class World extends JPanel {
 		requestFocus();
 	}
 	
-     public void add(Morph d) {
+     public void add(Transformateur d) {
         drawables.add(d);
         d.setWorld(this);
      }
 
-     public void remove(Morph d) {
+     public void remove(Transformateur d) {
     	d.setWorld(null);
         drawables.remove(d);
      }
 
     public void paint(Graphics g) {
         super.paint(g);
-        for (Iterator<Morph> iter = drawables.iterator(); iter.hasNext();) {
+        for (Iterator<Transformateur> iter = drawables.iterator(); iter.hasNext();) {
             iter.next().draw(g);
         }
     }
     
     public void clear() {
-        for (Iterator<Morph> iter = drawables.iterator(); iter.hasNext();) {
+        for (Iterator<Transformateur> iter = drawables.iterator(); iter.hasNext();) {
             iter.next().setWorld(null);
         }
         drawables.clear();

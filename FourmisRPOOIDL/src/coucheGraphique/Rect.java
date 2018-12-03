@@ -1,5 +1,5 @@
 
-package graphicLayer;
+package coucheGraphique;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 
-public class Rect extends Morph{
+public class Rect extends Transformateur{
 
 	public Rect(Color color, Point pos, Dimension dim) {
 		super(color, pos, dim);		

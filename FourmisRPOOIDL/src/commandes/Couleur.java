@@ -1,12 +1,12 @@
-package commands;
+package commandes;
 
 import java.awt.Color;
 
-import graphicLayer.Morph;
+import coucheGraphique.Transformateur;
 
-public class color extends Command {
+public class Couleur extends Commandes {
 
-	public color(Morph target) {
+	public Couleur(Transformateur target) {
 		super(target);
 	}
 
