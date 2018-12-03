@@ -5,7 +5,7 @@ import outils.LireParametres;
 
 public class Oeuf extends Evolution {
 	
-	public int nombreDeJourAvantEvolution;
+	public int nombreDeJourAvantEvolution=0;
 	
 	public Oeuf(Fourmilliere fourmilliere) {
 		super(fourmilliere);
@@ -25,10 +25,6 @@ public class Oeuf extends Evolution {
 		this.fourmilliere.getOeufs().remove(this.identifiant);
 		
 	}
-	@Override
-	public void getEtat() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

@@ -4,7 +4,7 @@ import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
 public class Larve extends Evolution {
-	private int nombreDeJourAvantEvolution;
+	private int nombreDeJourAvantEvolution=0;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
@@ -32,20 +32,18 @@ public class Larve extends Evolution {
 		return poidDuneFourmi * multiplicateurDePoid;
 	}
 	public void VerifierAlimentation(){
-		if(this.Poid<NouritureMangée) this.EstEnVie=false;
+		if(this.Poid>NouritureMangée){
+			this.EstEnVie=false;
+			this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
+			this.fourmilliere.getLarves().remove(this.getIdentifiant());
+		}
 	}
 
 	@Override
 	public void changerEtat() {
-		// TODO Auto-generated method stub
 		Nymphe nymphe = new Nymphe(this.fourmilliere, this.identifiant);
 		this.fourmilliere.ajoutNymphe(nymphe);
 		this.fourmilliere.getLarves().remove(this.identifiant);
-	}
-
-	@Override
-	public void getEtat() {
-		// TODO Auto-generated method stub
 	}
 	
 	

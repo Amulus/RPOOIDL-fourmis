@@ -11,7 +11,6 @@ public abstract class Evolution {
 		
 	}
 	public abstract void changerEtat();
-	public abstract void getEtat();
 	
 	public int getIdentifiant() {
 		return this.identifiant;

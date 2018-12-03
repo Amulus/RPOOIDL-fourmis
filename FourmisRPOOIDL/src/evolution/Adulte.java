@@ -6,13 +6,11 @@ import role.FourmiReine;
 import role.FourmiSexue;
 import role.FourmiSoldat;
 import role.Role;
-import tache.*;
 
 public class Adulte extends Evolution {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private Role role = null;
-	private Tache tache = null;
 	Boolean EstEnVie;
 	
 	public Adulte(Fourmilliere fourmilliere, Role role, int identifiant) {
@@ -67,19 +65,17 @@ public class Adulte extends Evolution {
 	}
 
 	public void VerifierAlimentation() {
-		if (this.Poid / 3 < NouritureMangée)
+		if (this.Poid *0.333 > NouritureMangée){
 			this.EstEnVie = false;
+			this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
+			this.fourmilliere.getFourmis().remove(this.getIdentifiant());
+		}
 	}
 	
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
 
-	@Override
-	public void changerEtat() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public Role getRole(){
 		return this.role;
@@ -88,11 +84,6 @@ public class Adulte extends Evolution {
 		return this.role.getNumeroRole();
 	}
 
-	@Override
-	public void getEtat() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public Fourmilliere getFourmilliere() {
 		return this.fourmilliere;
@@ -102,4 +93,13 @@ public class Adulte extends Evolution {
 		this.role = new FourmiReine(this);
 		
 	}
+
+	public double getPoid() {
+		return this.Poid;
+	}
+
+	@Override
+	public void changerEtat() {
+	}
+
 }

@@ -5,7 +5,7 @@ import outils.LireParametres;
 
 public class Nymphe extends Evolution {
 	
-	private int nombreDeJourAvantEvolution;
+	private int nombreDeJourAvantEvolution=0;
 	
 	public Nymphe(Fourmilliere fourmilliere, int identifiant) {
 		super(fourmilliere);
@@ -23,11 +23,6 @@ public class Nymphe extends Evolution {
 		this.fourmilliere.getNymphes().remove(this.identifiant);
 	}
 
-	@Override
-	public void getEtat() {
-		// TODO Auto-generated method stub
-		
-	}
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
