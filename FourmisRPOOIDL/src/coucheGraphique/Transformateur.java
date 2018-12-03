@@ -30,12 +30,12 @@ public abstract class Transformateur {
 		TableauFeromones = new boolean[(int) d.getHeight()][(int) d.getWidth()];
 	}
 
-	public void setColor (Color c) {
+	public void setColor(Color c) {
 		color = c;
 		if (world != null)
-			world.repaint();		
+			world.repaint();
 	}
-	
+
 	public void draw(Graphics g) {
 		Iterator<Transformateur> itor = submorphs.iterator();
 		while (itor.hasNext()) {
@@ -100,12 +100,44 @@ public abstract class Transformateur {
 		setY(getY() + gap);
 	}
 
-	public void deplacementAleatoire() {
-			int deplacementAleatoire = 0;
-			deplacementAleatoire = (int) Math.floor(Math.random() * 4);
-			deplacementAleatoire = (int) Math.floor(Math.random() * 4);
-			
+	public int deplacementAleatoire() {
+		return (int) Math.floor(Math.random() * 4);
+	}
+	public void testDeplacement(){
+		int deplacement= this.deplacementAleatoire();
+		if (deplacement == 0 && testDeplacementHaut()) {
+			moveUp(1);
+			return;
+		}
+		if (deplacement == 1 && testDeplacementBas()) {
+			moveDown(1);
+			return;
+		}
+		if (deplacement == 2 && testDeplacementArriere()) {
+			moveLeft(1);
+			return;
+		}
+		if(testDeplacementAvant()){
+			moveRight(1);
+			return;
+		}else
+			this.testDeplacement();
+	}
+	public boolean testDeplacementAvant(){
+		if(world.getWidth()<getX() + 1+bounds.width) return false;
+		return true;
+	}
+	public boolean testDeplacementArriere(){
+		if(0>getX() - 1-bounds.width) return false;
+		return true;
+	}
+	public boolean testDeplacementBas(){
+		if(world.getHeight()<getY() + 1+bounds.height) return false;
+		return true;
+	}
+	public boolean testDeplacementHaut(){
+		if(0>getY() - 1-bounds.height) return false;
+		return true;
 	}
 
-	
 }
