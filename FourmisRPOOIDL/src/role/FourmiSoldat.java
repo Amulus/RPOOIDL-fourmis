@@ -1,18 +1,22 @@
-package fourmilliere;
+package role;
 
-public class FourmiOuvriere extends Role {
+import evolution.Adulte;
 
-	public FourmiOuvriere(Adulte fourmi) {
+public class FourmiSoldat extends Role {
+
+	public FourmiSoldat(Adulte fourmi) {
 		super(fourmi);
 		this.setNumeroRole();
 	}
 
 	@Override
 	public void setNumeroRole() {
-		this.Role=1;
+		this.Role=2;
 	}
+
 	@Override
 	public int getNumeroRole() {
 		return this.Role;
 	}
+
 }

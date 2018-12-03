@@ -1,5 +1,6 @@
-package fourmilliere;
+package evolution;
 
+import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
 public class Oeuf extends Evolution {

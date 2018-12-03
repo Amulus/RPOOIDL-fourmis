@@ -1,15 +1,17 @@
-package fourmilliere;
+package role;
 
-public class FourmiSexue extends Role {
+import evolution.Adulte;
 
-	public FourmiSexue(Adulte fourmi) {
+public class FourmiOuvriere extends Role {
+
+	public FourmiOuvriere(Adulte fourmi) {
 		super(fourmi);
 		this.setNumeroRole();
 	}
 
 	@Override
 	public void setNumeroRole() {
-		this.Role=3;
+		this.Role=1;
 	}
 	@Override
 	public int getNumeroRole() {

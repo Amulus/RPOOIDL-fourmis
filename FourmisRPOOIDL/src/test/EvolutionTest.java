@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import evolution.Larve;
+import evolution.Oeuf;
 import fourmilliere.*;
 
 public class EvolutionTest {

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import fourmilliere.FourmiOuvriere;
-import fourmilliere.FourmiSexue;
-import fourmilliere.FourmiSoldat;
+import role.FourmiOuvriere;
+import role.FourmiSexue;
+import role.FourmiSoldat;
 
 public abstract class Morph {
 	protected World world;

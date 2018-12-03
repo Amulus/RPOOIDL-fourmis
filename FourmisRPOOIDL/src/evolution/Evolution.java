@@ -1,4 +1,6 @@
-package fourmilliere;
+package evolution;
+
+import fourmilliere.Fourmilliere;
 
 public abstract class Evolution {
 	Fourmilliere fourmilliere;

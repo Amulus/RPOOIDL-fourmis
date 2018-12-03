@@ -2,7 +2,12 @@ package fourmilliere;
 
 import java.util.Hashtable;
 
+import evolution.Adulte;
+import evolution.Larve;
+import evolution.Nymphe;
+import evolution.Oeuf;
 import outils.LireParametres;
+import role.FourmiReine;
 
 public class Fourmilliere {
 
@@ -76,5 +81,22 @@ public class Fourmilliere {
 	
 	public void ajoutNymphe(Nymphe nymphe) {
 		this.nid.ajoutNymphe(nymphe);
+	}
+	
+	public void affichage(){
+		System.out.println("Nombre d'ouefs:"+this.nombreOeuf());
+		System.out.println("Nombre de larves:"+this.nombreDeLarve());
+		System.out.println("Nombre de Nymphes:"+this.nombreDeNymphe());
+		System.out.println("Nombre de Fourmies:"+this.nombreDeFourmis());
+		int NombreOuvrieres = 0,NombreSoldats = 0,NombreReproducteurs = 0;
+		for(int i=0; i< this.fourmis.size();i++){
+			if(this.fourmis.get(i).getNumeroRole()==1){NombreOuvrieres++; break;}
+			if(this.fourmis.get(i).getNumeroRole()==2){NombreSoldats++; break;}
+			if(this.fourmis.get(i).getNumeroRole()==3){NombreReproducteurs++; break;}	
+		}
+		System.out.println("Nombre de Fourmies Ouvrieres:"+NombreOuvrieres);
+		System.out.println("Nombre de Fourmies Soldats:"+NombreSoldats);
+		System.out.println("Nombre de Fourmies Reproducteurs:"+NombreReproducteurs);
+		
 	}
 }

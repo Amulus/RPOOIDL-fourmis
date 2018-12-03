@@ -2,6 +2,10 @@ package fourmilliere;
 
 import java.util.Hashtable;
 
+import evolution.Larve;
+import evolution.Nymphe;
+import evolution.Oeuf;
+
 public class Nid {
 	private Hashtable<Integer,Oeuf> oeufs = new Hashtable<Integer,Oeuf>();
 	private Hashtable<Integer,Nymphe> nymphes = new Hashtable<Integer,Nymphe>();

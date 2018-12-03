@@ -1,4 +1,6 @@
-package fourmilliere;
+package role;
+
+import evolution.Adulte;
 
 public abstract class Role {
 	Adulte fourmi;

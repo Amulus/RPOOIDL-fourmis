@@ -1,5 +1,10 @@
-package fourmilliere;
+package evolution;
+import fourmilliere.Fourmilliere;
 import outils.LireParametres;
+import role.FourmiOuvriere;
+import role.FourmiSexue;
+import role.FourmiSoldat;
+import role.Role;
 import tache.*;
 
 public class Adulte extends Evolution {
@@ -11,26 +16,26 @@ public class Adulte extends Evolution {
 	
 	public Adulte(Fourmilliere fourmilliere, Role role, int identifiant) {
 		super(fourmilliere);
+		initialiser(this, identifiant);
+		this.role = role;
+	} 
+	
+	private void initialiser(Adulte adulte, int identifiant) {
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
-				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
-				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
+			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
+			(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie = true;
-		this.role = role;
 		this.identifiant = identifiant;
 	}
-	
+
 	public Adulte(Fourmilliere fourmilliere, int identifiant) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
-		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
-				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
-				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
-		this.EstEnVie = true;
+		initialiser(this, identifiant);
 		GenererUnRole(this, (int) lecturefichier.ChercherParametre("PourcentageChanceOuvrier"),
 				(int) lecturefichier.ChercherParametre("PourcentageChanceSoldat"),
 				(int) lecturefichier.ChercherParametre("PourcentageChanceReproducteurs"));
-		this.identifiant = identifiant;
 	}
 
 	private void GenererUnRole(Adulte fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
@@ -46,7 +51,7 @@ public class Adulte extends Evolution {
 				fourmi.role = new FourmiOuvriere(fourmi);
 	}
 
-	private void ChangerRole(Adulte fourmi,Boolean Soldat){
+	private void ChangerRoleSoldatEtOuvrier(Adulte fourmi,Boolean Soldat){
 		if(Soldat)
 			fourmi.role =new FourmiSoldat(fourmi);
 		else
@@ -77,10 +82,17 @@ public class Adulte extends Evolution {
 	public Role getRole(){
 		return this.role;
 	}
+	public int getNumeroRole(){
+		return this.role.getNumeroRole();
+	}
 
 	@Override
 	public void getEtat() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Fourmilliere getFourmilliere() {
+		return this.fourmilliere;
 	}
 }

@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.List;
 
-import fourmilliere.Adulte;
+import evolution.Adulte;
 import fourmilliere.Fourmilliere;
 import graphicLayer.Morph;
 import graphicLayer.Oval;
