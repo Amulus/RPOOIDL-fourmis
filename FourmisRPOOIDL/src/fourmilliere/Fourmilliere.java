@@ -1,7 +1,6 @@
 package fourmilliere;
 
 import java.util.Hashtable;
-import java.util.Vector;
 
 import outils.LireParametres;
 
@@ -36,6 +35,30 @@ public class Fourmilliere {
 		this.oeufs.put(oeuf.getIdentifiant(),oeuf);
 	}
 	
+	public void ajoutLarve(Larve larve) {
+		this.larves.put(larve.getIdentifiant(), larve);
+	}
+	
+	public void ajoutNymphe(Nymphe nymphe) {
+		this.nymphes.put(nymphe.getIdentifiant(), nymphe);
+	}
+	
+	public Hashtable<Integer, Adulte> getFourmis() {
+		return fourmis;
+	}
+
+	public Hashtable<Integer, Oeuf> getOeufs() {
+		return oeufs;
+	}
+
+	public Hashtable<Integer, Nymphe> getNymphes() {
+		return nymphes;
+	}
+
+	public Hashtable<Integer, Larve> getLarves() {
+		return larves;
+	}
+
 	public int nombreDeLarve() {
 		return this.larves.size();
 	}
