@@ -1,11 +1,17 @@
 package fourmilliere;
 
+import outils.LireParametres;
+
 public class Oeuf extends Evolution {
 	
-	
+	public int nombreDeJourAvantEvolution;
 	
 	public Oeuf(Fourmilliere fourmilliere) {
 		super(fourmilliere);
+		
+		LireParametres lecturefichier = fourmilliere.getLireParametres();
+		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionOeufs");
+		
 		this.identifiant = identifiantSuivant;
 		identifiantSuivant++;
 		// TODO Auto-generated constructor stub

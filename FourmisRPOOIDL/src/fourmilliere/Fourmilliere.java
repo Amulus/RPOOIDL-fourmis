@@ -15,6 +15,11 @@ public class Fourmilliere {
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
+		this.fourmis = new Hashtable<Integer,Adulte>();
+		this.oeufs = new Hashtable<Integer,Oeuf>();
+		this.nymphes = new Hashtable<Integer,Nymphe>();
+		this.larves = new Hashtable<Integer,Larve>();
+		
 		Adulte fourmi = new Adulte(this,0);
 		FourmiReine reine = new FourmiReine(fourmi);
 		Nymphe nymphe = new Nymphe(this,1);

@@ -3,6 +3,7 @@ package fourmilliere;
 import outils.LireParametres;
 
 public class Larve extends Evolution {
+	private int nombreDeJourAvantEvolution;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
@@ -15,6 +16,7 @@ public class Larve extends Evolution {
 				(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 				(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie=true;
+		this.nombreDeJourAvantEvolution = (int) lecturefichier.ChercherParametre("dureEvolutionLarve");
 	}
 
 	private double GenererUnPoidDeLarve(int MultiplicateurPoidLarveMin, int MultiplicateurPoidLarveMax,
