@@ -31,7 +31,7 @@ public class Larve extends Evolution {
 		return poidDuneFourmi * multiplicateurDePoid;
 	}
 	public void VerifierAlimentation(){
-		if(this.Poid<NouritureMangée) this.EstEnVie=false;
+		if(this.Poid<NouritureMangée) this.EstEnVie=false;//ajouter fonction mourir qui change la valeur du boolean et déplace dans un hastable décédé via interface ou autre
 	}
 
 	@Override

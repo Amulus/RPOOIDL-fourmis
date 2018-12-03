@@ -24,11 +24,23 @@ public class EvolutionTest {
 		assert(fourmilliere.getLarves().size()==0);
 		oeuf.changerEtat();
 		assert(fourmilliere.getLarves().size()>0);
+		assertTrue(fourmilliere.getOeufs().get(identifiantDepart)==null);
 		Larve larve = fourmilliere.getLarves().get(identifiantDepart);
 		System.out.println(larve);
 		assertTrue(larve != null);
 		
 		assertTrue(larve.getIdentifiant() == identifiantDepart);
+		larve.changerEtat();
+		assertTrue(fourmilliere.getLarves().get(identifiantDepart)==null);
+		Nymphe nymphe = fourmilliere.getNymphes().get(identifiantDepart);
+		assertTrue(nymphe != null);
+		assertTrue(nymphe.getIdentifiant()==identifiantDepart);
+		
+		nymphe.changerEtat();
+		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
+		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
+		assertTrue(fourmi != null);
+		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
 		
 	}
 
