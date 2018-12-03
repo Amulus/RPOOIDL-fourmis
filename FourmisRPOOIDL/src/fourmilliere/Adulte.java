@@ -36,7 +36,7 @@ public class Adulte extends Evolution {
 	private void GenererUnRole(Adulte fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
 			int PourcentageChanceSexue) {
 		int RoleAleatoire = (int) Math
-				.floor(Math.random() * PourcentageChanceOuvrier + PourcentageChanceSoldat + PourcentageChanceSexue);
+				.floor(Math.random() * PourcentageChanceOuvrier + PourcentageChanceSoldat + PourcentageChanceSexue+1);
 		if (RoleAleatoire <= PourcentageChanceSexue)
 			 fourmi.role = new FourmiSexue(fourmi);
 		else
