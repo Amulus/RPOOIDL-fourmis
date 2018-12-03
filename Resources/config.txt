@@ -6,3 +6,4 @@ PourcentageChanceSoldat=20
 PourcentageChanceReproducteurs=20
 PoidFourmiMaximum=20
 PoidFourmiMinimum=15
+JoursLarveEvolution=10

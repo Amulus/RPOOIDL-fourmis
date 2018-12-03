@@ -6,10 +6,10 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
-	private Hashtable<Integer,Adulte> fourmis;
-	private Hashtable<Integer,Oeuf> oeufs;
-	private Hashtable<Integer,Nymphe> nymphes;
-	private Hashtable<Integer,Larve> larves;
+	private Hashtable<Integer,Adulte> fourmis = new Hashtable<Integer,Adulte>();
+	private Hashtable<Integer,Oeuf> oeufs = new Hashtable<Integer,Oeuf>();
+	private Hashtable<Integer,Nymphe> nymphes = new Hashtable<Integer,Nymphe>();
+	private Hashtable<Integer,Larve> larves = new Hashtable<Integer,Larve>();
 	
 	
 	private LireParametres lectureFichier = new LireParametres();

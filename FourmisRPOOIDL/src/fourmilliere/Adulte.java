@@ -74,6 +74,9 @@ public class Adulte extends Evolution {
 		// TODO Auto-generated method stub
 		
 	}
+	public Role getRole(){
+		return this.role;
+	}
 
 	@Override
 	public void getEtat() {

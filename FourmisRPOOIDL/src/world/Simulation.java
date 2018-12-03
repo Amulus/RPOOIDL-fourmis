@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.List;
 
+import fourmilliere.Adulte;
+import fourmilliere.Fourmilliere;
 import graphicLayer.Morph;
 import graphicLayer.Oval;
 import graphicLayer.Rect;
@@ -24,11 +26,22 @@ public class Simulation extends Rect {
 		Dimension dim = new Dimension(50, 50);
 		
 		jc.add(new Oval(new Color(150,50,0), new Point(0, 0), dim));
+		Fourmilliere Colonie = new Fourmilliere();
+		
+		for(int i=1; i<30;i++){
+			Colonie.getFourmis().put(i,new Adulte(Colonie, i));
+			
+		}
+		for(int i=0; i<Colonie.getFourmis().size();i++){
+			if(Colonie.getFourmis().get(i).getRole().getNumeroRole()==1)
+				jc.add(new Rect(Color.RED,new Point(60,220),new Dimension(10, 10)));
+		}
 		jc.open();
 		
 		List<Morph> drawables = jc.contents();
 		drawables.get(0).setPosition(new Point(0, 200));
 		drawables.get(0).moveRight(10);
+		
 	}
 
 }
