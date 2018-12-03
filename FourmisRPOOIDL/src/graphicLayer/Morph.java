@@ -6,10 +6,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import fourmilliere.FourmiOuvriere;
+import fourmilliere.FourmiSexue;
+import fourmilliere.FourmiSoldat;
+
 public abstract class Morph {
 	protected World world;
 	protected Rectangle bounds;
 	protected Color color;
+	private boolean TableauFeromones[][];
 	protected List<Morph> submorphs = new ArrayList<Morph>();
 
 	public Morph(Color color, Point pos, Dimension dim) {
@@ -21,6 +26,8 @@ public abstract class Morph {
 
 	public void setWorld(World w) {
 		world = w;
+		Dimension d = w.getSize();
+		TableauFeromones = new boolean[(int) d.getHeight()][(int) d.getWidth()];
 	}
 
 	public void setColor (Color c) {
@@ -93,4 +100,12 @@ public abstract class Morph {
 		setY(getY() + gap);
 	}
 
+	public void deplacementAleatoire() {
+			int deplacementAleatoire = 0;
+			deplacementAleatoire = (int) Math.floor(Math.random() * 4);
+			deplacementAleatoire = (int) Math.floor(Math.random() * 4);
+			
+	}
+
+	
 }

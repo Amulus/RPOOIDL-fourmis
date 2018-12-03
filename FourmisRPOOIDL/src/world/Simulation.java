@@ -40,7 +40,10 @@ public class Simulation extends Rect {
 		
 		List<Morph> drawables = jc.contents();
 		drawables.get(0).setPosition(new Point(0, 200));
-		drawables.get(0).moveRight(10);
+		while(true){
+			for(Morph fourmies : drawables)
+				fourmies.deplacementAleatoire();
+		}
 		
 	}
 
