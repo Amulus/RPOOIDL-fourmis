@@ -1,6 +1,6 @@
 package tache;
 
-import evolution.Fourmi;
+import etat.Adulte;
 
 public class Manger extends Tache {
 
@@ -8,7 +8,7 @@ public class Manger extends Tache {
 		
 	}
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void execute(Adulte fourmi) {
 		fourmi.getFourmilliere().getReserve().PrendreNourriture( fourmi.getPoid()*0.333);
 		Tache nettoyer = new Nettoyer(fourmi.getFourmilliere().getDepot(), fourmi.getFourmilliere());
 		nettoyer.execute(fourmi);

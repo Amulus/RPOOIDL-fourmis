@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import evolution.*;
+import etat.*;
 import fourmilliere.*;
 
 public class EvolutionTest {
@@ -39,7 +39,7 @@ public class EvolutionTest {
 		
 		nymphe.changerEtat();
 		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
-		Fourmi fourmi = fourmilliere.getFourmis().get(identifiantDepart);
+		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
 		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
 	}

@@ -7,10 +7,11 @@ import java.awt.Point;
 import java.util.List;
 
 import coucheGraphique.Transformateur;
+import etat.Adulte;
+import etat.Fourmi;
 import coucheGraphique.Ovale;
 import coucheGraphique.Rect;
 import coucheGraphique.Monde;
-import evolution.Fourmi;
 import fourmilliere.Fourmilliere;
 
 public class Simulation extends Rect {
@@ -33,7 +34,7 @@ public class Simulation extends Rect {
 			Fourmilliere Colonie = new Fourmilliere();
 
 			for (int i = 1; i < 500; i++) {
-				Colonie.getFourmis().put(i, new Fourmi(Colonie, i));
+				Colonie.getFourmis().add(new Fourmi(Colonie));
 			}
 			for (int i = 0; i < Colonie.getFourmis().size(); i++) {
 				if (Colonie.getFourmis().get(i).getRole().getNumeroRole() == 1)

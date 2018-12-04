@@ -1,11 +1,11 @@
 package tache;
 
-import evolution.Fourmi;
+import etat.Adulte;
 
 public class Chasser extends Tache {
 
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void execute(Adulte fourmi) {
 		// TODO Auto-generated method stub
 
 	}

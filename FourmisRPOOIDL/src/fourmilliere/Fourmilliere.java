@@ -1,63 +1,52 @@
 package fourmilliere;
 
-import java.util.Hashtable;
+import java.util.ArrayList;
+import java.util.List;
 
-import evolution.Fourmi;
-import evolution.Larve;
-import evolution.Nymphe;
-import evolution.Oeuf;
+import etat.Adulte;
+import etat.Fourmi;
+import etat.Nymphe;
 import outils.LireParametres;
 
 public class Fourmilliere {
 
-	private Hashtable<Integer,Fourmi> fourmis = new Hashtable<Integer,Fourmi>();
-	private Hashtable<Integer,Object> morts = new Hashtable<Integer,Object>();
-	private Nid nid;
+	private List<Fourmi> morts = new ArrayList<Fourmi>();
+	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
 	private Depot Depot;
 	private Reserve Reserve;
 	
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
-		this.fourmis = new Hashtable<Integer,Fourmi>();
-		this.nid = new Nid(this);
+		this.fourmis = new ArrayList<Fourmi>();
 		this.Depot = new Depot(this);
 		this.Reserve = new Reserve(this);
-		Fourmi Reine = new Fourmi(this,0);
-		Reine.setReine();
-		Nymphe nymphe = new Nymphe(this.nid,1);
+		Fourmi fourmiReine = new Fourmi(this);
+		Adulte adulte = new Adulte(fourmiReine);
+		adulte.setReine();
+		fourmiReine.changerEtat(adulte);
+		Fourmi premiereNymphe = new Fourmi(this);
+		Nymphe nymphe = new Nymphe(premiereNymphe);
+		premiereNymphe.changerEtat(nymphe);
 		
-		this.fourmis.put(Reine.getIdentifiant(), Reine);
-		this.nid.getNymphes().put(nymphe.getIdentifiant(),nymphe);
+		this.ajoutFourmi(fourmiReine);
+		this.ajoutFourmi(premiereNymphe);
+		
 	}
 
-	public Fourmi getPremierAdulte() {
-		return this.fourmis.get(0);
-	}
 
 	public LireParametres getLireParametres() {
 		return this.lectureFichier;
 	}
 	
-	public Hashtable<Integer,Object> getMorts() {
+	public List<Fourmi> getMorts() {
 		return this.morts;
 	}
 	
-	public Hashtable<Integer, Fourmi> getFourmis() {
+	public List<Fourmi> getFourmis() {
 		return fourmis;
 	}
 
-	public Hashtable<Integer, Oeuf> getOeufs() {
-		return nid.getOeufs();
-	}
-
-	public Hashtable<Integer, Nymphe> getNymphes() {
-		return nid.getNymphes();
-	}
-
-	public Hashtable<Integer, Larve> getLarves() {
-		return nid.getLarves();
-	}
 
 	public int nombreDeFourmis() {
 		return this.getFourmis().size();
@@ -70,22 +59,11 @@ public class Fourmilliere {
 		return this.Reserve;
 	}
 	
-	public Nid getNid() {
-		return this.nid;
-	}
 	
-	public void ajoutOeuf(Oeuf oeuf) {
-		this.nid.ajoutOeuf(oeuf);
+	public void ajoutFourmi(Fourmi fourmi) {
+		this.fourmis.add(fourmi);
 	}
-	
-	public void ajoutLarve(Larve larve) {
-		this.nid.ajoutLarve(larve);
-	}
-	
-	public void ajoutNymphe(Nymphe nymphe) {
-		this.nid.ajoutNymphe(nymphe);
-	}
-	
+	/*
 	public void affichage(){
 		System.out.println("Nombre d'ouefs: "+this.nid.nombreOeuf());
 		System.out.println("Nombre de larves: "+this.nid.nombreDeLarve());
@@ -106,6 +84,6 @@ public class Fourmilliere {
 		System.out.println("Nombre de Morts: "+this.Depot.getNombreDeMorts());
 		
 	}
-
+*/
 
 }

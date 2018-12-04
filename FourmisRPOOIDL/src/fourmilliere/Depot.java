@@ -1,7 +1,6 @@
 package fourmilliere;
 
-import evolution.Fourmi;
-import evolution.Larve;
+import etat.Fourmi;
 
 public class Depot {
 	Fourmilliere fourmilliere=null;
@@ -9,12 +8,8 @@ public class Depot {
 	public Depot(Fourmilliere fourmilliere){
 		this.fourmilliere=fourmilliere;
 	}
-	public void AjouterMort(Fourmi mort){
-		this.fourmilliere.getMorts().remove(mort.getIdentifiant());
-		this.NombreDeMorts++;
-	}
-	public void AjouterMort(Larve mort){
-		this.fourmilliere.getMorts().remove(mort.getIdentifiant());
+	public void AjouterMort(Fourmi morte){
+		this.fourmilliere.getMorts().remove(morte);
 		this.NombreDeMorts++;
 	}
 	//Predateur A ajouter

@@ -1,7 +1,7 @@
 package tache;
 
-import evolution.Fourmi;
-import evolution.Larve;
+import etat.Adulte;
+import etat.Larve;
 import fourmilliere.Depot;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
@@ -19,7 +19,7 @@ public class Nettoyer extends Tache {
 		this.NombreDeMorts= (int) lecturefichier.ChercherParametre("NombreCadavreMaxNettoyer");
 	}
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void execute(Adulte fourmi) {
 		Integer temporaire[] = new Integer[NombreDeMorts];
 		int j=0;
 		for(int cle : this.fourmilliere.getMorts().keySet()){
@@ -32,7 +32,7 @@ public class Nettoyer extends Tache {
 			if(mort.getClass()==Larve.class)
 				this.depot.AjouterMort((Larve)mort);
 			else
-				this.depot.AjouterMort((Fourmi)mort);
+				this.depot.AjouterMort((Adulte)mort);
 		}	
 	}
 
