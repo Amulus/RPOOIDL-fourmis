@@ -9,7 +9,6 @@ import role.FourmiSoldat;
 import role.Role;
 
 public class Adulte extends Etat {
-	private Fourmi fourmi;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private int dureeDeVieEnMois = 0;
@@ -93,7 +92,7 @@ public class Adulte extends Etat {
 
 
 	public void setReine() {
-		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
+		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.role = new FourmiReine(this.fourmi);
 		this.dureeDeVieEnMois = this.GenererEntierMinMax((int)lecturefichier.ChercherParametre("dureeDeVieReineMin"),
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
@@ -142,5 +141,11 @@ public class Adulte extends Etat {
 		}
 	}
 	 */
+
+	@Override
+	public void evoluer() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -16,10 +16,8 @@ public class Oeuf extends Etat {
 		// TODO Auto-generated constructor stub
 	}
 	//@Override
-	public void changerEtat() {
-		// TODO Auto-generated method stub
-		
-		
+	public void evoluer() {
+		this.fourmi.changerEtat(new Larve(this.fourmi));
 	}
 	
 

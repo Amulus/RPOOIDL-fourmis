@@ -10,5 +10,5 @@ public abstract class Etat {
 		
 	}
 	
-	//abstract void jourSuivant();
+	public abstract void evoluer();
 }
