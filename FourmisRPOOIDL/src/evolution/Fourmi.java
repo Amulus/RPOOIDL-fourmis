@@ -7,7 +7,7 @@ import role.FourmiSexue;
 import role.FourmiSoldat;
 import role.Role;
 
-public class Fourmi extends Evolution {
+public class Fourmi extends Adulte {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private Role role = null;

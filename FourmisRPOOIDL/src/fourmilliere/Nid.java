@@ -7,7 +7,7 @@ import evolution.Nymphe;
 import evolution.Oeuf;
 
 public class Nid {
-	Fourmilliere fourmilliere=null;
+	protected Fourmilliere fourmilliere=null;
 	private Hashtable<Integer,Oeuf> oeufs = new Hashtable<Integer,Oeuf>();
 	private Hashtable<Integer,Nymphe> nymphes = new Hashtable<Integer,Nymphe>();
 	private Hashtable<Integer,Larve> larves = new Hashtable<Integer,Larve>();
@@ -19,7 +19,11 @@ public class Nid {
 		this.larves = new Hashtable<Integer,Larve>();
 		
 	}
-
+	
+	public Fourmilliere getFourmilliere() {
+		return this.fourmilliere;
+	}
+	
 	public Hashtable<Integer, Oeuf> getOeufs() {
 		return oeufs;
 	}

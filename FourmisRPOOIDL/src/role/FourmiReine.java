@@ -11,7 +11,7 @@ public class FourmiReine extends Role {
 	}
 	
 	public void pondre() {
-		Oeuf oeuf = new Oeuf(this.fourmi.getFourmilliere());
+		Oeuf oeuf = new Oeuf(this.fourmi.getFourmilliere().getNid());
 		this.fourmi.getFourmilliere().ajoutOeuf(oeuf);
 	}
 	@Override

@@ -27,7 +27,7 @@ public class Fourmilliere {
 		
 		Fourmi Reine = new Fourmi(this,0);
 		Reine.setReine();
-		Nymphe nymphe = new Nymphe(this,1);
+		Nymphe nymphe = new Nymphe(this.nid,1);
 		
 		this.fourmis.put(Reine.getIdentifiant(), Reine);
 		this.nid.getNymphes().put(nymphe.getIdentifiant(),nymphe);
@@ -71,6 +71,11 @@ public class Fourmilliere {
 	public Reserve getReserve(){
 		return this.Reserve;
 	}
+	
+	public Nid getNid() {
+		return this.nid;
+	}
+	
 	public void ajoutOeuf(Oeuf oeuf) {
 		this.nid.ajoutOeuf(oeuf);
 	}

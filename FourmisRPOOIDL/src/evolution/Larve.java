@@ -1,16 +1,17 @@
 package evolution;
 
 import fourmilliere.Fourmilliere;
+import fourmilliere.Nid;
 import outils.LireParametres;
 
-public class Larve extends Evolution {
+public class Larve extends Enfant {
 	private int nombreDeJourAvantEvolution=0;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
-	public Larve(Fourmilliere fourmilliere, int identifiant) {
-		super(fourmilliere);
-		LireParametres lecturefichier = fourmilliere.getLireParametres();
+	public Larve(Nid nid, int identifiant) {
+		super(nid);
+		LireParametres lecturefichier = nid.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeLarve((int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMin"),
 				(int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMax"),
 				(int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
@@ -27,23 +28,23 @@ public class Larve extends Evolution {
 		int multiplicateurDePoid = (int) Math
 				.floor(Math.random() * (MultiplicateurPoidLarveMax - MultiplicateurPoidLarveMin) + 1
 						+ MultiplicateurPoidLarveMin);
-		double poidDuneFourmi = fourmilliere.getPremierAdulte().GenererUnPoidDeFourmi(PoidFourmiMinimum,
+		double poidDuneFourmi = nid.getFourmilliere().getPremierAdulte().GenererUnPoidDeFourmi(PoidFourmiMinimum,
 				PoidFourmiMaximum, MultiplicateurDecimales);
 		return poidDuneFourmi * multiplicateurDePoid;
 	}
 	public void VerifierAlimentation(){
 		if(this.Poid>NouritureMangée){
 			this.EstEnVie=false;
-			this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
-			this.fourmilliere.getLarves().remove(this.getIdentifiant());
+			this.nid.getFourmilliere().getMorts().putIfAbsent(this.getIdentifiant(), this);
+			this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
 		}
 	}
 
 	@Override
 	public void changerEtat() {
-		Nymphe nymphe = new Nymphe(this.fourmilliere, this.identifiant);
-		this.fourmilliere.ajoutNymphe(nymphe);
-		this.fourmilliere.getLarves().remove(this.identifiant);
+		Nymphe nymphe = new Nymphe(this.nid, this.identifiant);
+		this.nid.ajoutNymphe(nymphe);
+		this.nid.getLarves().remove(this.identifiant);
 	}
 	
 	

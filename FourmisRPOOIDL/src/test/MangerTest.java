@@ -26,7 +26,7 @@ public class MangerTest {
 		Fourmi fourmiMorte3 = new Fourmi(fourmilliere,4);
 		fourmilliere.getFourmis().put(4, fourmiMorte3);
 		assert(fourmiMorte!=null);
-		Larve LarveMorte = new Larve(fourmilliere,0);
+		Larve LarveMorte = new Larve(fourmilliere.getNid(),0);
 		assert(LarveMorte!=null);
 		fourmilliere.getLarves().put(0, LarveMorte);
 		fourmilliere.getLarves().get(0).VerifierAlimentation();
