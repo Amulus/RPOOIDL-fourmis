@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.fail;
+
 import org.junit.Test;
 
 import etat.Adulte;
@@ -12,7 +14,8 @@ public class MangerTest {
 
 	@Test
 	public void test() {
-		Fourmilliere fourmilliere = new Fourmilliere();
+		fail("Not yet implemented");
+		/*Fourmilliere fourmilliere = new Fourmilliere();
 		assert(fourmilliere!=null);
 		Adulte fourmi = new Adulte(fourmilliere,1);
 		fourmilliere.getFourmis().put(1, fourmi);
@@ -34,7 +37,7 @@ public class MangerTest {
 		fourmilliere.getFourmis().get(3).mourir();
 		fourmilliere.getFourmis().get(4).mourir();
 		assert(fourmilliere.getMorts().size()==4);
-		manger.execute(fourmi);
+		manger.execute(fourmi);*/
 	}
 
 }

@@ -18,7 +18,8 @@ public class EvolutionTest {
 
 	@Test
 	public void testEvolution() {
-		int identifiantDepart = 2;
+		fail("Not yet implemented");
+		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);
 		fourmilliere.ajoutOeuf(oeuf);
@@ -41,7 +42,7 @@ public class EvolutionTest {
 		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
 		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
-		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
+		assertTrue(fourmi.getIdentifiant()==identifiantDepart);*/
 	}
 
 	@Test

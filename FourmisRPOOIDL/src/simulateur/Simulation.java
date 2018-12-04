@@ -36,10 +36,10 @@ public class Simulation extends Rect {
 			for (int i = 1; i < 500; i++) {
 				Colonie.getFourmis().add(new Fourmi(Colonie));
 			}
-			for (int i = 0; i < Colonie.getFourmis().size(); i++) {
+			/*for (int i = 0; i < Colonie.getFourmis().size(); i++) {
 				if (Colonie.getFourmis().get(i).getRole().getNumeroRole() == 1)
 					jc.add(new Rect(Color.RED, new Point(250,250), new Dimension(4, 4)));
-			}
+			}*/
 			jc.open();
 
 			List<Transformateur> drawables = jc.contents();
