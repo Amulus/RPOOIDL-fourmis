@@ -28,7 +28,7 @@ public class EvolutionTest {
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
 		fourmi.getEtat().evoluer();
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
-		
+
 		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);

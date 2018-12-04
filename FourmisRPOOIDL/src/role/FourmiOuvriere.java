@@ -1,6 +1,7 @@
 package role;
 
 import fourmilliere.Fourmi;
+import tache.*;
 
 public class FourmiOuvriere extends Role {
 
@@ -16,5 +17,17 @@ public class FourmiOuvriere extends Role {
 	@Override
 	public int getNumeroRole() {
 		return this.Role;
+	}
+	
+	public void nourrirLarve() {
+		this.tache = new NourirLarves();
+	}
+	
+	public void chasser() {
+		this.tache = new Chasser();
+	}
+	
+	public void nettoyer() {
+		this.tache = new Nettoyer();
 	}
 }

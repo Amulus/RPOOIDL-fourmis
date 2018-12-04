@@ -22,7 +22,8 @@ public class Fourmi {
 	public Etat getEtat() {
 		return this.etat;
 	}
-	void step() {
+
+	public void step() {
 		
 	}
 

@@ -98,6 +98,9 @@ public class Adulte extends Etat {
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
 		
 	}
+	public Boolean estDehors() {
+		return this.estDehors;
+	}
 	
 	public void sortir() {
 		this.estDehors = true;
