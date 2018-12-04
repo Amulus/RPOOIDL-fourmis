@@ -1,16 +1,17 @@
 package evolution;
 
 import fourmilliere.Fourmilliere;
+import fourmilliere.Nid;
 import outils.LireParametres;
 
-public class Oeuf extends Evolution {
+public class Oeuf extends Enfant {
 	
 	public int nombreDeJourAvantEvolution=0;
 	
-	public Oeuf(Fourmilliere fourmilliere) {
-		super(fourmilliere);
+	public Oeuf(Nid nid) {
+		super(nid);
 		
-		LireParametres lecturefichier = fourmilliere.getLireParametres();
+		LireParametres lecturefichier = nid.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionOeufs");
 		
 		this.identifiant = identifiantSuivant;
@@ -20,9 +21,9 @@ public class Oeuf extends Evolution {
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
-		Larve larve = new Larve(this.fourmilliere,this.identifiant);
-		this.fourmilliere.ajoutLarve(larve);
-		this.fourmilliere.getOeufs().remove(this.identifiant);
+		Larve larve = new Larve(this.nid,this.identifiant);
+		this.nid.ajoutLarve(larve);
+		this.nid.getOeufs().remove(this.identifiant);
 		
 	}
 	

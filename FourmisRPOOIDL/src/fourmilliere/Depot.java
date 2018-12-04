@@ -1,6 +1,6 @@
 package fourmilliere;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 import evolution.Larve;
 
 public class Depot {
@@ -9,7 +9,7 @@ public class Depot {
 	public Depot(Fourmilliere fourmilliere){
 		this.fourmilliere=fourmilliere;
 	}
-	public void AjouterMort(Adulte mort){
+	public void AjouterMort(Fourmi mort){
 		this.fourmilliere.getMorts().remove(mort.getIdentifiant());
 		this.NombreDeMorts++;
 	}

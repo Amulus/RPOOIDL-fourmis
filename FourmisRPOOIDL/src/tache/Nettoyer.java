@@ -1,6 +1,6 @@
 package tache;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 import evolution.Larve;
 import fourmilliere.Depot;
 import fourmilliere.Fourmilliere;
@@ -15,7 +15,7 @@ public class Nettoyer extends Tache {
 		this.fourmilliere=fourmilliere;
 	}
 	@Override
-	public void execute(Adulte fourmi) {
+	public void execute(Fourmi fourmi) {
 		int i=1;
 		for(int cle : this.fourmilliere.getMorts().keySet()){
 			if(i>3) break;
@@ -24,7 +24,7 @@ public class Nettoyer extends Tache {
 			if(mort.getClass()==Larve.class)
 				this.depot.AjouterMort((Larve)mort);
 			else
-				this.depot.AjouterMort((Adulte)mort);
+				this.depot.AjouterMort((Fourmi)mort);
 		}	
 	}
 

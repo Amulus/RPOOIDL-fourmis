@@ -1,16 +1,17 @@
 package evolution;
 
 import fourmilliere.Fourmilliere;
+import fourmilliere.Nid;
 import outils.LireParametres;
 
-public class Nymphe extends Evolution {
+public class Nymphe extends Enfant {
 	
 	private int nombreDeJourAvantEvolution=0;
 	
-	public Nymphe(Fourmilliere fourmilliere, int identifiant) {
-		super(fourmilliere);
+	public Nymphe(Nid nid, int identifiant) {
+		super(nid);
 		// TODO Auto-generated constructor stub
-		LireParametres lecturefichier = fourmilliere.getLireParametres();
+		LireParametres lecturefichier = nid.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionNymphes");
 		this.identifiant = identifiant;
 	}
@@ -18,9 +19,9 @@ public class Nymphe extends Evolution {
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
-		Adulte fourmi = new Adulte(this.fourmilliere,this.identifiant);
-		this.fourmilliere.getFourmis().put(fourmi.getIdentifiant(), fourmi);
-		this.fourmilliere.getNymphes().remove(this.identifiant);
+		Fourmi fourmi = new Fourmi(this.nid.getFourmilliere(),this.identifiant);
+		this.nid.getFourmilliere().getFourmis().put(fourmi.getIdentifiant(), fourmi);
+		this.nid.getFourmilliere().getNymphes().remove(this.identifiant);
 	}
 
 	public int getIdentifiant() {

@@ -1,10 +1,10 @@
 package role;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 
 public class FourmiSoldat extends Role {
 
-	public FourmiSoldat(Adulte fourmi) {
+	public FourmiSoldat(Fourmi fourmi) {
 		super(fourmi);
 		this.setNumeroRole();
 	}

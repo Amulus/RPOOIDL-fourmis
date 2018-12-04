@@ -10,7 +10,7 @@ import coucheGraphique.Transformateur;
 import coucheGraphique.Ovale;
 import coucheGraphique.Rect;
 import coucheGraphique.Monde;
-import evolution.Adulte;
+import evolution.Fourmi;
 import fourmilliere.Fourmilliere;
 
 public class Simulation extends Rect {
@@ -33,7 +33,7 @@ public class Simulation extends Rect {
 			Fourmilliere Colonie = new Fourmilliere();
 
 			for (int i = 1; i < 500; i++) {
-				Colonie.getFourmis().put(i, new Adulte(Colonie, i));
+				Colonie.getFourmis().put(i, new Fourmi(Colonie, i));
 			}
 			for (int i = 0; i < Colonie.getFourmis().size(); i++) {
 				if (Colonie.getFourmis().get(i).getRole().getNumeroRole() == 1)

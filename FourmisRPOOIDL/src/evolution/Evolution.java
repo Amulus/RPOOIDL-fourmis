@@ -1,16 +1,15 @@
 package evolution;
 
-import fourmilliere.Fourmilliere;
+import fourmilliere.*;
 
 public abstract class Evolution {
-	Fourmilliere fourmilliere;
+	
 	protected static int identifiantSuivant = 2;
 	protected int identifiant;
-	public Evolution(Fourmilliere fourmilliere){
-		this.fourmilliere=fourmilliere;
+	public Evolution(){
+
 		
 	}
-	public abstract void changerEtat();
 	
 	public int getIdentifiant() {
 		return this.identifiant;

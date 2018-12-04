@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import evolution.*;
-import evolution.Oeuf;
 import fourmilliere.*;
 
 public class EvolutionTest {
@@ -20,7 +19,7 @@ public class EvolutionTest {
 	@Test
 	public void testEvolution() {
 		int identifiantDepart = 2;
-		Oeuf oeuf = new Oeuf(fourmilliere);
+		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);
 		fourmilliere.ajoutOeuf(oeuf);
 		assert(fourmilliere.getLarves().size()==0);
@@ -40,7 +39,7 @@ public class EvolutionTest {
 		
 		nymphe.changerEtat();
 		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
-		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
+		Fourmi fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
 		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
 	}
