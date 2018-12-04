@@ -30,7 +30,7 @@ Pour une proie dont le poid est de 2 fourmis, il faut 2 fourmis pour tuer la pro
 Les fourmis sont tenaces, elles peuvent harceler une proie pendant 3 heures.
 Si au bout de 3 heures, le nombre de fourmis nécessaires n'est pas atteint, alors la proie s'enfuit.
 Une proie dont le poid dépasse 60 fois le poid d'une fourmi n'est pas attaquée.
-Et en, une seule fourmi peut ramener seule n'importe quelle proie attaquée.
+Une seule fourmi peut ramener seule n'importe quelle proie attaquée.
 
 
 Sur la piste des fourmis

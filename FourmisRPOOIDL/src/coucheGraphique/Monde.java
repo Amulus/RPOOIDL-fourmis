@@ -1,8 +1,6 @@
 package coucheGraphique;
 
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Iterator;
@@ -12,9 +10,10 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Monde extends JPanel implements MouseListener{
+public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private List<Transformateur> drawables = new LinkedList<Transformateur>();
+	protected boolean TableauFeromones[][];
 	String name = "";
 	
 	public Monde(String name) {
@@ -33,13 +32,19 @@ public class Monde extends JPanel implements MouseListener{
 			}
 		};
 		frame.addWindowListener(wa);
-		frame.addMouseListener(this);
 		frame.getContentPane().add(this);
 		frame.pack();
 		frame.setVisible(true);
+		initialiserTableau();
 		requestFocus();
+		
 	}
-	
+	private void initialiserTableau(){
+		this.TableauFeromones = new boolean[this.getWidth()][this.getHeight()];
+		for(int i=0;i<this.getWidth();i++)
+			for(int j=0;j<this.getHeight();j++)
+				TableauFeromones[i][j]=false;
+	}
      public void add(Transformateur d) {
         drawables.add(d);
         d.setWorld(this);
@@ -63,35 +68,5 @@ public class Monde extends JPanel implements MouseListener{
         }
         drawables.clear();
      }
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-/*		if(this.drawables.get(0).contains(this.getMousePosition())){
-			text = new Rect(Color.WHITE, this.getMousePosition(),new Dimension(50, 50));
-			this.drawables.add(text);
-		}*/
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-	/*	if(!this.drawables.get(0).contains(this.getMousePosition())&&this.drawables.contains(text))
-			this.drawables.remove(text);*/
-	}
 
 }

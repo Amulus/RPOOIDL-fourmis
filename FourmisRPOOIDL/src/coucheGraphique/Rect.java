@@ -21,4 +21,5 @@ public class Rect extends Transformateur{
 		super.draw(g);
 	}
 
+
 }

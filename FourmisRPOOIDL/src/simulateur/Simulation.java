@@ -28,7 +28,6 @@ public class Simulation extends Rect {
 			Monde jc = new Monde("Simulation d'une fourmilliere");
 			jc.setBackground(new Color(100,125 , 0));
 			jc.setPreferredSize(new Dimension(500, 500));
-
 			jc.add(new Ovale(new Color(150, 50, 0), new Point(250, 250), new Dimension(10, 10),true));
 			Fourmilliere Colonie = new Fourmilliere();
 
@@ -42,13 +41,12 @@ public class Simulation extends Rect {
 			jc.open();
 
 			List<Transformateur> drawables = jc.contents();
-			
 			Thread fourmi = new Thread();
 			fourmi.start();
 			while (true) {
 				for (Transformateur fourmies : drawables) {
 					if(fourmies.getClass()!=Ovale.class)
-						fourmies.testDeplacement();
+						fourmies.deplacement();
 				}
 				try {
 					Thread.sleep(1);

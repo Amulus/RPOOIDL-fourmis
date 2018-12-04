@@ -10,3 +10,5 @@ dureeEvolutionOeufs=3
 dureeEvolutionLarves=10
 dureeEvolutionNymphes=7
 NombreCadavreMaxNettoyer=2
+PoidProieMinimum=20
+PoidProieMaximum=150
