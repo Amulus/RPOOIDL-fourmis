@@ -1,6 +1,6 @@
 package role;
 
-import etat.Fourmi;
+import fourmilliere.Fourmi;
 
 public abstract class Role {
 	Fourmi fourmi;

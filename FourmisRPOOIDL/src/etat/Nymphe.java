@@ -1,5 +1,6 @@
 package etat;
 
+import fourmilliere.Fourmi;
 import outils.LireParametres;
 
 public class Nymphe extends Etat {
@@ -8,7 +9,7 @@ public class Nymphe extends Etat {
 	public Nymphe(Fourmi fourmi) {
 		super(fourmi);
 		// TODO Auto-generated constructor stub
-		LireParametres lecturefichier = fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		//this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionNymphes");
 	}
 

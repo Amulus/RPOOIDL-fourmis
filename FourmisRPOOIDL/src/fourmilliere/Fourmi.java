@@ -1,6 +1,7 @@
-package etat;
+package fourmilliere;
 
-import fourmilliere.Fourmilliere;
+import etat.Etat;
+import etat.Oeuf;
 
 public class Fourmi {
 	protected Fourmilliere fourmilliere;

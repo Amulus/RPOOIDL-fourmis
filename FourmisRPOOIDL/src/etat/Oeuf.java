@@ -1,5 +1,6 @@
 package etat;
 
+import fourmilliere.Fourmi;
 import outils.LireParametres;
 
 public class Oeuf extends Etat {
@@ -9,7 +10,7 @@ public class Oeuf extends Etat {
 	public Oeuf(Fourmi fourmi) {
 		super(fourmi);
 		
-		LireParametres lecturefichier = this.fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionOeufs");
 		
 		// TODO Auto-generated constructor stub

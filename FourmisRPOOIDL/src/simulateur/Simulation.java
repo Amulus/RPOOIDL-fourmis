@@ -8,10 +8,10 @@ import java.util.List;
 
 import coucheGraphique.Transformateur;
 import etat.Adulte;
-import etat.Fourmi;
 import coucheGraphique.Ovale;
 import coucheGraphique.Rect;
 import coucheGraphique.Monde;
+import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 
 public class Simulation extends Rect {

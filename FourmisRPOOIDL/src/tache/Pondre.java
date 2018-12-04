@@ -1,6 +1,6 @@
 package tache;
 
-import etat.Fourmi;
+import fourmilliere.Fourmi;
 
 public class Pondre extends Tache {
 

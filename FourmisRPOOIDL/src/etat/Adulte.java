@@ -1,4 +1,5 @@
 package etat;
+import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 import role.FourmiOuvriere;
@@ -20,7 +21,7 @@ public class Adulte extends Etat {
 	
 	
 	private void initialiser(Fourmi fourmi) {
-		LireParametres lecturefichier = fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 			(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
@@ -31,7 +32,7 @@ public class Adulte extends Etat {
 
 	public Adulte(Fourmi fourmi) {
 		super(fourmi);
-		LireParametres lecturefichier = fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		initialiser(fourmi);
 		GenererUnRole((int) lecturefichier.ChercherParametre("PourcentageChanceOuvrier"),
 				(int) lecturefichier.ChercherParametre("PourcentageChanceSoldat"),
@@ -92,7 +93,7 @@ public class Adulte extends Etat {
 
 
 	public void setReine() {
-		LireParametres lecturefichier = fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.role = new FourmiReine(this.fourmi);
 		this.dureeDeVieEnMois = this.GenererEntierMinMax((int)lecturefichier.ChercherParametre("dureeDeVieReineMin"),
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));

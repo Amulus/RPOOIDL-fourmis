@@ -1,7 +1,5 @@
 package fourmilliere;
 
-import etat.Fourmi;
-
 public class Depot {
 	Fourmilliere fourmilliere=null;
 	private int NombreDeMorts=0;

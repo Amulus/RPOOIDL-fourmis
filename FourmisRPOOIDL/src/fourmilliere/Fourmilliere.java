@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import etat.Adulte;
-import etat.Fourmi;
 import etat.Nymphe;
 import outils.LireParametres;
 

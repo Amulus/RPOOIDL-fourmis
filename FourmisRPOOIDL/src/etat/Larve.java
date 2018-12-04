@@ -1,5 +1,6 @@
 package etat;
 
+import fourmilliere.Fourmi;
 import outils.LireParametres;
 
 public class Larve extends Etat {
@@ -9,7 +10,7 @@ public class Larve extends Etat {
 	Boolean EstEnVie;
 	public Larve(Fourmi fourmi) {
 		super(fourmi);
-		LireParametres lecturefichier = this.fourmi.fourmilliere.getLireParametres();
+		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeLarve((int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMin"),
 				(int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMax"),
 				(int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),

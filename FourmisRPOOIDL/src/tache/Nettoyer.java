@@ -1,7 +1,7 @@
 package tache;
 
-import etat.Fourmi;
 import fourmilliere.Depot;
+import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
