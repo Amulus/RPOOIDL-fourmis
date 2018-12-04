@@ -61,7 +61,7 @@ En effet, ils suivent les pistes tracées par les phéromones des femelles.
 Gestion des déchets
 
 Pour être viable, la fourmilière doit être nettoyée des cadavres de proies non consommés et des cadavres de fourmis.
-En e􏰁t, les proies sont consommables pendant environ 30 à 40 heures et certaines fourmis peuvent mourir dans la fourmilière.
+En e􏰁ffet, les proies sont consommables pendant environ 30 à 40 heures et certaines fourmis peuvent mourir dans la fourmilière.
 
 
 Le dépot
@@ -72,7 +72,6 @@ Pour marquer les pistes qui mènent à ce dépot, elles utilisent une phéro
 
 Le nettoyage
 
-Après avoir mangé sa part journalière, toute fourmi se doit à la corvée de nettoyage : elle doit vider 1 ou 2 cadavres.
 On observe que le nombre de proies non consommables ne doit jamais être supérieur au nombre de proies consommables et que le nombre de cadavres de fourmis ne doit pas excéder 30% de la population totale.
 Si cela arrive, toutes les fourmis présentes ou arrivant dans la fourmilière doivent s'activer exclusivement au nettoyage jusqu'au retour à une situation viable.
 

@@ -9,3 +9,4 @@ PoidFourmiMinimum=15
 dureeEvolutionOeufs=3
 dureeEvolutionLarves=10
 dureeEvolutionNymphes=7
+NombreCadavreMaxNettoyer=2
