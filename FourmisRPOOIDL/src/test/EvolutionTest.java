@@ -18,7 +18,17 @@ public class EvolutionTest {
 
 	@Test
 	public void testEvolution() {
-		fail("Not yet implemented");
+		Fourmi fourmi = new Fourmi(fourmilliere);
+		assertTrue(fourmi.getEtat().getClass() == Oeuf.class);
+		fourmi.getEtat().evoluer();
+		assertTrue(fourmi.getEtat().getClass() == Larve.class);
+		fourmi.getEtat().evoluer();
+		assertTrue(fourmi.getEtat().getClass() == Nymphe.class);
+		fourmi.getEtat().evoluer();
+		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
+		fourmi.getEtat().evoluer();
+		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
+		
 		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);

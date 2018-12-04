@@ -33,8 +33,8 @@ public class Larve extends Etat {
 	
 
 	//@Override
-	public void changerEtat() {
-
+	public void evoluer() {
+		this.fourmi.changerEtat(new Nymphe(this.fourmi));
 	}
 	
 	public boolean VerifierAlimentation(){

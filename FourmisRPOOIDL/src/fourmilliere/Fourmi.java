@@ -19,6 +19,9 @@ public class Fourmi {
 		return this.fourmilliere;
 	}
 	
+	public Etat getEtat() {
+		return this.etat;
+	}
 	void step() {
 		
 	}

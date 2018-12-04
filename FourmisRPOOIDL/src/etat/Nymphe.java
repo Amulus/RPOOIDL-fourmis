@@ -13,10 +13,8 @@ public class Nymphe extends Etat {
 		//this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionNymphes");
 	}
 
-	//@Override
-	public void changerEtat() {
-		// TODO Auto-generated method stub
-
+	public void evoluer() {
+		this.fourmi.changerEtat(new Adulte(this.fourmi));
 	}
 
 
