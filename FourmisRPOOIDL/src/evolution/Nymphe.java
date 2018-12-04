@@ -5,7 +5,7 @@ import outils.LireParametres;
 
 public class Nymphe extends Enfant {
 	
-	private int nombreDeJourAvantEvolution=0;
+	protected int nombreDeJourAvantEvolution=0;
 	
 	public Nymphe(Nid nid, int identifiant) {
 		super(nid);

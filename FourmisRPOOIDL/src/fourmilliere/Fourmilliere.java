@@ -12,7 +12,6 @@ public class Fourmilliere {
 
 	private Hashtable<Integer,Fourmi> fourmis = new Hashtable<Integer,Fourmi>();
 	private Hashtable<Integer,Object> morts = new Hashtable<Integer,Object>();
-	
 	private Nid nid;
 	private Depot Depot;
 	private Reserve Reserve;
@@ -24,7 +23,6 @@ public class Fourmilliere {
 		this.nid = new Nid(this);
 		this.Depot = new Depot(this);
 		this.Reserve = new Reserve(this);
-		
 		Fourmi Reine = new Fourmi(this,0);
 		Reine.setReine();
 		Nymphe nymphe = new Nymphe(this.nid,1);
