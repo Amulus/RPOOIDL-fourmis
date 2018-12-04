@@ -29,10 +29,10 @@ public class MangerTest {
 		Larve LarveMorte = new Larve(fourmilliere.getNid(),0);
 		assert(LarveMorte!=null);
 		fourmilliere.getLarves().put(0, LarveMorte);
-		fourmilliere.getLarves().get(0).VerifierAlimentation();
-		fourmilliere.getFourmis().get(2).VerifierAlimentation();
-		fourmilliere.getFourmis().get(3).VerifierAlimentation();
-		fourmilliere.getFourmis().get(4).VerifierAlimentation();
+		fourmilliere.getLarves().get(0).mourir();
+		fourmilliere.getFourmis().get(2).mourir();
+		fourmilliere.getFourmis().get(3).mourir();
+		fourmilliere.getFourmis().get(4).mourir();
 		assert(fourmilliere.getMorts().size()==4);
 		manger.execute(fourmi);
 	}
