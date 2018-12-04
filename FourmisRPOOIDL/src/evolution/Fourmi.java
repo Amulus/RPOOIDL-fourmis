@@ -64,13 +64,18 @@ public class Fourmi extends Adulte {
 
 	}
 
-	public void VerifierAlimentation() {
-		if (this.Poid *0.333 > NouritureMangée){
-			this.EstEnVie = false;
-			this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
-			this.fourmilliere.getFourmis().remove(this.getIdentifiant());
-		}
+	
+	public boolean VerifierAlimentation(){
+		return this.Poid*0.333>NouritureMangée;
+
 	}
+	
+	public void mourir() {
+		this.EstEnVie = false;
+		this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
+		this.fourmilliere.getLarves().remove(this.getIdentifiant());
+	}
+	
 	
 	public int getIdentifiant() {
 		return this.identifiant;
@@ -98,8 +103,21 @@ public class Fourmi extends Adulte {
 		return this.Poid;
 	}
 
-	@Override
-	public void changerEtat() {
+	public void jourSuivant() {
+		if(this.VerifierAlimentation()) 
+			this.mourir();
 	}
+	@Override
+	void heureSuivant() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void minuteSuivant() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

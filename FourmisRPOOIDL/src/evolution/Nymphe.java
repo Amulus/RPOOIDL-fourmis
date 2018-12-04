@@ -5,7 +5,6 @@ import outils.LireParametres;
 
 public class Nymphe extends Enfant {
 	
-	protected int nombreDeJourAvantEvolution=0;
 	
 	public Nymphe(Nid nid, int identifiant) {
 		super(nid);
@@ -26,4 +25,9 @@ public class Nymphe extends Enfant {
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
+
+	public void jourSuivant() {
+		super.jourSuivant();
+	}
+
 }
