@@ -1,6 +1,5 @@
 package evolution;
 
-import fourmilliere.Fourmilliere;
 import fourmilliere.Nid;
 import outils.LireParametres;
 

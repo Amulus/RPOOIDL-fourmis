@@ -1,7 +1,5 @@
 package evolution;
 
-import fourmilliere.*;
-
 public abstract class Evolution {
 	
 	protected static int identifiantSuivant = 2;

@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import role.FourmiOuvriere;
-import role.FourmiSexue;
-import role.FourmiSoldat;
-
 public abstract class Transformateur {
 	protected Monde world;
 	protected Rectangle bounds;

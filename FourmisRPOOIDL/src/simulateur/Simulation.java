@@ -45,19 +45,16 @@ public class Simulation extends Rect {
 			
 			Thread fourmi = new Thread();
 			fourmi.start();
-			int i =0;
 			while (true) {
 				for (Transformateur fourmies : drawables) {
 					if(fourmies.getClass()!=Ovale.class)
 						fourmies.testDeplacement();
 				}
 				try {
-					fourmi.sleep(1);
+					Thread.sleep(1);
 				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				i++;
 			}
 		}
 	}

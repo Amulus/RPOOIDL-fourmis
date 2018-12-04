@@ -50,7 +50,7 @@ public class Fourmi extends Adulte {
 				fourmi.role = new FourmiOuvriere(fourmi);
 	}
 
-	private void ChangerRoleSoldatEtOuvrier(Fourmi fourmi,Boolean Soldat){
+	public void ChangerRoleSoldatEtOuvrier(Fourmi fourmi,Boolean Soldat){
 		if(Soldat)
 			fourmi.role =new FourmiSoldat(fourmi);
 		else

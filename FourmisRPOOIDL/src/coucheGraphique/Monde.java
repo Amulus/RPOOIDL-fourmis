@@ -1,7 +1,5 @@
 package coucheGraphique;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -17,7 +15,6 @@ import javax.swing.JPanel;
 public class Monde extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private List<Transformateur> drawables = new LinkedList<Transformateur>();
-	private Transformateur text = null;
 	String name = "";
 	
 	public Monde(String name) {
