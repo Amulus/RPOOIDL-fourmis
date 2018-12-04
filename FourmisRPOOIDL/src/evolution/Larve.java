@@ -31,13 +31,7 @@ public class Larve extends Enfant {
 				PoidFourmiMaximum, MultiplicateurDecimales);
 		return poidDuneFourmi * multiplicateurDePoid;
 	}
-	public void VerifierAlimentation(){
-		if(this.Poid>NouritureMangée){
-			this.EstEnVie=false;
-			this.nid.getFourmilliere().getMorts().putIfAbsent(this.getIdentifiant(), this);
-			this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
-		}
-	}
+	
 
 	@Override
 	public void changerEtat() {
@@ -46,5 +40,21 @@ public class Larve extends Enfant {
 		this.nid.getLarves().remove(this.identifiant);
 	}
 	
+	public boolean VerifierAlimentation(){
+		return this.Poid>NouritureMangée;
+
+	}
+	
+	public void jourSuivant() {
+		super.jourSuivant();
+		if(this.VerifierAlimentation()) 
+			this.mourir();
+		
+	}
+	public void mourir() {
+		this.EstEnVie = false;
+		this.nid.getFourmilliere().getMorts().putIfAbsent(this.getIdentifiant(), this);
+		this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
+	}
 	
 }

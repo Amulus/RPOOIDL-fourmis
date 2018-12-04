@@ -12,4 +12,6 @@ public abstract class Evolution {
 	public int getIdentifiant() {
 		return this.identifiant;
 	}
+	
+	abstract void jourSuivant();
 }

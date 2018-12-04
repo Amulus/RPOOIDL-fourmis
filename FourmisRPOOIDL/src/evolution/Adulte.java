@@ -8,9 +8,9 @@ public abstract class Adulte extends Evolution {
 	Adulte(Fourmilliere fourmilliere){
 		this.fourmilliere = fourmilliere;
 	}
-	public void changerEtat() {
-		// TODO Auto-generated method stub
-
-	}
+	
+	abstract void jourSuivant();
+	abstract void heureSuivant();
+	abstract void minuteSuivant();
 
 }
