@@ -1,7 +1,7 @@
 package tache;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 
 public abstract class Tache {
-	public abstract void execute(Adulte fourmi);
+	public abstract void execute(Fourmi fourmi);
 }

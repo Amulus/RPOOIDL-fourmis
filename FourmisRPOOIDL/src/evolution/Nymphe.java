@@ -18,7 +18,7 @@ public class Nymphe extends Evolution {
 	@Override
 	public void changerEtat() {
 		// TODO Auto-generated method stub
-		Adulte fourmi = new Adulte(this.fourmilliere,this.identifiant);
+		Fourmi fourmi = new Fourmi(this.fourmilliere,this.identifiant);
 		this.fourmilliere.getFourmis().put(fourmi.getIdentifiant(), fourmi);
 		this.fourmilliere.getNymphes().remove(this.identifiant);
 	}

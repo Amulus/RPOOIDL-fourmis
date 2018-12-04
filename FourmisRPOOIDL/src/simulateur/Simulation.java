@@ -10,7 +10,7 @@ import coucheGraphique.Transformateur;
 import coucheGraphique.Ovale;
 import coucheGraphique.Rect;
 import coucheGraphique.Monde;
-import evolution.Adulte;
+import evolution.Fourmi;
 import fourmilliere.Fourmilliere;
 
 public class Simulation extends Rect {
@@ -29,11 +29,11 @@ public class Simulation extends Rect {
 			jc.setBackground(new Color(100,125 , 0));
 			jc.setPreferredSize(new Dimension(500, 500));
 
-			jc.add(new Ovale(new Color(150, 50, 0), new Point(250, 250), new Dimension(10, 10)));
+			jc.add(new Ovale(new Color(150, 50, 0), new Point(250, 250), new Dimension(10, 10),true));
 			Fourmilliere Colonie = new Fourmilliere();
 
 			for (int i = 1; i < 500; i++) {
-				Colonie.getFourmis().put(i, new Adulte(Colonie, i));
+				Colonie.getFourmis().put(i, new Fourmi(Colonie, i));
 			}
 			for (int i = 0; i < Colonie.getFourmis().size(); i++) {
 				if (Colonie.getFourmis().get(i).getRole().getNumeroRole() == 1)
@@ -42,13 +42,10 @@ public class Simulation extends Rect {
 			jc.open();
 
 			List<Transformateur> drawables = jc.contents();
-			/*
-			 * ArrayList<Thread> fourmies = new ArrayList<Thread>();
-			 * for(Transformateur fourmi : drawables){ fourmies.add(new
-			 * Thread()); } for(Thread fourmi:fourmies)
-			 */
+			
 			Thread fourmi = new Thread();
 			fourmi.start();
+			int i =0;
 			while (true) {
 				for (Transformateur fourmies : drawables) {
 					if(fourmies.getClass()!=Ovale.class)
@@ -60,8 +57,8 @@ public class Simulation extends Rect {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				i++;
 			}
-
 		}
 	}
 }

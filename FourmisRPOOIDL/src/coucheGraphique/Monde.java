@@ -1,6 +1,10 @@
 package coucheGraphique;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Iterator;
@@ -10,9 +14,10 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Monde extends JPanel {
+public class Monde extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private List<Transformateur> drawables = new LinkedList<Transformateur>();
+	private Transformateur text = null;
 	String name = "";
 	
 	public Monde(String name) {
@@ -31,6 +36,7 @@ public class Monde extends JPanel {
 			}
 		};
 		frame.addWindowListener(wa);
+		frame.addMouseListener(this);
 		frame.getContentPane().add(this);
 		frame.pack();
 		frame.setVisible(true);
@@ -60,16 +66,35 @@ public class Monde extends JPanel {
         }
         drawables.clear();
      }
-/*
-    public List<Morph> find(Point p) {
-        List<Morph> l = new ArrayList<Morph>();
-        for (Iterator<Morph> iter = drawables.iterator(); iter.hasNext();) {
-        	Morph element = iter.next();
-            if (element.getBounds().contains(p)) {
-                l.add(element);
-            }
-        }
-        return l;
-    }*/
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+/*		if(this.drawables.get(0).contains(this.getMousePosition())){
+			text = new Rect(Color.WHITE, this.getMousePosition(),new Dimension(50, 50));
+			this.drawables.add(text);
+		}*/
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	/*	if(!this.drawables.get(0).contains(this.getMousePosition())&&this.drawables.contains(text))
+			this.drawables.remove(text);*/
+	}
 
 }

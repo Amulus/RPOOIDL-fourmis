@@ -6,12 +6,16 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 public class Ovale extends Transformateur {
-
-	public Ovale(Color color, Point pos, Dimension dim) {
+	private boolean isFourmilliere=false;
+	
+	public Ovale(Color color, Point pos, Dimension dim,boolean isFourmilliere) {
 		super(color, pos, dim);
-		
+		this.isFourmilliere=isFourmilliere;
 	}
-
+	
+	public boolean getIsFourmilliere(){
+		return this.isFourmilliere;
+	}
 	public void draw(Graphics g) {
 		Color c = g.getColor();
 		g.setColor(color);

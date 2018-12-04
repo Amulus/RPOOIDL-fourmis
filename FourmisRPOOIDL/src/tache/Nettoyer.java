@@ -1,6 +1,8 @@
 package tache;
 
-import evolution.Adulte;
+import java.util.ArrayList;
+
+import evolution.Fourmi;
 import evolution.Larve;
 import fourmilliere.Depot;
 import fourmilliere.Fourmilliere;
@@ -13,10 +15,15 @@ public class Nettoyer extends Tache {
 	public Nettoyer(Depot depot,Fourmilliere fourmilliere){
 		this.depot=depot;
 		this.fourmilliere=fourmilliere;
+		//lirefichier parametre nb morts
 	}
 	@Override
-	public void execute(Adulte fourmi) {
+	public void execute(Fourmi fourmi) {
 		int i=1;
+		//boucler sur nb morts
+		//mettre X Objects de getmorts() dans un tableau
+		//boucler sur le tableau
+		
 		for(int cle : this.fourmilliere.getMorts().keySet()){
 			if(i>3) break;
 			i++;
@@ -24,7 +31,7 @@ public class Nettoyer extends Tache {
 			if(mort.getClass()==Larve.class)
 				this.depot.AjouterMort((Larve)mort);
 			else
-				this.depot.AjouterMort((Adulte)mort);
+				this.depot.AjouterMort((Fourmi)mort);
 		}	
 	}
 

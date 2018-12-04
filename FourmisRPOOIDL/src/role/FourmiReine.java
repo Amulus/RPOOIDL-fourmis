@@ -1,11 +1,11 @@
 package role;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 import evolution.Oeuf;
 
 public class FourmiReine extends Role {
 
-	public FourmiReine(Adulte fourmi) {
+	public FourmiReine(Fourmi fourmi) {
 		super(fourmi);
 		setNumeroRole();
 	}

@@ -14,7 +14,7 @@ public abstract class Transformateur {
 	protected Monde world;
 	protected Rectangle bounds;
 	protected Color color;
-	private boolean TableauFeromones[][];
+	protected boolean TableauFeromones[][];
 	protected List<Transformateur> submorphs = new ArrayList<Transformateur>();
 
 	public Transformateur(Color color, Point pos, Dimension dim) {
@@ -26,8 +26,7 @@ public abstract class Transformateur {
 
 	public void setWorld(Monde w) {
 		world = w;
-		Dimension d = w.getSize();
-		TableauFeromones = new boolean[(int) d.getHeight()][(int) d.getWidth()];
+		TableauFeromones = new boolean[w.getHeight()][w.getWidth()];
 	}
 
 	public void setColor(Color c) {
@@ -138,6 +137,13 @@ public abstract class Transformateur {
 	public boolean testDeplacementHaut(){
 		if(0>getY() - 1-bounds.height) return false;
 		return true;
+	}
+
+	public boolean contains(Point mousePosition) {
+		if(this.bounds.contains(mousePosition)) {
+			return true;
+		}
+		return false;
 	}
 
 }

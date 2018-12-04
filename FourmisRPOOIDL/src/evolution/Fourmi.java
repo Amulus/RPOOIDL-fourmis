@@ -7,19 +7,19 @@ import role.FourmiSexue;
 import role.FourmiSoldat;
 import role.Role;
 
-public class Adulte extends Evolution {
+public class Fourmi extends Evolution {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private Role role = null;
 	Boolean EstEnVie;
 	
-	public Adulte(Fourmilliere fourmilliere, Role role, int identifiant) {
+	public Fourmi(Fourmilliere fourmilliere, Role role, int identifiant) {
 		super(fourmilliere);
 		initialiser(this, identifiant);
 		this.role = role;
 	} 
 	
-	private void initialiser(Adulte adulte, int identifiant) {
+	private void initialiser(Fourmi adulte, int identifiant) {
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
@@ -28,7 +28,7 @@ public class Adulte extends Evolution {
 		this.identifiant = identifiant;
 	}
 
-	public Adulte(Fourmilliere fourmilliere, int identifiant) {
+	public Fourmi(Fourmilliere fourmilliere, int identifiant) {
 		super(fourmilliere);
 		LireParametres lecturefichier = fourmilliere.getLireParametres();
 		initialiser(this, identifiant);
@@ -37,7 +37,7 @@ public class Adulte extends Evolution {
 				(int) lecturefichier.ChercherParametre("PourcentageChanceReproducteurs"));
 	}
 
-	private void GenererUnRole(Adulte fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
+	private void GenererUnRole(Fourmi fourmi, int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
 			int PourcentageChanceSexue) {
 		int RoleAleatoire = (int) Math
 				.floor(Math.random() * PourcentageChanceOuvrier + PourcentageChanceSoldat + PourcentageChanceSexue+1);
@@ -50,7 +50,7 @@ public class Adulte extends Evolution {
 				fourmi.role = new FourmiOuvriere(fourmi);
 	}
 
-	private void ChangerRoleSoldatEtOuvrier(Adulte fourmi,Boolean Soldat){
+	private void ChangerRoleSoldatEtOuvrier(Fourmi fourmi,Boolean Soldat){
 		if(Soldat)
 			fourmi.role =new FourmiSoldat(fourmi);
 		else

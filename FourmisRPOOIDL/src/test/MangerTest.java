@@ -2,7 +2,7 @@ package test;
 
 import org.junit.Test;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 import evolution.Larve;
 import fourmilliere.Fourmilliere;
 import tache.Manger;
@@ -14,16 +14,16 @@ public class MangerTest {
 	public void test() {
 		Fourmilliere fourmilliere = new Fourmilliere();
 		assert(fourmilliere!=null);
-		Adulte fourmi = new Adulte(fourmilliere,1);
+		Fourmi fourmi = new Fourmi(fourmilliere,1);
 		fourmilliere.getFourmis().put(1, fourmi);
 		assert(fourmi!=null);
 		Tache manger = new Manger();
 		assert(manger!=null);
-		Adulte fourmiMorte = new Adulte(fourmilliere,2);
+		Fourmi fourmiMorte = new Fourmi(fourmilliere,2);
 		fourmilliere.getFourmis().put(2, fourmiMorte);
-		Adulte fourmiMorte2 = new Adulte(fourmilliere,3);
+		Fourmi fourmiMorte2 = new Fourmi(fourmilliere,3);
 		fourmilliere.getFourmis().put(3, fourmiMorte2);
-		Adulte fourmiMorte3 = new Adulte(fourmilliere,4);
+		Fourmi fourmiMorte3 = new Fourmi(fourmilliere,4);
 		fourmilliere.getFourmis().put(4, fourmiMorte3);
 		assert(fourmiMorte!=null);
 		Larve LarveMorte = new Larve(fourmilliere,0);

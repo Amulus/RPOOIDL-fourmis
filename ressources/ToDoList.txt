@@ -1,0 +1,67 @@
+Les ouvrières construisent le nid, entretiennent les larves et recherchent la nourriture.
+Les soldats sont spécialisés pour défendre le nid.
+Les individus sexués (50% de femelles) s'envoleront à terme pour l'accouplement et la formation de nouvelles fourmilières.
+Une reine peut vivre de 4 à 10 ans. Les autres fourmis vivent de 1.5 à 2.5 années. 
+
+
+La reine pond ses premiers oeufs au tout début du printemps.
+Elle peut pondre jusqu'au début de l'été.
+Un mois après la ponte, les fourmis sont complètement formées et peuvent commencer à agir pour la collectivité.
+
+
+On s'intéresse à l'activité des ouvrières.
+
+Elle consiste principalement à entretenir les larves et les nymphes,
+à nourrir ses congénères (par déglutition, au bouche à bouche) et à parcourir le terrain de chasse à la quête de proies.
+Une ouvrière passe 50% de son temps à chasser et ramener les proies qui sont des insectes, des araignées ou des larves.
+La chasse est donc une activité primordiale et la simulation demandée comporte en grande partie la simulation de l'activité de chasse des ouvrières.
+
+
+Par jour, une fourmi consomme et une larve consomme de la nourriture.
+Elle peut rester de 10 à 12 heures à l'extérieur de la fourmilière. Au delà de ce délai à l'extérieur, elle s'épuise et meurt.
+
+
+Les proies
+
+Représentez le déplacement aléatoire de proies qui entrent et qui sortent du territoire visualisé.
+
+Une fourmi prend le dessus en 10 minutes sur une proie dont le poid varie de son propre poid à celui de 2 fourmis.
+Pour une proie dont le poid est de 2 fourmis, il faut 2 fourmis pour tuer la proie, pour 3 fois le poid d'une fourmi, il faut 3 fourmis, etc...
+Les fourmis sont tenaces, elles peuvent harceler une proie pendant 3 heures.
+Si au bout de 3 heures, le nombre de fourmis nécessaires n'est pas atteint, alors la proie s'enfuit.
+Une proie dont le poid dépasse 60 fois le poid d'une fourmi n'est pas attaquée.
+Et en, une seule fourmi peut ramener seule n'importe quelle proie attaquée.
+
+
+Sur la piste des fourmis
+
+Il est demandé de simuler la chasse et le retour avec les proies.
+Concevez et mettez en oeuvre le déplacement des fourmis sur des pistes marquées avec leur phéromone.
+Plusieurs stratégies sont possibles pour le déplacement.
+Une stratégie de déplacement doit pouvoir être a􏰁ectée à une fourmi dynamiquement (changement de stratégie sans modification du code d'une fourmi).
+De même, deux fourmis di􏰁érentes n'utilisent pas forcément la même stratégie de déplacement.
+Par épuisement ou par manque de nourriture, il est possible que des fourmis meurent.
+On doit aussi disposer d'informations sur l'état général de la fourmilière et notamment sur l'état des stocks en nourriture et sur les effectifs courants.
+De même que pour pour le déplacement, la gestion de la durée de vie d'une fourmi et ses réactions vis à vis d'un manque de nourriture doivent pouvoir être changées dynamiquement et ne sont pas forcément identiques d'une fourmi à une autre
+
+Pour se déplacer et mémoriser les trajets suivis, une fourmi marque le terrain à l'aide de phéromones.
+Quand une fourmi se situe sur un emplacement marqué, elle a beaucoup plus de chances de suivre le marquage que de s'en éloigner.
+Ainsi se constitue un ensemble de pistes privilégiées qui permettent aux fourmis de toujours retrouver la fourmilière.
+Le déplacement sans proie peut se décrire à l'aide d'un automate cellulaire.
+Une fourmi a donc 4 solutions pour avancer d'une position.
+On dira, vers le haut, vers le bas, à gauche ou à droite.
+En règle générale, une fourmi a plus de chances de se déplacer vers une position marquée par la phéromone.
+La série suivante de schémas décrit une proposition de règles pour la gestion du déplacement.
+On précise que cette proposition n'a pas été testée et qu'elle nécessite certainement des améliorations afin d'observer la formation de pistes.
+Le déplacement avec proie doit être adapté de façon à ce que la fourmi ait plus de chances de se rapprocher de la fourmilière.
+Le déplacement en vol d'une femelle est aléatoire, par contre, les mâles sont attirés par les femelles.
+En effet, ils suivent les pistes tracées par les phéromones des femelles.
+
+
+Paramétrage du système
+
+On modifiera le système pour que les paramètres soient lus dans un fichier au format XML.
+
+
+Pour la suite
+Il faut penser à la documentation et a la présentation du code...

@@ -2,7 +2,7 @@ package fourmilliere;
 
 import java.util.Hashtable;
 
-import evolution.Adulte;
+import evolution.Fourmi;
 import evolution.Larve;
 import evolution.Nymphe;
 import evolution.Oeuf;
@@ -10,7 +10,7 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
-	private Hashtable<Integer,Adulte> fourmis = new Hashtable<Integer,Adulte>();
+	private Hashtable<Integer,Fourmi> fourmis = new Hashtable<Integer,Fourmi>();
 	private Hashtable<Integer,Object> morts = new Hashtable<Integer,Object>();
 	
 	private Nid nid;
@@ -20,12 +20,12 @@ public class Fourmilliere {
 	private LireParametres lectureFichier = new LireParametres();
 
 	public Fourmilliere() {
-		this.fourmis = new Hashtable<Integer,Adulte>();
+		this.fourmis = new Hashtable<Integer,Fourmi>();
 		this.nid = new Nid(this);
 		this.Depot = new Depot(this);
 		this.Reserve = new Reserve(this);
 		
-		Adulte Reine = new Adulte(this,0);
+		Fourmi Reine = new Fourmi(this,0);
 		Reine.setReine();
 		Nymphe nymphe = new Nymphe(this,1);
 		
@@ -33,7 +33,7 @@ public class Fourmilliere {
 		this.nid.getNymphes().put(nymphe.getIdentifiant(),nymphe);
 	}
 
-	public Adulte getPremierAdulte() {
+	public Fourmi getPremierAdulte() {
 		return this.fourmis.get(0);
 	}
 
@@ -45,7 +45,7 @@ public class Fourmilliere {
 		return this.morts;
 	}
 	
-	public Hashtable<Integer, Adulte> getFourmis() {
+	public Hashtable<Integer, Fourmi> getFourmis() {
 		return fourmis;
 	}
 
