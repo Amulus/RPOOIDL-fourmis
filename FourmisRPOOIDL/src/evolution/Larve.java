@@ -4,7 +4,7 @@ import fourmilliere.Nid;
 import outils.LireParametres;
 
 public class Larve extends Enfant {
-	private int nombreDeJourAvantEvolution=0;
+	protected int nombreDeJourAvantEvolution=0;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
