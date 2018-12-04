@@ -14,4 +14,4 @@ NombreCadavreMaxNettoyer=2
 dureeDeVieReineMin=48
 dureeDeVieReineMax=120
 dureeDeVieFourmiMin=18
-dureeDeVieFourmiMax=30
+dureeDeVieFourmiMax=30.
