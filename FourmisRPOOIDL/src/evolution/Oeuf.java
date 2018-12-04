@@ -5,7 +5,7 @@ import outils.LireParametres;
 
 public class Oeuf extends Enfant {
 	
-	public int nombreDeJourAvantEvolution=0;
+	protected int nombreDeJourAvantEvolution=0;
 	
 	public Oeuf(Nid nid) {
 		super(nid);
