@@ -1,12 +1,12 @@
 package role;
 
-import evolution.Fourmi;
+import fourmilliere.Fourmi;
 
 public abstract class Role {
 	Fourmi fourmi;
 	int Role=-1;
-	public Role(Fourmi fourmi){
-		this.fourmi=fourmi;
+	public Role(Fourmi fourmi2){
+		this.fourmi=fourmi2;
 	}
 	abstract public void setNumeroRole();
 	abstract public int getNumeroRole();

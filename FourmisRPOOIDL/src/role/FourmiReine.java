@@ -1,8 +1,6 @@
 package role;
 
-import evolution.Fourmi;
-import evolution.Oeuf;
-
+import fourmilliere.Fourmi;
 public class FourmiReine extends Role {
 
 	public FourmiReine(Fourmi fourmi) {
@@ -11,8 +9,8 @@ public class FourmiReine extends Role {
 	}
 	
 	public void pondre() {
-		Oeuf oeuf = new Oeuf(this.fourmi.getFourmilliere().getNid());
-		this.fourmi.getFourmilliere().ajoutOeuf(oeuf);
+		Fourmi nouvelleFourmi = new Fourmi(this.fourmi.getFourmilliere());
+		this.fourmi.getFourmilliere().ajoutFourmi(nouvelleFourmi);
 	}
 	@Override
 	public void setNumeroRole() {

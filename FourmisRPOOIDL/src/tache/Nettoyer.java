@@ -1,8 +1,7 @@
 package tache;
 
-import evolution.Fourmi;
-import evolution.Larve;
 import fourmilliere.Depot;
+import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
@@ -22,15 +21,15 @@ public class Nettoyer extends Tache {
 	public void execute(Fourmi fourmi) {
 		Integer temporaire[] = new Integer[NombreDeMorts];
 		int j=0;
-		for(int cle : this.fourmilliere.getMorts().keySet()){
+		/*for(int cle : this.fourmilliere.getMorts().keySet()){
 			if(j>=NombreDeMorts) break;
 			temporaire[j]= cle;
 			j++;
-		}
+		}*/
 		for(int i=0; i<temporaire.length ; i++){
 			Object mort = this.fourmilliere.getMorts().get(temporaire[i]);
-			if(mort.getClass()==Larve.class)
-				this.depot.AjouterMort((Larve)mort);
+			if(mort.getClass()==Fourmi.class)
+				this.depot.AjouterMort((Fourmi)mort);
 			else
 				this.depot.AjouterMort((Fourmi)mort);
 		}	

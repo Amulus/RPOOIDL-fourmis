@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import evolution.*;
+import etat.*;
 import fourmilliere.*;
 
 public class EvolutionTest {
@@ -18,7 +18,8 @@ public class EvolutionTest {
 
 	@Test
 	public void testEvolution() {
-		int identifiantDepart = 2;
+		fail("Not yet implemented");
+		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);
 		fourmilliere.ajoutOeuf(oeuf);
@@ -39,9 +40,9 @@ public class EvolutionTest {
 		
 		nymphe.changerEtat();
 		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
-		Fourmi fourmi = fourmilliere.getFourmis().get(identifiantDepart);
+		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
-		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
+		assertTrue(fourmi.getIdentifiant()==identifiantDepart);*/
 	}
 
 	@Test

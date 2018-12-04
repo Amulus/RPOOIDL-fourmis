@@ -1,6 +1,6 @@
 package role;
 
-import evolution.Fourmi;
+import fourmilliere.Fourmi;
 
 public class FourmiSoldat extends Role {
 

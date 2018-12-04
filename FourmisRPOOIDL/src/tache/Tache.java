@@ -1,6 +1,6 @@
 package tache;
 
-import evolution.Fourmi;
+import fourmilliere.Fourmi;
 
 public abstract class Tache {
 	public abstract void execute(Fourmi fourmi);

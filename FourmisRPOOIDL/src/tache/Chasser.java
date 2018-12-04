@@ -1,6 +1,6 @@
 package tache;
 
-import evolution.Fourmi;
+import fourmilliere.Fourmi;
 
 public class Chasser extends Tache {
 
