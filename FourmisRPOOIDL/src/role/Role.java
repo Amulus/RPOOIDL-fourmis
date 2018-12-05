@@ -6,7 +6,6 @@ import tache.*;
 public abstract class Role {
 	Fourmi fourmi;
 	Tache tache;
-	int Role=-1;
 	public Role(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}

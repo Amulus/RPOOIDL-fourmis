@@ -142,10 +142,6 @@ public class Adulte extends Etat {
 		if(this.tempsDehors>this.tempsDehorsMax) {
 			this.fourmi.getFourmilliere().fourmisMorteDehors(this.fourmi);
 		}
-		
-		if(!this.VerifierAlimentation()) {
-			this.aFaim = true;
-		}
 		this.dureeMinuteEnVie++;
 		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
