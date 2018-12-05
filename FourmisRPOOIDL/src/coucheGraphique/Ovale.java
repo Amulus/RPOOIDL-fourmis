@@ -9,7 +9,7 @@ public class Ovale extends Transformateur {
 	private boolean isFourmilliere=false;
 	
 	public Ovale(Color color, Point pos, Dimension dim,boolean isFourmilliere) {
-		super(color, pos, dim);
+		super(color, pos, dim, null);
 		this.isFourmilliere=isFourmilliere;
 	}
 	

@@ -6,17 +6,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import fourmilliere.Fourmi;
+
 public abstract class Transformateur {
 	protected Monde world;
 	protected Rectangle bounds;
 	protected Color color;
 	protected List<Transformateur> submorphs = new ArrayList<Transformateur>();
 	protected int deplacement=0;
+	protected Object object=null;
 	
-	public Transformateur(Color color, Point pos, Dimension dim) {
+	public Transformateur(Color color, Point pos, Dimension dim, Object object) {
 		this.color = color;
 		this.bounds = new Rectangle(dim);
 		setPosition(pos);
+		this.object=object;
 
 	}
 
@@ -49,124 +53,28 @@ public abstract class Transformateur {
 	}
 
 	public Point getPosition() {
-		Point p = bounds.getLocation();
-		return p;
+		if(object==null)
+			return new Point(250,250);
+		return ((Fourmi)object).getCalculDeplacement().getPoint();
 	}
 
 	public void setPosition(Point p) {
 		bounds.x = p.x;
 		bounds.y = p.y;
-		if (world != null)
-			world.repaint();
 	}
 
-	public void setX(int x) {
+	public void Update() {
 		Point p = getPosition();
-		setPosition(new Point(x, p.y));
+		setPosition(p);
 	}
 
 	public int getX() {
 		return (getPosition().x);
 	}
 
-	public void setY(int y) {
-		Point p = getPosition();
-		setPosition(new Point(p.x, y));
-	}
-
 	public int getY() {
 		return (getPosition().y);
 	}
 
-	public void moveRight(int gap) {
-		setX(getX() + gap);
-	}
-
-	public void moveLeft(int gap) {
-		setX(getX() - gap);
-	}
-
-	public void moveUp(int gap) {
-		setY(getY() - gap);
-	}
-
-	public void moveDown(int gap) {
-		setY(getY() + gap);
-	}
-
-	public Rectangle getWorldBounds() {
-		return world.getBounds();
-	}
-
 	
-	
-	public void deplacementAleatoire(){
-		this.deplacement = (int) Math.floor(Math.random() * 4);
-	}
-	
-	/*
-	public boolean getPhéromone(int Position) {
-		if(Position==0 && getX()+1<world.getHeight())
-			return this.world.TableauFeromones[getX()+1][getY()];
-		if(Position==1 && getX()-1>0)
-			return this.world.TableauFeromones[getX()-1][getY()];
-		if(Position==2 && getY()+1<world.getWidth())
-			return this.world.TableauFeromones[getX()][getY()+1];
-		if(Position==3 && getY()-1>0)
-			return this.world.TableauFeromones[getX()][getY()-1];
-		return false;
-	}
-	
-	 public void VerifierPhéromone(){
-		Boolean Avant=false,Arriere=false,Haut=false,Bas=false;
-		Avant=this.getPhéromone(0);
-		Arriere=this.getPhéromone(1);
-		Haut=this.getPhéromone(2);
-		Bas=this.getPhéromone(3);
-	}
-	*/
-
-	private void VarifierMur() {
-		switch(this.deplacement){
-		case 0:
-			if(world.getWidth()<getX()+ 1 +bounds.width) this.deplacement=-1;
-			break;
-		case 1:
-			if(0>getX()-1 - bounds.width) this.deplacement=-1;
-			break;
-		case 2:
-			if(world.getHeight()<getY()+ 1 +bounds.height) this.deplacement=-1;
-			break;
-		case 3:
-			if(0>getY()-1 - bounds.height) this.deplacement=-1;
-			break;
-		default:
-			break;
-		}
-	}
-	public void deplacement(){
-		deplacementAleatoire();
-		VarifierMur();
-		if(this.deplacement!=-1){
-			//VerifierPhéromone();
-			switch(this.deplacement){
-				case 0:
-					moveRight(1);
-					break;
-				case 1:
-					moveLeft(1);
-					break;
-				case 2:
-					moveDown(1);
-					break;
-				case 3:
-					moveUp(1);
-					break;
-				default:
-					break;
-			}
-		}
-	}
-
-
 }

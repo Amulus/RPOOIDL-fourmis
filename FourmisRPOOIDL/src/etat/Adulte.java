@@ -1,11 +1,6 @@
 package etat;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
 
-import coucheGraphique.Rect;
 import fourmilliere.Fourmi;
-import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 import role.FourmiOuvriere;
 import role.FourmiReine;
@@ -32,6 +27,7 @@ public class Adulte extends Etat {
 		this.EstEnVie = true;
 		this.dureeDeVieEnMois = this.GenererEntierMinMax((int)lecturefichier.ChercherParametre("dureeDeVieFourmiMin"),
 			(int)lecturefichier.ChercherParametre("dureeDeVieFourmiMax"));
+		this.estAdulte=true;
 	}
 
 	public Adulte(Fourmi fourmi) {
@@ -97,9 +93,7 @@ public class Adulte extends Etat {
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
 		
 	}
-	public Boolean estDehors() {
-		return this.estDehors;
-	}
+	
 	
 	public void sortir() {
 		this.estDehors = true;
@@ -108,6 +102,7 @@ public class Adulte extends Etat {
 	
 	public void rentrer() {
 		this.estDehors = false;
+		
 	}
 	
 	public double getPoid() {

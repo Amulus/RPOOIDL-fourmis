@@ -14,7 +14,10 @@ public abstract class Etat {
 		this.fourmi = fourmi;
 		
 	}
-	public boolean isAdulte() {
+	public boolean estDehors(){
+		return this.estDehors;
+	}
+	public boolean estAdulte() {
 		return this.estAdulte;
 	}
 	
@@ -25,6 +28,8 @@ public abstract class Etat {
 	public int getNombreStepAvantEvolution() {
 		return this.nombreStepAvantEvolution;
 	}
+	
+	
 	public abstract void evoluer();
 	public abstract void step();
 	
