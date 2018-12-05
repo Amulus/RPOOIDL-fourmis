@@ -44,13 +44,13 @@ public class Chasser extends Tache {
 			}
 			else {
 				fourmi.getCalculDeplacement().deplacementAleatoire();
-				if(fourmi.getCalculDeplacement().detecterProie) {
+			//	if(fourmi.getCalculDeplacement().detecterProie) {
 					this.combat = true;
 					//lancer pheromone
-				}
-				else {
+		//		}
+			//	else {
 					fourmi.getCalculDeplacement().deplacementAleatoire();
-				}
+			//	}
 			}
 		}
 	}
