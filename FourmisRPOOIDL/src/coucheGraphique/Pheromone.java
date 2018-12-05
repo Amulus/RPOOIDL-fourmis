@@ -8,8 +8,8 @@ public class Pheromone {
 		
 	}
 	
-	public void ajouterPheromoneChasse(){
-		this.ForceChasse++;
+	public void ajouterPheromoneChasse(int quantite){
+		this.ForceChasse+=quantite;
 	}
 	public void ajouterPheromoneRetour(){
 		this.ForceRetour++;

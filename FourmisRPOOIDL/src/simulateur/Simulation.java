@@ -57,8 +57,7 @@ public class Simulation extends Ovale {
 				checkProie(jc);
 				
 				for (int i = 0; i < jc.getFourmies().size(); i++)
-					jc.getFourmies().get(i).getCalculDeplacement().deplacement();
-			
+					//TO DO FOURMILIERE .STEP
 				try {
 					if (jc != null){
 						jc.uptade();

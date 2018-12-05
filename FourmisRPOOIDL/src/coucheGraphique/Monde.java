@@ -145,5 +145,12 @@ public class Monde extends JPanel {
 		fourmilliere.setWorld(this);
 	}
 
+	public void ajoutPheromoneRetour(int xPoint, int yPoint) {
+		TableauPheromones[xPoint][yPoint].ajouterPheromoneRetour();
+	}
+	public void ajoutPheromoneChasse(int xPoint, int yPoint,int quantite) {
+		TableauPheromones[xPoint][yPoint].ajouterPheromoneChasse(quantite);
+	}
+
 
 }
