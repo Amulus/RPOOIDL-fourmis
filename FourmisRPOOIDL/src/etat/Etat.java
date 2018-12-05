@@ -50,6 +50,10 @@ public abstract class Etat {
 		return this.estDehors;
 		
 	}
+	
+	public int tempsPasseDehors() {
+		return this.tempsDehors;
+	}
 	public abstract void evoluer();
 	public abstract void step();
 	public abstract void manger();
