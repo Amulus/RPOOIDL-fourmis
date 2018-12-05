@@ -56,7 +56,7 @@ public class EvolutionTest {
 	}
 
 	@Test
-	public void testChangerEtat() {
+	public void testEvolution2() {
 		fail("Not yet implemented");
 	}
 

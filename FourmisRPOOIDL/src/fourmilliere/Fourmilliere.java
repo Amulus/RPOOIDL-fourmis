@@ -1,6 +1,7 @@
 package fourmilliere;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import etat.Adulte;
@@ -32,7 +33,19 @@ public class Fourmilliere {
 		this.ajoutFourmi(premiereNymphe);
 		
 	}
-
+	
+	public void step() {
+		Iterator<Fourmi> it = this.fourmis.iterator();
+		while(it.hasNext()) {
+			Fourmi fourmi = it.next();
+			fourmi.step();
+		}
+	}
+	
+	public void finDeVie(Fourmi fourmi) {
+		this.fourmis.remove(fourmi);
+		this.Depot.AjouterMort(fourmi);
+	}
 
 	public LireParametres getLireParametres() {
 		return this.lectureFichier;

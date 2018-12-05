@@ -5,6 +5,7 @@ import outils.LireParametres;
 
 public class Larve extends Etat {
 	protected int nombreDeJourAvantEvolution=0;
+	private int nombreStepExistence = 0;
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
@@ -54,4 +55,12 @@ public class Larve extends Etat {
 		this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
 	}
 	*/
+
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+		this.nombreStepExistence++;
+		if(this.nombreStepExistence == 60*24*this.nombreDeJourAvantEvolution);
+			this.evoluer();
+	}
 }
