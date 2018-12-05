@@ -20,3 +20,4 @@ TailleFourmie=4
 TailleProie=10
 TailleMondeMin=0
 TailleMondeMax=500
+.
