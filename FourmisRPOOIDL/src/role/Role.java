@@ -7,11 +7,12 @@ public abstract class Role {
 	Fourmi fourmi;
 	Tache tache;
 	int Role=-1;
-	public Role(Fourmi fourmi2){
-		this.fourmi=fourmi2;
+	public Role(Fourmi fourmi){
+		this.fourmi=fourmi;
 	}
 	abstract public void setNumeroRole();
 	abstract public int getNumeroRole();
+	
 	public void step() {
 		tache.step(this.fourmi);
 	}

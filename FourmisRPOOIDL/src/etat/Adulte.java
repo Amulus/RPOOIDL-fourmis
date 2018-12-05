@@ -20,6 +20,7 @@ public class Adulte extends Etat {
 	
 	
 	private void initialiser(Fourmi fourmi) {
+		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
@@ -153,7 +154,7 @@ public class Adulte extends Etat {
 		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
-		this.role.step();
+		//this.role.step();
 	}
 
 }

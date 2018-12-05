@@ -5,12 +5,11 @@ import outils.LireParametres;
 
 public class Nymphe extends Etat {
 	
-	private int nombreDeJourAvantEvolution=0;
-	private int nombreStepExistence=0;
 	
 	public Nymphe(Fourmi fourmi) {
 		super(fourmi);
 		// TODO Auto-generated constructor stub
+		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionNymphes");
 	}
