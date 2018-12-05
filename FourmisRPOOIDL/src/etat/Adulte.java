@@ -1,6 +1,6 @@
 package etat;
-
 import fourmilliere.Fourmi;
+import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 import role.FourmiOuvriere;
 import role.FourmiReine;
@@ -18,6 +18,7 @@ public class Adulte extends Etat {
 	private int tempsDehors = 0;
 	private int tempsDehorsMax = 0;
 	
+	
 	private void initialiser(Fourmi fourmi) {
 		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
@@ -25,9 +26,9 @@ public class Adulte extends Etat {
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 			(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie = true;
+		this.estAdulte=true;
 		this.dureeDeVieEnMois = this.GenererEntierMinMax((int)lecturefichier.ChercherParametre("dureeDeVieFourmiMin"),
 			(int)lecturefichier.ChercherParametre("dureeDeVieFourmiMax"));
-		this.estAdulte=true;
 	}
 
 	public Adulte(Fourmi fourmi) {
@@ -78,11 +79,9 @@ public class Adulte extends Etat {
 	
 	
 
+	
 	public Role getRole(){
 		return this.role;
-	}
-	public int getNumeroRole(){
-		return this.role.getNumeroRole();
 	}
 
 
@@ -93,7 +92,9 @@ public class Adulte extends Etat {
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
 		
 	}
-	
+	public boolean estDehors() {
+		return this.estDehors;
+	}
 	
 	public void sortir() {
 		this.estDehors = true;
@@ -102,14 +103,10 @@ public class Adulte extends Etat {
 	
 	public void rentrer() {
 		this.estDehors = false;
-		
 	}
 	
 	public double getPoid() {
 		return this.Poid;
-	}
-	public boolean getEstDehors(){
-		return this.estDehors;
 	}
 	/*
 	public void jourSuivant() {
@@ -155,7 +152,7 @@ public class Adulte extends Etat {
 		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
-		//this.role.step();
+		this.role.getTache().step(this.fourmi);
 	}
 
 }

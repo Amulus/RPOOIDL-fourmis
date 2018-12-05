@@ -1,8 +1,11 @@
 package etat;
 
 import fourmilliere.Fourmi;
+import role.Role;
 
 public abstract class Etat {
+	Role role;
+	protected boolean aFaim = false;
 	protected boolean estAdulte = false;
 	protected boolean estDehors = false;
 	protected int nombreDeJourAvantEvolution;
@@ -13,9 +16,6 @@ public abstract class Etat {
 	public Etat(Fourmi fourmi){
 		this.fourmi = fourmi;
 		
-	}
-	public boolean estDehors(){
-		return this.estDehors;
 	}
 	public boolean estAdulte() {
 		return this.estAdulte;
@@ -29,7 +29,14 @@ public abstract class Etat {
 		return this.nombreStepAvantEvolution;
 	}
 	
+	public boolean getFaim() {
+		return this.aFaim;
+	}
 	
+	public boolean estDehors() {
+		return this.estDehors;
+		
+	}
 	public abstract void evoluer();
 	public abstract void step();
 	

@@ -7,18 +7,8 @@ public class FourmiOuvriere extends Role {
 
 	public FourmiOuvriere(Fourmi fourmi) {
 		super(fourmi);
-		this.setNumeroRole();
 	}
 
-	@Override
-	public void setNumeroRole() {
-		this.Role=1;
-	}
-	@Override
-	public int getNumeroRole() {
-		return this.Role;
-	}
-	
 	public void nourrirLarve() {
 		this.tache = new NourirLarves();
 	}
@@ -29,5 +19,16 @@ public class FourmiOuvriere extends Role {
 	
 	public void nettoyer() {
 		this.tache = new Nettoyer();
+	}
+
+	@Override
+	public void nouvelleTache() {
+		if(this.fourmi.getEtat().getFaim()) {
+			this.seNourir();
+		}
+		else {
+			this.chasser();
+		}
+		
 	}
 }
