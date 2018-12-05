@@ -5,7 +5,7 @@ import fourmilliere.Fourmi;
 public class NourirLarves extends Tache {
 
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void step(Fourmi fourmi) {
 		// TODO Auto-generated method stub
 
 	}

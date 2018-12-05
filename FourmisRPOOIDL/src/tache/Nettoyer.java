@@ -6,19 +6,15 @@ import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
 //Parcourir l'ensemble de larve et fourmi : check décédé et déplacer dans le dépot
-
+//tout est à changer
 public class Nettoyer extends Tache {
-	private Depot depot =null;
-	private Fourmilliere fourmilliere=null;
 	private int NombreDeMorts=0;
-	public Nettoyer(Depot depot,Fourmilliere fourmilliere){
-		this.depot=depot;
-		this.fourmilliere=fourmilliere;
-		LireParametres lecturefichier = fourmilliere.getLireParametres();
+	public Nettoyer(){
+		LireParametres lecturefichier = new LireParametres();
 		this.NombreDeMorts= (int) lecturefichier.ChercherParametre("NombreCadavreMaxNettoyer");
 	}
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void step(Fourmi fourmi) {
 		Integer temporaire[] = new Integer[NombreDeMorts];
 		int j=0;
 		/*for(int cle : this.fourmilliere.getMorts().keySet()){
@@ -27,11 +23,11 @@ public class Nettoyer extends Tache {
 			j++;
 		}*/
 		for(int i=0; i<temporaire.length ; i++){
-			Object mort = this.fourmilliere.getMorts().get(temporaire[i]);
+			Object mort = fourmi.getFourmilliere().getMorts().get(temporaire[i]);
 			if(mort.getClass()==Fourmi.class)
-				this.depot.AjouterMort((Fourmi)mort);
+				fourmi.getFourmilliere().getDepot().AjouterMort((Fourmi)mort);
 			else
-				this.depot.AjouterMort((Fourmi)mort);
+				fourmi.getFourmilliere().getDepot().AjouterMort((Fourmi)mort);
 		}	
 	}
 

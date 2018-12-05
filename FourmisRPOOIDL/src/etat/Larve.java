@@ -4,12 +4,13 @@ import fourmilliere.Fourmi;
 import outils.LireParametres;
 
 public class Larve extends Etat {
-	protected int nombreDeJourAvantEvolution=0;
+	
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	Boolean EstEnVie;
 	public Larve(Fourmi fourmi) {
 		super(fourmi);
+		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeLarve((int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMin"),
 				(int) lecturefichier.ChercherParametre("MultiplicateurPoidLarveMax"),
@@ -54,4 +55,12 @@ public class Larve extends Etat {
 		this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
 	}
 	*/
+
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+		this.nombreStepExistence++;
+		if(this.nombreStepExistence <= 60*24*this.nombreDeJourAvantEvolution);
+			this.evoluer();
+	}
 }

@@ -10,7 +10,7 @@ import fourmilliere.*;
 
 public class EvolutionTest {
 	
-	Fourmilliere fourmilliere = new Fourmilliere();
+	Fourmilliere fourmilliere;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -18,6 +18,7 @@ public class EvolutionTest {
 
 	@Test
 	public void testEvolution() {
+		fourmilliere = new Fourmilliere();
 		Fourmi fourmi = new Fourmi(fourmilliere);
 		assertTrue(fourmi.getEtat().getClass() == Oeuf.class);
 		fourmi.getEtat().evoluer();
@@ -28,7 +29,7 @@ public class EvolutionTest {
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
 		fourmi.getEtat().evoluer();
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
-		
+
 		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);
@@ -56,8 +57,25 @@ public class EvolutionTest {
 	}
 
 	@Test
-	public void testChangerEtat() {
-		fail("Not yet implemented");
+	public void testEvolution2() {
+		fourmilliere = new Fourmilliere();
+		Fourmi fourmi = new Fourmi(fourmilliere);
+		fourmi.step();
+		fourmi.step();
+		assertTrue(fourmi.getEtat().getStep()==2);
+		
+		Fourmi fourmi2 = new Fourmi(fourmilliere);
+		for(int i=0;i<4319;i++) {
+			fourmi2.step();
+			assertTrue(fourmi2.getEtat().getClass() == Oeuf.class);
+			
+		}
+		fourmi2.step();
+		System.out.println(fourmi2.getEtat().getNombreStepAvantEvolution());
+		System.out.println(fourmi2.getEtat().getStep());
+		assertTrue(fourmi2.getEtat().getStep()==0);
+		assertTrue(fourmi2.getEtat().getClass() == Larve.class);
+		
 	}
 
 	@Test

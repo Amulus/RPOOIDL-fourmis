@@ -1,18 +1,28 @@
 package tache;
 
 
+import etat.Adulte;
 import fourmilliere.Fourmi;
+import role.*;
 
 public class Manger extends Tache {
 
 	public Manger(){
 		
 	}
+	
 	@Override
-	public void execute(Fourmi fourmi) {
+	public void step(Fourmi fourmi) {
 		//fourmi.getFourmilliere().getReserve().PrendreNourriture( fourmi.getPoid()*0.333);
-		Tache nettoyer = new Nettoyer(fourmi.getFourmilliere().getDepot(), fourmi.getFourmilliere());
-		nettoyer.execute(fourmi);
+		/*Tache nettoyer = new Nettoyer(fourmi.getFourmilliere().getDepot(), fourmi.getFourmilliere());
+		nettoyer.execute(fourmi);*/
+		if(((Adulte) fourmi.getEtat()).estDehors()){
+			//sedéplacerpourrentrer();
+		}
+		else {
+			//senourir();
+			((FourmiOuvriere) ((Adulte) fourmi.getEtat()).getRole()).nettoyer();
+		}
 	}
 
 }

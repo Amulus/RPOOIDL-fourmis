@@ -17,13 +17,14 @@ public class Adulte extends Etat {
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
 	private int dureeDeVieEnMois = 0;
+	private int dureeMinuteEnVie = 0;
 	private Role role = null;
 	protected Boolean EstEnVie;
-	protected Boolean estDehors = false;
 	private int tempsDehors = 0;
 	private int tempsDehorsMax = 0;
 	
 	private void initialiser(Fourmi fourmi) {
+		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
@@ -77,13 +78,8 @@ public class Adulte extends Etat {
 		return this.Poid*0.333>NouritureMangée;
 
 	}
-	/*
-	public void mourir() {
-		this.EstEnVie = false;
-		this.fourmilliere.getMorts().putIfAbsent(this.getIdentifiant(), this);
-		this.fourmilliere.getLarves().remove(this.getIdentifiant());
-	}
-	*/
+	
+	
 	
 
 	public Role getRole(){
@@ -100,6 +96,9 @@ public class Adulte extends Etat {
 		this.dureeDeVieEnMois = this.GenererEntierMinMax((int)lecturefichier.ChercherParametre("dureeDeVieReineMin"),
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
 		
+	}
+	public Boolean estDehors() {
+		return this.estDehors;
 	}
 	
 	public void sortir() {
@@ -152,6 +151,16 @@ public class Adulte extends Etat {
 	public void evoluer() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+		this.dureeMinuteEnVie++;
+		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
+			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
+		}
+		//this.role.step();
 	}
 
 }
