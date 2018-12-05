@@ -4,6 +4,11 @@ import fourmilliere.Fourmi;
 import role.Role;
 
 public abstract class Etat {
+	
+	protected double poid = 0.0;
+	protected double nouritureMangée = 0.0;
+	protected int tempsDehors = 0;
+	protected int tempsDehorsMax = 0;
 	Role role;
 	protected boolean aFaim = false;
 	protected boolean estAdulte = false;
@@ -17,6 +22,14 @@ public abstract class Etat {
 		this.fourmi = fourmi;
 		
 	}
+	public boolean VerifierAlimentation(){
+		boolean retour = (this.poid*0.333>nouritureMangée);
+		this.nouritureMangée = 0.0;
+		this.aFaim = true;
+		return retour;
+
+	}
+	
 	public boolean estAdulte() {
 		return this.estAdulte;
 	}
@@ -39,5 +52,6 @@ public abstract class Etat {
 	}
 	public abstract void evoluer();
 	public abstract void step();
+	public abstract void manger();
 	
 }

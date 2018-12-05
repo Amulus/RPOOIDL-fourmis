@@ -22,6 +22,7 @@ public class Fourmi {
 	public CalculDeplacement getCalculDeplacement(){
 		return this.Calculdeplacement;
 	}
+	
 	public void changerEtat(Etat etat) {
 		this.etat = etat;
 	}

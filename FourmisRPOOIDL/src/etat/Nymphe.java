@@ -27,6 +27,12 @@ public class Nymphe extends Etat {
 			this.evoluer();
 	}
 
+	@Override
+	public void manger() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 /*
 	public void jourSuivant() {

@@ -3,6 +3,7 @@ package tache;
 
 import etat.Adulte;
 import fourmilliere.Fourmi;
+import fourmilliere.Reserve;
 import role.*;
 
 public class Manger extends Tache {
@@ -20,8 +21,9 @@ public class Manger extends Tache {
 			//sedéplacerpourrentrer();
 		}
 		else {
-			//senourir();
-			((FourmiOuvriere) ((Adulte) fourmi.getEtat()).getRole()).nettoyer();
+			
+			fourmi.getEtat().manger();
+			this.termine = true;
 		}
 	}
 

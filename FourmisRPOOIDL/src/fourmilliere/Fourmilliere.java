@@ -10,6 +10,7 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
+	private int nombreEtapeAvantRepas = 1440;
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
 	private Depot Depot;
@@ -38,8 +39,26 @@ public class Fourmilliere {
 		Iterator<Fourmi> it = this.fourmis.iterator();
 		while(it.hasNext()) {
 			Fourmi fourmi = it.next();
-			fourmi.step();
+			if(this.nombreEtapeAvantRepas <= 0) {
+				if(verificationFaim(fourmi)) {
+					fourmi.step();
+				}
+			}
+			else {
+				fourmi.step();
+			}
 		}
+	}
+	
+	public boolean verificationFaim(Fourmi fourmi) {
+		boolean retour = true;
+		if(this.nombreEtapeAvantRepas <= 0 && fourmi.getEtat().estAdulte()) {
+			if(fourmi.getEtat().VerifierAlimentation()) {
+				this.finDeVie(fourmi);
+				retour = false;
+			}
+		}
+		return retour;
 	}
 	
 	public void finDeVie(Fourmi fourmi) {
@@ -97,5 +116,11 @@ public class Fourmilliere {
 		
 	}
 */
+
+	public void fourmisMorteDehors(Fourmi fourmi) {
+		// TODO Auto-generated method stub
+		this.fourmis.remove(fourmi);
+		
+	}
 
 }

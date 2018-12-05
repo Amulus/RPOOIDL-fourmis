@@ -1,12 +1,14 @@
 package etat;
 
 import fourmilliere.Fourmi;
+import fourmilliere.Reserve;
 import outils.LireParametres;
 
 public class Larve extends Etat {
 	
 	private double Poid = 0.0;
 	private double NouritureMangée = 0.0;
+	private int dureeAjeun=0;
 	Boolean EstEnVie;
 	public Larve(Fourmi fourmi) {
 		super(fourmi);
@@ -59,8 +61,28 @@ public class Larve extends Etat {
 	@Override
 	public void step() {
 		// TODO Auto-generated method stub
+		if(this.dureeAjeun >= 60*24) {
+			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
+		}
+		if(this.aFaim = true) {
+			this.dureeAjeun++;
+		}
+		else {
+			this.dureeAjeun = 0;
+		}
+		
 		this.nombreStepExistence++;
 		if(this.nombreStepExistence <= 60*24*this.nombreDeJourAvantEvolution);
 			this.evoluer();
+	}
+
+	@Override
+	public void manger() {
+		// TODO Auto-generated method stub
+		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
+		if(reserve.PrendreNourriture(this.poid)) {
+			this.aFaim = false;
+		}
+		
 	}
 }

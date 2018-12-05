@@ -13,6 +13,9 @@ public abstract class Role {
 	abstract public void nouvelleTache();
 	
 	public void step() {
+		if(tache.estTermine()) {
+			this.nouvelleTache();
+		}
 		tache.step(this.fourmi);
 	}
 	
