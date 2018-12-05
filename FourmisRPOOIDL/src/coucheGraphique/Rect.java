@@ -6,11 +6,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import fourmilliere.Fourmi;
+
 
 public class Rect extends Transformateur{
-
-	public Rect(Color color, Point pos, Dimension dim) {
-		super(color, pos, dim);		
+	Fourmi fourmie = null;
+	public Rect(Color color, Point pos, Dimension dim,Fourmi fourmie) {
+		super(color, pos, dim);	
+		this.fourmie=fourmie;
 	}
 
 	public void draw(Graphics g) {
@@ -19,6 +22,10 @@ public class Rect extends Transformateur{
 		g.fillRect(bounds.x,bounds.y,bounds.height,bounds.width);
 		g.setColor(c);
 		super.draw(g);
+	}
+
+	public boolean contains(Fourmi fourmie) {
+		return this.fourmie.equals(fourmie);
 	}
 
 

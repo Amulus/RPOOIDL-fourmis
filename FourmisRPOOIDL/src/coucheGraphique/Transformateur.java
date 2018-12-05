@@ -98,6 +98,13 @@ public abstract class Transformateur {
 		return world.getBounds();
 	}
 
+	
+	
+	public void deplacementAleatoire(){
+		this.deplacement = (int) Math.floor(Math.random() * 4);
+	}
+	
+	/*
 	public boolean getPhéromone(int Position) {
 		if(Position==0 && getX()+1<world.getHeight())
 			return this.world.TableauFeromones[getX()+1][getY()];
@@ -110,17 +117,14 @@ public abstract class Transformateur {
 		return false;
 	}
 	
-	
-	public void deplacementAleatoire(){
-		this.deplacement = (int) Math.floor(Math.random() * 4);
-	}
-	public void VerifierPhéromone(){
+	 public void VerifierPhéromone(){
 		Boolean Avant=false,Arriere=false,Haut=false,Bas=false;
 		Avant=this.getPhéromone(0);
 		Arriere=this.getPhéromone(1);
 		Haut=this.getPhéromone(2);
 		Bas=this.getPhéromone(3);
 	}
+	*/
 
 	private void VarifierMur() {
 		switch(this.deplacement){
@@ -144,7 +148,7 @@ public abstract class Transformateur {
 		deplacementAleatoire();
 		VarifierMur();
 		if(this.deplacement!=-1){
-			VerifierPhéromone();
+			//VerifierPhéromone();
 			switch(this.deplacement){
 				case 0:
 					moveRight(1);

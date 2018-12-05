@@ -10,10 +10,12 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fourmilliere.Fourmi;
+
 public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private List<Transformateur> drawables = new LinkedList<Transformateur>();
-	protected boolean TableauFeromones[][];
+	protected Pheromone TableauFeromones[][];
 	String name = "";
 	
 	public Monde(String name) {
@@ -40,10 +42,10 @@ public class Monde extends JPanel {
 		
 	}
 	private void initialiserTableau(){
-		this.TableauFeromones = new boolean[this.getWidth()][this.getHeight()];
+		this.TableauFeromones = new Pheromone[this.getWidth()][this.getHeight()];
 		for(int i=0;i<this.getWidth();i++)
 			for(int j=0;j<this.getHeight();j++)
-				TableauFeromones[i][j]=false;
+				TableauFeromones[i][j]=new Pheromone();
 	}
      public void add(Transformateur d) {
         drawables.add(d);

@@ -1,4 +1,9 @@
 package etat;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
+
+import coucheGraphique.Rect;
 import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 import outils.LireParametres;
@@ -17,7 +22,6 @@ public class Adulte extends Etat {
 	protected Boolean estDehors = false;
 	private int tempsDehors = 0;
 	private int tempsDehorsMax = 0;
-	
 	
 	private void initialiser(Fourmi fourmi) {
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
@@ -82,7 +86,6 @@ public class Adulte extends Etat {
 	*/
 	
 
-	
 	public Role getRole(){
 		return this.role;
 	}
@@ -110,6 +113,9 @@ public class Adulte extends Etat {
 	
 	public double getPoid() {
 		return this.Poid;
+	}
+	public boolean getEstDehors(){
+		return this.estDehors;
 	}
 	/*
 	public void jourSuivant() {
