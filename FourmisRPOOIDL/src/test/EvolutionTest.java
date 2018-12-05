@@ -2,6 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,8 +74,6 @@ public class EvolutionTest {
 			
 		}
 		fourmi2.step();
-		System.out.println(fourmi2.getEtat().getNombreStepAvantEvolution());
-		System.out.println(fourmi2.getEtat().getStep());
 		assertTrue(fourmi2.getEtat().getStep()==0);
 		assertTrue(fourmi2.getEtat().getClass() == Larve.class);
 		
@@ -80,7 +81,12 @@ public class EvolutionTest {
 
 	@Test
 	public void testGetEtat() {
-		fail("Not yet implemented");
+		List<String> test = new ArrayList<String>();
+		test.add("test");
+		test.add("test2");
+		
+		test.remove("test");
+		System.out.println(test.get(0));
 	}
 
 	@Test

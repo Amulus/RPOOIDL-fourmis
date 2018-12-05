@@ -9,26 +9,34 @@ import outils.LireParametres;
 //tout est à changer
 public class Nettoyer extends Tache {
 	private int NombreDeMorts=0;
+	private boolean occupe;
+	private Fourmi fourmiMorte;
 	public Nettoyer(){
 		LireParametres lecturefichier = new LireParametres();
 		this.NombreDeMorts= (int) lecturefichier.ChercherParametre("NombreCadavreMaxNettoyer");
 	}
 	@Override
 	public void step(Fourmi fourmi) {
-		Integer temporaire[] = new Integer[NombreDeMorts];
-		int j=0;
-		/*for(int cle : this.fourmilliere.getMorts().keySet()){
-			if(j>=NombreDeMorts) break;
-			temporaire[j]= cle;
-			j++;
-		}*/
-		for(int i=0; i<temporaire.length ; i++){
-			Object mort = fourmi.getFourmilliere().getMorts().get(temporaire[i]);
-			if(mort.getClass()==Fourmi.class)
-				fourmi.getFourmilliere().getDepot().AjouterMort((Fourmi)mort);
-			else
-				fourmi.getFourmilliere().getDepot().AjouterMort((Fourmi)mort);
-		}	
+		if(this.NombreDeMorts > 0) {
+			if(occupe) {
+				this.deposerMort(fourmi);
+				
+			}
+			else {
+				this.attraperMort(fourmi);
+				
+			}
+		}
 	}
-
+	
+	public void attraperMort(Fourmi fourmi) {
+		this.occupe = true;
+		this.fourmiMorte = fourmi.getFourmilliere().getMorts().get(0);
+		fourmi.getFourmilliere().getMorts().remove(fourmiMorte);
+	}
+	
+	public void deposerMort(Fourmi fourmi) {
+		this.occupe = false;
+		fourmi.getFourmilliere().getDepot().AjouterMort(this.fourmiMorte);
+	}
 }

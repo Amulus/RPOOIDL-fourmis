@@ -82,9 +82,6 @@ public class Adulte extends Etat {
 	public Role getRole(){
 		return this.role;
 	}
-	public int getNumeroRole(){
-		return this.role.getNumeroRole();
-	}
 
 
 	public void setReine() {
@@ -94,7 +91,7 @@ public class Adulte extends Etat {
 				(int)lecturefichier.ChercherParametre("dureeDeVieReineMax"));
 		
 	}
-	public Boolean estDehors() {
+	public boolean estDehors() {
 		return this.estDehors;
 	}
 	
@@ -154,7 +151,7 @@ public class Adulte extends Etat {
 		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
-		//this.role.step();
+		this.role.getTache().step(this.fourmi);
 	}
 
 }

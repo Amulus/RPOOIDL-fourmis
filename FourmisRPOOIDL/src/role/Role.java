@@ -10,8 +10,7 @@ public abstract class Role {
 	public Role(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}
-	abstract public void setNumeroRole();
-	abstract public int getNumeroRole();
+	abstract public void nouvelleTache();
 	
 	public void step() {
 		tache.step(this.fourmi);
@@ -20,5 +19,7 @@ public abstract class Role {
 	public void seNourir() {
 		this.tache = new Manger();
 	}
-	
+	public Tache getTache() {
+		return this.tache;
+	}
 }

@@ -6,15 +6,13 @@ public class FourmiSexue extends Role {
 
 	public FourmiSexue(Fourmi fourmi) {
 		super(fourmi);
-		this.setNumeroRole();
 	}
 
 	@Override
-	public void setNumeroRole() {
-		this.Role=3;
+	public void nouvelleTache() {
+		// TODO Auto-generated method stub
+		
 	}
-	@Override
-	public int getNumeroRole() {
-		return this.Role;
-	}
+
+
 }
