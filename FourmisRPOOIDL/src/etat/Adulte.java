@@ -1,6 +1,7 @@
 package etat;
 import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
+import fourmilliere.Reserve;
 import outils.LireParametres;
 import role.FourmiOuvriere;
 import role.FourmiReine;
@@ -9,20 +10,18 @@ import role.FourmiSoldat;
 import role.Role;
 
 public class Adulte extends Etat {
-	private double Poid = 0.0;
-	private double NouritureMangée = 0.0;
+	
 	private int dureeDeVieEnMois = 0;
 	private int dureeMinuteEnVie = 0;
 	private Role role = null;
 	protected Boolean EstEnVie;
-	private int tempsDehors = 0;
-	private int tempsDehorsMax = 0;
+	
 	
 	
 	private void initialiser(Fourmi fourmi) {
 		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
-		this.Poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
+		this.poid = GenererUnPoidDeFourmi((int) lecturefichier.ChercherParametre("PoidFourmiMinimum"),
 			(int) lecturefichier.ChercherParametre("PoidFourmiMaximum"),
 			(double) lecturefichier.ChercherParametre("MultiplicateurDecimales"));
 		this.EstEnVie = true;
@@ -71,15 +70,6 @@ public class Adulte extends Etat {
 		return (int) Math.floor(Math.random() * (dureeMaxi - dureeMini) + 1 + dureeMini);
 	}
 	
-	public boolean VerifierAlimentation(){
-		return this.Poid*0.333>NouritureMangée;
-
-	}
-	
-	
-	
-
-	
 	public Role getRole(){
 		return this.role;
 	}
@@ -106,7 +96,7 @@ public class Adulte extends Etat {
 	}
 	
 	public double getPoid() {
-		return this.Poid;
+		return this.poid;
 	}
 	/*
 	public void jourSuivant() {
@@ -148,11 +138,28 @@ public class Adulte extends Etat {
 	@Override
 	public void step() {
 		// TODO Auto-generated method stub
+		this.tempsDehors++;
+		if(this.tempsDehors>this.tempsDehorsMax) {
+			this.fourmi.getFourmilliere().fourmisMorteDehors(this.fourmi);
+		}
+		
+		if(!this.VerifierAlimentation()) {
+			this.aFaim = true;
+		}
 		this.dureeMinuteEnVie++;
 		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
 		this.role.getTache().step(this.fourmi);
+	}
+
+	@Override
+	public void manger() {
+		// TODO Auto-generated method stub
+		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
+		if(reserve.PrendreNourriture(this.poid*0.33)) {
+			this.aFaim = false;
+		}
 	}
 
 }

@@ -25,6 +25,11 @@ public class Oeuf extends Etat {
 		if(this.nombreStepExistence >= 60*24*this.nombreDeJourAvantEvolution)
 			this.evoluer();
 	}
+	@Override
+	public void manger() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
