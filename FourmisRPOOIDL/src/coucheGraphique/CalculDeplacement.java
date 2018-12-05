@@ -2,6 +2,7 @@ package coucheGraphique;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class CalculDeplacement {
 
@@ -10,6 +11,7 @@ public class CalculDeplacement {
 	private Monde monde = null;
 	private int deplacement = -1;
 	private int deplacementAcienDeplacement = -1;
+	private ArrayList<Point> AnciensPoints = new ArrayList<Point>();
 
 	public CalculDeplacement(Point Coordonnee, Dimension taille) {
 		this.Coordonnee = Coordonnee;
@@ -48,75 +50,7 @@ public class CalculDeplacement {
 	public Dimension getSize() {
 		return this.taille;
 	}
-
-	public int getPhéromoneChasse(int Position) {
-		if (Position == 0 && getXPoint() + 1 < monde.getHeight())
-			return this.monde.getPheromoneChasse(getXPoint() + 1, getYPoint());
-		if (Position == 1 && getXPoint() - 1 > 0)
-			return this.monde.getPheromoneChasse(getXPoint() - 1, getYPoint());
-		if (Position == 2 && getYPoint() + 1 < monde.getWidth())
-			return this.monde.getPheromoneChasse(getXPoint(), getYPoint() + 1);
-		if (Position == 3 && getYPoint() - 1 > 0)
-			return this.monde.getPheromoneChasse(getXPoint(), getYPoint() - 1);
-		return 0;
-	}
-
-	public void ChercherPhéromoneChasseEtChoixDeplacement() {
-		int Right = 0, Left = 0, Down = 0, Up = 0;
-		Right = this.getPhéromoneChasse(0);
-		Left = this.getPhéromoneChasse(1);
-		Down = this.getPhéromoneChasse(2);
-		Up = this.getPhéromoneChasse(3);
-		ChoixDeplacement(Left, Down, Up, Right);
-
-	}
-
-	private void ChoixDeplacement(int Left, int Down, int Up, int Right) {
-		if (Left == 0 && Down == 0 && Up == 0 && Right == 0)
-			GenererDeplacementAleatoire();
-		else {
-			int max = Math.max(Right, Math.max(Up, Math.max(Left, Down)));
-			if (max == Right) {
-				this.deplacement = 0;
-				return;
-			}
-			if (max == Left) {
-				this.deplacement = 1;
-				return;
-			}
-			if (max == Down) {
-				this.deplacement = 2;
-				return;
-			}
-			if (max == Up) {
-				this.deplacement = 3;
-				return;
-			}
-		}
-
-	}
-
-	public int getPhéromoneRetour(int Position) {
-		if (Position == 0 && getXPoint() + 1 < monde.getHeight())
-			return this.monde.getPheromoneRetour(getXPoint() + 1, getYPoint());
-		if (Position == 1 && getXPoint() - 1 > 0)
-			return this.monde.getPheromoneRetour(getXPoint() - 1, getYPoint());
-		if (Position == 2 && getYPoint() + 1 < monde.getWidth())
-			return this.monde.getPheromoneRetour(getXPoint(), getYPoint() + 1);
-		if (Position == 3 && getYPoint() - 1 > 0)
-			return this.monde.getPheromoneRetour(getXPoint(), getYPoint() - 1);
-		return 0;
-	}
-
-	public void ChercherPhéromoneRetourEtChoixDeplacement() {
-		int Right = 0, Left = 0, Down = 0, Up = 0;
-		Right = this.getPhéromoneRetour(0);
-		Left = this.getPhéromoneRetour(1);
-		Down = this.getPhéromoneRetour(2);
-		Up = this.getPhéromoneRetour(3);
-		ChoixDeplacement(Left, Down, Up, Right);
-	}
-
+	
 	public void moveRight(int gap) {
 		setXPoint(getXPoint() + gap);
 	}
@@ -132,7 +66,6 @@ public class CalculDeplacement {
 	public void moveUp(int gap) {
 		setYPoint(getYPoint() - gap);
 	}
-
 	private void VerifierMur() {
 		switch (this.deplacement) {
 		case 0:
@@ -155,25 +88,7 @@ public class CalculDeplacement {
 			break;
 		}
 	}
-
-	public void deplacementRetour() {
-		deplacementAcienDeplacement = this.deplacement;
-		GenererDeplacementRetour();
-		deplacer();
-	}
-
-	public void deplacementAleatoire() {
-		deplacementAcienDeplacement = this.deplacement;
-		GenererDeplacementAleatoire();
-		deplacer();
-	}
-
-	public void deplacementChasse() {
-		deplacementAcienDeplacement = this.deplacement;
-		GenererDeplacementChasse();
-		deplacer();
-	}
-
+	
 	private void deplacer() {
 		VerifierMur();
 		if (this.deplacement != -1) {
@@ -195,13 +110,43 @@ public class CalculDeplacement {
 			}
 		}
 	}
-
-	public void GenererDeplacementAleatoire() {
-		this.deplacement = (int) Math.floor(Math.random() * 4);
-		PoserPheromoneRetour();
-		deplacer();
+	public int getPhéromoneChasse(int Position) {
+		if (Position == 0 && getXPoint() + 1 < monde.getHeight())
+			return this.monde.getPheromoneChasse(getXPoint() + 1, getYPoint());
+		if (Position == 1 && getXPoint() - 1 > 0)
+			return this.monde.getPheromoneChasse(getXPoint() - 1, getYPoint());
+		if (Position == 2 && getYPoint() + 1 < monde.getWidth())
+			return this.monde.getPheromoneChasse(getXPoint(), getYPoint() + 1);
+		if (Position == 3 && getYPoint() - 1 > 0)
+			return this.monde.getPheromoneChasse(getXPoint(), getYPoint() - 1);
+		return 0;
 	}
-
+	public int getPhéromoneRetour(int Position) {
+		if (Position == 0 && getXPoint() + 1 < monde.getHeight())
+			return this.monde.getPheromoneRetour(getXPoint() + 1, getYPoint());
+		if (Position == 1 && getXPoint() - 1 > 0)
+			return this.monde.getPheromoneRetour(getXPoint() - 1, getYPoint());
+		if (Position == 2 && getYPoint() + 1 < monde.getWidth())
+			return this.monde.getPheromoneRetour(getXPoint(), getYPoint() + 1);
+		if (Position == 3 && getYPoint() - 1 > 0)
+			return this.monde.getPheromoneRetour(getXPoint(), getYPoint() - 1);
+		return 0;
+	}
+	
+	private void PoserPheromoneChasse() {
+		if (this.deplacement != -1) {
+			if (getXPoint() + 1 < monde.getHeight())
+				this.monde.ajoutPheromoneChasse(getXPoint() + 1, getYPoint(), 1);
+			if (getXPoint() - 1 > 0)
+				this.monde.ajoutPheromoneChasse(getXPoint() - 1, getYPoint(), 1);
+			if (getYPoint() + 1 < monde.getWidth())
+				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() + 1, 1);
+			if (getYPoint() - 1 > 0)
+				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() - 1, 1);
+			this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint(), 100);
+		}
+	}
+	
 	private void PoserPheromoneRetour() {
 		switch (deplacementAcienDeplacement) {
 		case 0:
@@ -223,40 +168,141 @@ public class CalculDeplacement {
 			break;
 		}
 	}
+	
+	public void deplacementAleatoire() {
+		this.deplacement = GenererDeplacementAleatoire();
+		deplacementAcienDeplacement = this.deplacement;
+		PoserPheromoneRetour();
+		deplacer();
+	}
+	public int GenererDeplacementAleatoire() {
+		return (int) Math.floor(Math.random() * 4);
+	}
 
-	private void PoserPheromoneChasse() {
-		if (this.deplacement != -1) {
-			if (getXPoint() + 1 < monde.getHeight())
-				this.monde.ajoutPheromoneChasse(getXPoint() + 1, getYPoint(), 1);
-			if (getXPoint() - 1 > 0)
-				this.monde.ajoutPheromoneChasse(getXPoint() - 1, getYPoint(), 1);
-			if (getYPoint() + 1 < monde.getWidth())
-				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() + 1, 1);
-			if (getYPoint() - 1 > 0)
-				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() - 1, 1);
-			this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint(), 100);
-		}
+	
+	public void deplacementChasse() {
+		GenererDeplacementChasse();
+		deplacementAcienDeplacement = this.deplacement;
+		deplacer();
+	}
+
+
+	public void ChercherPhéromoneChasseEtChoixDeplacement() {
+/*		int Right = 0, Left = 0, Down = 0, Up = 0;
+		Right = this.getPhéromoneChasse(0);
+		Left = this.getPhéromoneChasse(1);
+		Down = this.getPhéromoneChasse(2);
+		Up = this.getPhéromoneChasse(3);
+*/
 	}
 
 	private void GenererDeplacementChasse() {
-		//SuisjeSurUneProie();
+		// SuisjeSurUneProie();
 		ChercherPhéromoneChasseEtChoixDeplacement();
-		
-		//Si on est sur une proie, et que le pheromone chasse deja a 100 ne rien faire sinon faire poser pheromone de chasse.
-		//si on est sur une proie et quellen'est pas morte ne pas se deplacer
-		//PoserPheromoneChasse();
-		//deplacer();
+
+		// Si on est sur une proie, et que le pheromone chasse deja a 100 ne
+		// rien faire sinon faire poser pheromone de chasse.
+		// si on est sur une proie et quellen'est pas morte ne pas se deplacer
+		// PoserPheromoneChasse();
+		// deplacer();
 	}
 
-	/*private void SuisjeSurUneProie() {
-		if(this.Coordonnee  == )
-		
-	}*/
+	/*
+	 * private void SuisjeSurUneProie() { if(this.Coordonnee == )
+	 * 
+	 * }
+	 */
 
-	private void GenererDeplacementRetour() {
-		ChercherPhéromoneRetourEtChoixDeplacement();
-		PoserPheromoneRetour();
-		deplacer();
+	
+	public void deplacementRetour() {
+		if (this.getXPoint() == 250 && this.getYPoint() == 250)
+			return;
+		chercherPheromoneRetourDeplacement();
 
 	}
+
+	private void chercherPheromoneRetourDeplacement() {
+		ArrayList<Integer> deplacements = new ArrayList<Integer>();
+		deplacements.add(this.getPhéromoneRetour(0));
+		deplacements.add(this.getPhéromoneRetour(1));
+		deplacements.add(this.getPhéromoneRetour(2));
+		deplacements.add(this.getPhéromoneRetour(3));
+		DeplacementP(deplacements);
+	}
+
+	private void DeplacementP(ArrayList<Integer> deplacements) {
+		int MaxPheromone = 0, AncienMax = 0;
+		for (int i = 0; i < deplacements.size() - 1; i++) {
+			MaxPheromone = Math.max(deplacements.get(i), deplacements.get(i + 1));
+			if (MaxPheromone > AncienMax)
+				AncienMax = MaxPheromone;
+		}
+		int Direction = 0;
+		if (AncienMax > 0) {
+			Direction = deplacements.indexOf(AncienMax);
+		} else {
+			Direction = GenererDeplacementAleatoire();
+		}
+		Point action = new Point(ActionDirection(Direction));
+
+		if (AnciensPoints.contains(action)) {
+			deplacements.set(Direction, 0);
+			DeplacementP(deplacements);
+		} else {
+			AnciensPoints.add(action);
+			this.deplacement = Direction;
+			deplacer();
+			return;
+		}
+
+	}
+
+	private Point ActionDirection(int direction) {
+		Point Actuel = this.Coordonnee;
+		switch (direction) {
+		case 0:
+			return getPointRight(Actuel);
+		case 1:
+			return getPointLeft(Actuel);
+		case 2:
+			return getPointDown(Actuel);
+		case 3:
+			return getPointUp(Actuel);
+		default:
+			return null;
+		}
+	}
+
+	private Point getPointRight(Point Actuel) {
+		if (Actuel.x + 1 < monde.getWidth()) {
+			Actuel.x = Actuel.x + 1;
+			return Actuel;
+		} else
+			return null;
+	}
+
+	private Point getPointLeft(Point Actuel) {
+		if (Actuel.x - 1 > 0) {
+			Actuel.x = Actuel.x - 1;
+			return Actuel;
+		} else
+			return null;
+	}
+
+	private Point getPointDown(Point Actuel) {
+		if (Actuel.y + 1 < monde.getHeight()) {
+			Actuel.y = Actuel.y + 1;
+			return Actuel;
+		} else
+			return null;
+	}
+
+	private Point getPointUp(Point Actuel) {
+		if (Actuel.y - 1 > 0) {
+			Actuel.y = Actuel.y - 1;
+			return Actuel;
+		} else
+			return null;
+	}
+
 }

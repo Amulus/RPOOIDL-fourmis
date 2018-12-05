@@ -40,6 +40,7 @@ public class Monde extends JPanel {
 	
 	public void open() {
 		JFrame frame = new JFrame(name);
+		frame.setResizable(false);
 		WindowAdapter wa = new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
@@ -67,9 +68,8 @@ public class Monde extends JPanel {
      }
 
      public void remove(Fourmi fourmie) {
-    	Rect carre = find(fourmie);
-    	if(carre !=null){
-    		carre.setWorld(null);
+    	boolean trouve = find(fourmie);
+    	if(trouve){
     		fourmies.remove(fourmie);
     	}
      }
@@ -88,11 +88,17 @@ public class Monde extends JPanel {
     	}
      }
 
-    private Rect find(Fourmi fourmie) {
-    	for (int i=1; i < dessins.size();i++)
-    		if(((Rect)dessins.get(i)).object.equals(fourmie))
-    			return ((Rect)dessins.get(i));
-		return null;
+    private boolean find(Fourmi fourmie) {
+    	for (int i=1; i < dessins.size();i++){
+    		if(dessins.get(i).getClass() != Rect.class) return false;
+    		if(((Rect)dessins.get(i)).object.equals(fourmie)){
+    			Rect carre =  ((Rect)dessins.get(i));
+        		carre.setWorld(null);
+        		dessins.remove(i);
+    			return true;
+    		}
+    	}
+		return false;
 	}
     private Rect find(Proie proie) {
     	for (int i=1; i < dessins.size();i++)
@@ -127,7 +133,7 @@ public class Monde extends JPanel {
 		return TableauPheromones[xPoint][yPoint].avoirPheromoneChasse();
 	}
 	public int getPheromoneRetour(int xPoint, int yPoint) {
-		return TableauPheromones[xPoint][yPoint].avoirPheromoneChasse();
+		return TableauPheromones[xPoint][yPoint].avoirPheromoneRetour();
 	}
 
 	public void uptade() {
@@ -150,6 +156,13 @@ public class Monde extends JPanel {
 	}
 	public void ajoutPheromoneChasse(int xPoint, int yPoint,int quantite) {
 		TableauPheromones[xPoint][yPoint].ajouterPheromoneChasse(quantite);
+	}
+	public void afficherPheromones(){
+		for(int i=0;i<TableauPheromones.length;i++){
+			for(int j=0;j<TableauPheromones.length;j++)
+				System.out.print("| "+TableauPheromones[i][j].avoirPheromoneRetour());
+			System.out.println("");
+		}
 	}
 
 

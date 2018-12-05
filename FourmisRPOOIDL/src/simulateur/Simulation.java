@@ -29,10 +29,10 @@ public class Simulation extends Ovale {
 			Monde jc = new Monde("Simulation d'une fourmilliere");
 			jc.setBackground(new Color(100, 125, 0));
 			jc.setPreferredSize(new Dimension(500, 500));
+
 			Fourmilliere Colonie = new Fourmilliere();
 
-
-			for (int i = 1; i < 100; i++) {
+			for (int i = 1; i < 500; i++) {
 				Fourmi test = new Fourmi(Colonie);
 				test.changerEtat(new Adulte(test));
 				((Adulte) test.getEtat()).sortir();
@@ -43,67 +43,95 @@ public class Simulation extends Ovale {
 				Proie proie = new Proie();
 				jc.getProies().add(proie);
 			}
-			
+
 			jc.add(Colonie);
 
 			jc.open();
 
 			Thread Simulation = new Thread();
 			Simulation.start();
-
-			
-			while (true) {
-				checkFourmi(Colonie,jc);
+			int j = 0;
+			while (j != 200) {
+				checkFourmi(Colonie, jc);
 				checkProie(jc);
-				
+
 				for (int i = 0; i < jc.getFourmies().size(); i++)
-					//TO DO FOURMILIERE .STEP
+					jc.getFourmies().get(i).getCalculDeplacement().deplacementAleatoire();
+
 				try {
-					if (jc != null){
+					if (jc != null) {
 						jc.uptade();
 						jc.repaint();
+						j++;
 					}
-					Thread.sleep(1);
-				} catch (InterruptedException e1){
+					Thread.sleep(5);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			j = 0;
+			while (j != 200) {
+				checkFourmi(Colonie, jc);
+
+				for (int i = 0; i < jc.getFourmies().size(); i++) {
+					if (jc.getFourmies().get(i).getCalculDeplacement().getXPoint() != 250
+							&& jc.getFourmies().get(i).getCalculDeplacement().getYPoint() != 250)
+						jc.getFourmies().get(i).getCalculDeplacement().deplacementRetour();
+					else {
+						if (i != jc.getFourmies().size()) {
+							((Adulte) jc.getFourmies().get(i).getEtat()).rentrer();
+							jc.remove(jc.getFourmies().get(i));
+						}
+					}
+				}
+				try {
+					if (jc != null) {
+						jc.uptade();
+						jc.repaint();
+						j++;
+					}
+					Thread.sleep(5);
+				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
 			}
 		}
+
 		private void checkProie(Monde jc) {
-			for(Proie proies : jc.getProies()){
-				if(proies.estEnVie()){
-						if (jc.getProies().contains(proies))
-							return;
-						else
-							jc.add(proies);	
-				}else{
-					//TO DO
-				}	
+			for (Proie proies : jc.getProies()) {
+				if (proies.estEnVie()) {
+					if (jc.getProies().contains(proies))
+						return;
+					else
+						jc.add(proies);
+				} else {
+					// TO DO
+				}
 			}
 		}
+
 		private void checkFourmi(Fourmilliere Colonie, Monde jc) {
-			for(Fourmi fourmie : Colonie.getFourmis()) {
+			for (Fourmi fourmie : Colonie.getFourmis()) {
 				if (fourmie.getEtat().estDehors() && fourmie.getEtat().estAdulte())
-						Ajout(fourmie,jc);
-				else
-					if(fourmie.getEtat().estAdulte())
-						Remove(fourmie,jc);
-				}
+					Ajout(fourmie, jc);
+				else if (fourmie.getEtat().estAdulte())
+					Remove(fourmie, jc);
+			}
 		}
-		
-		private void Remove(Fourmi fourmie,Monde monde) {
+
+		private void Remove(Fourmi fourmie, Monde monde) {
 			if (monde.getFourmies().contains(fourmie))
 				monde.remove(fourmie);
 		}
 
-		private void Ajout(Fourmi fourmie,Monde monde) {
+		private void Ajout(Fourmi fourmie, Monde monde) {
 			if (monde.getFourmies().contains(fourmie))
 				return;
-			else{
-				monde.add(fourmie);	
-				fourmie.getCalculDeplacement().setPoint(250,250);
+			else {
+				monde.add(fourmie);
+				fourmie.getCalculDeplacement().setPoint(250, 250);
 			}
 		}
 	}
 }
-
