@@ -44,6 +44,7 @@ public class Chasser extends Tache {
 					fourmi.getFourmilliere().getReserve().AjouterNourriture(nourriture);
 					fourmi.getEtat().setStockage(0.0);
 					this.termine = true;
+					this.addStep();
 				}
 			}
 

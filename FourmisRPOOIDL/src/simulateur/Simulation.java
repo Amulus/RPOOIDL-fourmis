@@ -38,7 +38,7 @@ public class Simulation extends Ovale {
 
 			Fourmilliere Colonie = new Fourmilliere(jc);
 
-			for (int i = 1; i < 500; i++) {
+			for (int i = 1; i < 100; i++) {
 				Fourmi test = new Fourmi(Colonie);
 				test.changerEtat(new Adulte(test));
 				((Adulte) test.getEtat()).sortir();
@@ -58,32 +58,21 @@ public class Simulation extends Ovale {
 
 			Thread Simulation = new Thread();
 			Simulation.start();
-			int j=0;
-			while (true) {
-				if(j==360){
-					for (int i = 0; i < jc.getProies().size(); i++)
-						jc.getProies().get(i).ajouterTemp();
-				j=0;
-				}
-					
+			while(true){
 				checkFourmi(Colonie, jc);
 				checkProie(jc);
-				
-				for (int i = 0; i < jc.getFourmies().size(); i++)
-					if(jc.getFourmies().get(i).getCalculDeplacement().testPositionProie(proies, jc.getFourmies().get(i)) == null)
-						jc.getFourmies().get(i).getCalculDeplacement().deplacementChasse();
-
+				Colonie.step();
 				try {
 					if (jc != null) {
-						j++;
 						jc.uptade();
 						jc.repaint();
 					}
-					Thread.sleep(5);
+					Thread.sleep(1);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
 			}
+
 		}
 
 		private void checkProie(Monde jc) {
@@ -116,13 +105,15 @@ public class Simulation extends Ovale {
 					Ajout(fourmie, jc);
 				else if (fourmi.estAdulte() && fourmi.estDehors()
 						&& fourmi.tempsPasseDehors() >= fourmi.tempsDehorsMax())
-					Remove(fourmie, jc);
+					Remove(Colonie,fourmie, jc);
 			}
 		}
 
-		private void Remove(Fourmi fourmie, Monde monde) {
+		private void Remove(Fourmilliere Colonie,Fourmi fourmie, Monde monde) {
 			if (monde.getFourmies().contains(fourmie))
 				monde.remove(fourmie);
+			if(Colonie.getFourmis().contains(fourmie))
+				Colonie.getMorts().add(Colonie.getFourmis().get(Colonie.getFourmis().indexOf(fourmie)));
 		}
 
 		private void Ajout(Fourmi fourmie, Monde monde) {

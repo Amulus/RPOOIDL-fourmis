@@ -17,9 +17,10 @@ public class CalculDeplacement {
 	private int deplacementAcienDeplacement = -1;
 	private ArrayList<Point> AnciensPoints = new ArrayList<Point>();
 
-	public CalculDeplacement(Point Coordonnee, Dimension taille) {
+	public CalculDeplacement(Point Coordonnee, Dimension taille, Monde monde) {
 		this.Coordonnee = Coordonnee;
 		this.taille = taille;
+		this.monde = monde;
 	}
 
 	public void setPoint(int x, int y) {

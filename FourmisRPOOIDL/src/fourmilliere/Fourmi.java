@@ -17,7 +17,7 @@ public class Fourmi {
 		this.fourmilliere = fourmilliere;
 		this.etat = new Oeuf(this);	
 		int tailleFourmie = (int) fourmilliere.getLireParametres().ChercherParametre("TailleFourmie");
-		Calculdeplacement = new CalculDeplacement(new Point(0, 0),new Dimension(tailleFourmie, tailleFourmie));
+		Calculdeplacement = new CalculDeplacement(new Point(0, 0),new Dimension(tailleFourmie, tailleFourmie),fourmilliere.getMonde());
 	}
 	public CalculDeplacement getCalculDeplacement(){
 		return this.Calculdeplacement;

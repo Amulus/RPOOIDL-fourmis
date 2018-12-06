@@ -61,7 +61,7 @@ public class Larve extends Etat {
 	@Override
 	public void step() {
 		// TODO Auto-generated method stub
-		if(this.dureeAjeun >= 60*24) {
+		if(this.dureeAjeun >= 388*24) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
 		if(this.aFaim = true) {
@@ -72,7 +72,7 @@ public class Larve extends Etat {
 		}
 		
 		this.nombreStepExistence++;
-		if(this.nombreStepExistence <= 60*24*this.nombreDeJourAvantEvolution);
+		if(this.nombreStepExistence <= 388*24*this.nombreDeJourAvantEvolution);
 			this.evoluer();
 	}
 

@@ -1,21 +1,25 @@
 package role;
 
 import fourmilliere.Fourmi;
+import tache.Dormir;
+import tache.Pondre;
+
 public class FourmiReine extends Role {
 
 	public FourmiReine(Fourmi fourmi) {
 		super(fourmi);
 	}
-	/*
 	public void pondre() {
-		Fourmi nouvelleFourmi = new Fourmi(this.fourmi.getFourmilliere());
-		this.fourmi.getFourmilliere().ajoutFourmi(nouvelleFourmi);
-	}*/
+		this.tache = new Pondre();
+	}
 
 	@Override
 	public void nouvelleTache() {
-		// TODO Auto-generated method stub
-		
+		if(this.tache == null || this.tache.getClass() != Pondre.class){
+			this.pondre();
+		}else{
+			this.tache = new Dormir();
+		}
 	}
 }
 

@@ -14,6 +14,7 @@ public class Fourmilliere {
 	private int nombreEtapeAvantRepas = 1440;
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
+	private List<Fourmi> fourmisEtapeAvant = new ArrayList<Fourmi>();
 	private Depot Depot;
 	private Monde monde =null;
 	private Reserve Reserve;
@@ -24,6 +25,7 @@ public class Fourmilliere {
 		this.fourmis = new ArrayList<Fourmi>();
 		this.Depot = new Depot(this);
 		this.Reserve = new Reserve(this);
+		this.monde= monde;
 		Fourmi fourmiReine = new Fourmi(this);
 		Adulte adulte = new Adulte(fourmiReine);
 		adulte.setReine();
@@ -31,14 +33,15 @@ public class Fourmilliere {
 		Fourmi premiereNymphe = new Fourmi(this);
 		Nymphe nymphe = new Nymphe(premiereNymphe);
 		premiereNymphe.changerEtat(nymphe);
-		this.monde= monde;
 		this.ajoutFourmi(fourmiReine);
 		this.ajoutFourmi(premiereNymphe);
 		
 	}
 	
 	public void step() {
-		Iterator<Fourmi> it = this.fourmis.iterator();
+		for(int i =0; i<fourmis.size();i++)
+			fourmisEtapeAvant.add(fourmis.get(i));
+		Iterator<Fourmi> it = this.fourmisEtapeAvant.iterator();
 		while(it.hasNext()) {
 			Fourmi fourmi = it.next();
 			if(this.nombreEtapeAvantRepas <= 0) {
@@ -50,6 +53,7 @@ public class Fourmilliere {
 				fourmi.step();
 			}
 		}
+		fourmisEtapeAvant.clear();
 	}
 	
 	public boolean verificationFaim(Fourmi fourmi) {
