@@ -14,7 +14,7 @@ public class FourmiOuvriere extends Role {
 	}
 	
 	public void chasser() {
-		this.tache = new Chasser();
+		this.tache = new Chasser(fourmi.getFourmilliere().getMonde().getProies());
 	}
 	
 	public void nettoyer() {
