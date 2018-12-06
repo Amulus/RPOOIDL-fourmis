@@ -23,6 +23,7 @@ public class Pondre extends Tache {
 			this.termine = true;
 			oeufPondu=0;
 			this.addStep();
+			((Adulte)fourmi.getEtat()).getRole().nouvelleTache(this);
 		}
 		
 	}

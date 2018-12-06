@@ -46,7 +46,7 @@ public class Simulation extends Ovale {
 				test.getCalculDeplacement().setMonde(jc);
 			}
 
-			for (int i = 1; i < 200; i++) {
+			for (int i = 1; i < 10; i++) {
 				Proie proie = new Proie();
 				proies.add(proie);
 				jc.add(proie);
@@ -58,10 +58,14 @@ public class Simulation extends Ovale {
 
 			Thread Simulation = new Thread();
 			Simulation.start();
+			int i =0;
 			while(true){
 				checkFourmi(Colonie, jc);
-				checkProie(jc);
+				checkProie(jc,i);
 				Colonie.step();
+				if(i>=388*24)
+					i=0;
+				i++;
 				try {
 					if (jc != null) {
 						jc.uptade();
@@ -75,19 +79,25 @@ public class Simulation extends Ovale {
 
 		}
 
-		private void checkProie(Monde jc) {
+		private void checkProie(Monde jc,int compteur) {
+			for(Proie proie : jc.getProies())
+				proies.add(proie);
 			for (Proie proies : proies) {
+				if(compteur >= 388*24){
+					proies.ajouterTemp();
+				}
 				if (proies.estEnVie())
 					AjoutProie(proies, jc);
 				else
 					RemoveProie(proies, jc);
 			}
-			if(proies.size()<=100)
-				for(int i=0; i<=100;i++){
+			if(compteur >= 388*24)
+				for(int i=0; i<=50;i++){
 					Proie proie = new Proie();
-					proies.add(proie);
+					jc.add(proie);
 					AjoutProie(proie, jc);
 				}
+			proies.clear();
 		}
 
 		private void RemoveProie(Proie proies, Monde jc) {

@@ -6,11 +6,11 @@ import java.util.List;
 import fourmilliere.Fourmi;
 
 public abstract class Tache {
-	protected static int PONDRE = 0;
-	protected static int MANGER = 1;
-	protected static int NETTOYER = 2;
-	protected static int DORMIR = 3;
-	protected static int CHASSER = 4;
+	public static int PONDRE = 0;
+	public static int MANGER = 1;
+	public static int NETTOYER = 2;
+	public static int DORMIR = 3;
+	public static int CHASSER = 4;
 	int typeTache;
 	Tache tachePrecedente;
 	protected int NbStep = 0;

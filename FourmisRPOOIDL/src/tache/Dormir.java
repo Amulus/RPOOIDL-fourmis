@@ -20,8 +20,6 @@ public class Dormir extends Tache {
 		if(this.NbStep%9312==0 && this.NbStep>1) {
 			this.termine = true;
 			this.addStep();
-			/*if(fourmi.getEtat().getClass() == Adulte.class)
-				((Adulte) fourmi.getEtat()).getRole().nouvelleTache();*/
 		}else{
 			this.addStep();
 		}

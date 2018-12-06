@@ -14,11 +14,13 @@ public class FourmiReine extends Role {
 
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
-		if(this.tache == null || this.tache.getClass() != Pondre.class){
+		if (this.tache == null || this.tache.getClass() != Pondre.class) {
 			this.tache = new Pondre(tachePrecedente);
-		}else{
-			this.tache = new Dormir(tachePrecedente);
+			if (tachePrecedente.getType() == Tache.PONDRE) {
+				this.tache = new Dormir(tachePrecedente);
+			} else {
+				this.tache = new Pondre(tachePrecedente);
+			}
 		}
 	}
 }
-

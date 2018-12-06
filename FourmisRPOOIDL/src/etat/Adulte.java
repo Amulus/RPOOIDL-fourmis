@@ -1,6 +1,5 @@
 package etat;
 import fourmilliere.Fourmi;
-import fourmilliere.Fourmilliere;
 import fourmilliere.Reserve;
 import outils.LireParametres;
 import role.FourmiOuvriere;

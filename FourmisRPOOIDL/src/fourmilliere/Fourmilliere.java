@@ -8,7 +8,6 @@ import coucheGraphique.Monde;
 import etat.Adulte;
 import etat.Nymphe;
 import outils.LireParametres;
-import tache.Pondre;
 
 public class Fourmilliere {
 
@@ -31,7 +30,6 @@ public class Fourmilliere {
 		Adulte adulte = new Adulte(fourmiReine);
 		adulte.setReine();
 		fourmiReine.changerEtat(adulte);
-		((Adulte)fourmiReine.getEtat()).getRole().nouvelleTache(null);
 		Fourmi premiereNymphe = new Fourmi(this);
 		Nymphe nymphe = new Nymphe(premiereNymphe);
 		premiereNymphe.changerEtat(nymphe);
