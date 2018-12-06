@@ -81,7 +81,7 @@ public class Proie {
 	public boolean VerifierVie() {
 		if (this.tempHarcelement > 0) {
 			double poidFourmies = 0.0;
-			for (Fourmi fourmie : fourmies) {
+			for (Fourmi fourmie : fourmies)  {
 				poidFourmies += fourmie.getEtat().getPoid();
 			}
 			if (poidFourmies >= this.Poid / 2) {

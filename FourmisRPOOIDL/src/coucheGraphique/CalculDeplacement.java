@@ -187,28 +187,23 @@ public class CalculDeplacement {
 		return (int) Math.floor(Math.random() * 4);
 	}
 
-	public void deplacementChasse(List<Proie> proies, Fourmi fourmi) {
-		if(!testPositionProie(proies,fourmi))
-			chercherPheromoneChasseDeplacement();
-	}
-	
-	private boolean testPositionProie(List<Proie> proies, Fourmi fourmi) {
+	public Proie testPositionProie(List<Proie> proies, Fourmi fourmi) {
 		for(Proie proie : proies)
 			if(this.getXPoint() == proie.getPoint().x && this.getYPoint() == proie.getPoint().y && !proie.TropGros() && proie.estEnVie()){
 				if(this.getPhéromoneChasse(-1)==100){
 					proie.ajouterFourmie(fourmi);
 					if(!proie.estEnVie())
 						this.clearPhéromoneChasse();
-					return true;
+					return proie;
 				}else{
 					this.PoserPheromoneChasse();
 					proie.ajouterFourmie(fourmi);
 					if(!proie.estEnVie())
 						this.clearPhéromoneChasse();
-					return true;
+					return proie;
 				}
 			}
-		return false;
+		return null;
 	}
 
 	private void clearPhéromoneChasse() {
@@ -222,14 +217,12 @@ public class CalculDeplacement {
 			this.monde.clearPheromoneChasse(getXPoint(), getYPoint() + 1);
 		this.monde.clearPheromoneChasse(getXPoint(), getYPoint());
 	}
-
-	public void deplacementRetour() {
-		if (this.getXPoint() == 250 && this.getYPoint() == 250)
-			return;
-		chercherPheromoneRetourDeplacement();
-
+	public boolean EstSurFourmilliere(Fourmi fourmie){
+		return this.monde.EstSurFourmillilere(fourmie.getCalculDeplacement().Coordonnee);
+		
 	}
-	private void chercherPheromoneChasseDeplacement() {
+
+	public void deplacementChasse() {
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneChasse(0));
 		deplacements.add(this.getPhéromoneChasse(1));
@@ -237,7 +230,7 @@ public class CalculDeplacement {
 		deplacements.add(this.getPhéromoneChasse(3));
 		DeplacementP(deplacements);
 	}
-	private void chercherPheromoneRetourDeplacement() {
+	public void deplacementRetour() {
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneRetour(0));
 		deplacements.add(this.getPhéromoneRetour(1));
