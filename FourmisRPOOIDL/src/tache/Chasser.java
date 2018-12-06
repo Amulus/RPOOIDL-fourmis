@@ -17,6 +17,7 @@ public class Chasser extends Tache {
 
 	public Chasser(Tache tache, List<Proie> proies) {
 		super(tache);
+		this.typeTache=Tache.CHASSER;
 		this.proies = proies;
 	}
 

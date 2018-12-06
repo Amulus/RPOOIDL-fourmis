@@ -7,6 +7,7 @@ public class FourmiOuvriere extends Role {
 
 	public FourmiOuvriere(Fourmi fourmi) {
 		super(fourmi);
+		this.tache = new Chasser(null, fourmi.getFourmilliere().getMonde().getProies());
 	}
 
 

@@ -7,7 +7,7 @@ public class Dormir extends Tache {
 	
 	public Dormir(Tache tachePrecedente) {
 		super(tachePrecedente);
-		this.typeTache=2;
+		this.typeTache=Tache.DORMIR;
 		// TODO Auto-generated constructor stub
 	}
 

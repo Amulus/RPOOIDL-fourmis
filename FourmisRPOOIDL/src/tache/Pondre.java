@@ -7,7 +7,7 @@ public class Pondre extends Tache {
 	
 	public Pondre(Tache tachePrecedente) {
 		super(tachePrecedente);
-		this.typeTache = 0;
+		this.typeTache = Tache.PONDRE;
 		// TODO Auto-generated constructor stub
 	}
 	private int oeufPondu = 0;
