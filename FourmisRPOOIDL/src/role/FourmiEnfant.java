@@ -9,6 +9,7 @@ public class FourmiEnfant extends Role {
 
 	public FourmiEnfant(Fourmi fourmi) {
 		super(fourmi);
+		this.tache = new Dormir(null);
 	}
 
 	@Override

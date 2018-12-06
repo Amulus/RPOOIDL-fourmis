@@ -5,7 +5,7 @@ import etat.Adulte;
 
 public class Pondre extends Tache {
 	
-	Pondre(Tache tachePrecedente) {
+	public Pondre(Tache tachePrecedente) {
 		super(tachePrecedente);
 		this.typeTache = Tache.PONDRE;
 		// TODO Auto-generated constructor stub

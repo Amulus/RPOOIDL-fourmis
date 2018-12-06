@@ -9,6 +9,7 @@ public class FourmiReine extends Role {
 
 	public FourmiReine(Fourmi fourmi) {
 		super(fourmi);
+		this.tache = new Pondre(null);
 	}
 
 	@Override
