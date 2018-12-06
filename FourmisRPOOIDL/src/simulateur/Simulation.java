@@ -46,7 +46,7 @@ public class Simulation extends Ovale {
 				test.getCalculDeplacement().setMonde(jc);
 			}
 
-			for (int i = 1; i < 100; i++) {
+			for (int i = 1; i < 200; i++) {
 				Proie proie = new Proie();
 				proies.add(proie);
 				jc.add(proie);
@@ -82,6 +82,12 @@ public class Simulation extends Ovale {
 				else
 					RemoveProie(proies, jc);
 			}
+			if(proies.size()<=100)
+				for(int i=0; i<=100;i++){
+					Proie proie = new Proie();
+					proies.add(proie);
+					AjoutProie(proie, jc);
+				}
 		}
 
 		private void RemoveProie(Proie proies, Monde jc) {

@@ -148,14 +148,15 @@ public class Adulte extends Etat {
 	public void step() {
 		// TODO Auto-generated method stub
 		if(this.estDehors){
-			if(this.role.getTache().getNbStep()%388==0 &&this.role.getTache().getNbStep()!=0 )
+			if(this.role.getTache().getNbStep()%388==0 && this.role.getTache().getNbStep()!=0 )
 				this.tempsDehors++;
 			if(this.tempsDehors>this.tempsDehorsMax) {
 				this.fourmi.getFourmilliere().fourmisMorteDehors(this.fourmi);
 			}
 		}
-		this.dureeMinuteEnVie++;
-		if( this.dureeMinuteEnVie >= 60*24*30*this.dureeDeVieEnMois) {
+		if(this.role.getTache().getNbStep()%6==0 && this.role.getTache().getNbStep()!=0 )
+			this.dureeMinuteEnVie++;
+		if( this.dureeMinuteEnVie >= 6*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
 		this.role.getTache().step(this.fourmi);

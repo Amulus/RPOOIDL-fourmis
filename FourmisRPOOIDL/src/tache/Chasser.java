@@ -27,41 +27,38 @@ public class Chasser extends Tache {
 			etat.sortir();
 		}
 
+		if (this.combat) {
+			if (!this.proie.estEnVie()) {
+				this.proie = null;
+				this.combat = false;
+			}
+		}
+
+		else if (this.rameneBouffe) {
+			fourmi.getCalculDeplacement().deplacementRetour();
+			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
+				((Adulte) fourmi.getEtat()).rentrer();
+				double nourriture = fourmi.getEtat().getStockage();
+				fourmi.getFourmilliere().getReserve().AjouterNourriture(nourriture);
+				fourmi.getEtat().setStockage(0.0);
+				this.termine = true;
+				this.addStep();
+			}
+		}
+
 		else {
+			Proie proieEventuel = fourmi.getCalculDeplacement().testPositionProie(this.proies, fourmi);
 
-			if (this.combat) {
-				if (!this.proie.estEnVie()) {
-					this.proie = null;
-					this.combat = false;
-				}
-			}
-
-			else if (this.rameneBouffe) {
-				fourmi.getCalculDeplacement().deplacementRetour();
-				if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
-					((Adulte) fourmi.getEtat()).rentrer();
-					double nourriture = fourmi.getEtat().getStockage();
-					fourmi.getFourmilliere().getReserve().AjouterNourriture(nourriture);
-					fourmi.getEtat().setStockage(0.0);
-					this.termine = true;
-					this.addStep();
-				}
-			}
-
-			else {
-				Proie proieEventuel = fourmi.getCalculDeplacement().testPositionProie(this.proies, fourmi);
-
-				if (proieEventuel == null) {
-					fourmi.getCalculDeplacement().deplacementChasse();
+			if (proieEventuel == null) {
+				fourmi.getCalculDeplacement().deplacementChasse();
+			} else {
+				this.proie = proieEventuel;
+				if (proieEventuel.VerifierVie()) {
+					this.combat = true;
 				} else {
-					this.proie = proieEventuel;
-					if (proieEventuel.VerifierVie()) {
-						this.combat = true;
-					} else {
-						fourmi.getEtat().setStockage(proieEventuel.getPoid());
-						this.rameneBouffe = true;
-						this.combat = false;
-					}
+					fourmi.getEtat().setStockage(proieEventuel.getPoid());
+					this.rameneBouffe = true;
+					this.combat = false;
 				}
 			}
 		}
