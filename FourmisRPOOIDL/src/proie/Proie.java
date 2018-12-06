@@ -60,6 +60,10 @@ public class Proie {
 		return this.point;
 	}
 
+	public double getPoid() {
+		return this.Poid;
+	}
+
 	public int getTempHarcelement() {
 		return this.tempHarcelement;
 	}

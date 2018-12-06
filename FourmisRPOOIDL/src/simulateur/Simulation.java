@@ -36,7 +36,7 @@ public class Simulation extends Ovale {
 			jc.setBackground(new Color(100, 125, 0));
 			jc.setPreferredSize(new Dimension(500, 500));
 
-			Fourmilliere Colonie = new Fourmilliere();
+			Fourmilliere Colonie = new Fourmilliere(jc);
 
 			for (int i = 1; i < 500; i++) {
 				Fourmi test = new Fourmi(Colonie);

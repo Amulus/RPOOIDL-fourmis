@@ -186,8 +186,10 @@ public class CalculDeplacement {
 	public int GenererDeplacementAleatoire() {
 		return (int) Math.floor(Math.random() * 4);
 	}
-
-	public boolean testPositionProie(List<Proie> proies, Fourmi fourmi) {
+	public boolean estSurFourmilliere(){
+		return this.monde.EstSurFourmillilere(this.Coordonnee);
+	}
+	public Proie testPositionProie(List<Proie> proies, Fourmi fourmi) {
 		for(Proie proie : proies)
 			if(this.getXPoint() == proie.getPoint().x && this.getYPoint() == proie.getPoint().y && !proie.TropGros() && proie.estEnVie()){
 				if(this.getPhéromoneChasse(-1)==100){
@@ -200,10 +202,10 @@ public class CalculDeplacement {
 					proie.ajouterFourmie(fourmi);
 					if(!proie.estEnVie())
 						this.clearPhéromoneChasse();
-					return true;
+					return proie;
 				}
 			}
-		return false;
+		return null;
 	}
 
 	private void clearPhéromoneChasse() {
@@ -226,7 +228,7 @@ public class CalculDeplacement {
 		deplacements.add(this.getPhéromoneChasse(3));
 		DeplacementP(deplacements);
 	}
-	private void chercherPheromoneRetourDeplacement() {
+	public void deplacementRetour() {
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneRetour(0));
 		deplacements.add(this.getPhéromoneRetour(1));

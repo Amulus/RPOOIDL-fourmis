@@ -18,7 +18,7 @@ public class EvolutionTest {
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	/*
 	@Test
 	public void testEvolution() {
 		fourmilliere = new Fourmilliere();
@@ -32,7 +32,7 @@ public class EvolutionTest {
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
 		fourmi.getEtat().evoluer();
 		assertTrue(fourmi.getEtat().getClass() == Adulte.class);
-
+*/
 		/*int identifiantDepart = 2;
 		Oeuf oeuf = new Oeuf(fourmilliere.getNid());
 		assertTrue(oeuf.getIdentifiant()==identifiantDepart);
@@ -56,9 +56,9 @@ public class EvolutionTest {
 		assertTrue(fourmilliere.getNymphes().get(identifiantDepart)==null);
 		Adulte fourmi = fourmilliere.getFourmis().get(identifiantDepart);
 		assertTrue(fourmi != null);
-		assertTrue(fourmi.getIdentifiant()==identifiantDepart);*/
-	}
-
+		assertTrue(fourmi.getIdentifiant()==identifiantDepart);
+	}*/
+	/*
 	@Test
 	public void testEvolution2() {
 		fourmilliere = new Fourmilliere();
@@ -77,8 +77,7 @@ public class EvolutionTest {
 		assertTrue(fourmi2.getEtat().getStep()==0);
 		assertTrue(fourmi2.getEtat().getClass() == Larve.class);
 		
-	}
-
+	}*/
 	@Test
 	public void testGetEtat() {
 		List<String> test = new ArrayList<String>();
@@ -93,5 +92,4 @@ public class EvolutionTest {
 	public void testGetIdentifiant() {
 		fail("Not yet implemented");
 	}
-
 }

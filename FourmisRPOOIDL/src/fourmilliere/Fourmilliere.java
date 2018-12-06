@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import coucheGraphique.Monde;
 import etat.Adulte;
 import etat.Nymphe;
 import outils.LireParametres;
@@ -14,11 +15,12 @@ public class Fourmilliere {
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
 	private Depot Depot;
+	private Monde monde =null;
 	private Reserve Reserve;
 	
 	private LireParametres lectureFichier = new LireParametres();
 
-	public Fourmilliere() {
+	public Fourmilliere(Monde monde) {
 		this.fourmis = new ArrayList<Fourmi>();
 		this.Depot = new Depot(this);
 		this.Reserve = new Reserve(this);
@@ -29,7 +31,7 @@ public class Fourmilliere {
 		Fourmi premiereNymphe = new Fourmi(this);
 		Nymphe nymphe = new Nymphe(premiereNymphe);
 		premiereNymphe.changerEtat(nymphe);
-		
+		this.monde= monde;
 		this.ajoutFourmi(fourmiReine);
 		this.ajoutFourmi(premiereNymphe);
 		
@@ -121,6 +123,10 @@ public class Fourmilliere {
 		// TODO Auto-generated method stub
 		this.fourmis.remove(fourmi);
 		
+	}
+
+	public Monde getMonde() {	
+		return this.monde;
 	}
 
 }

@@ -39,7 +39,7 @@ public class Monde extends JPanel {
 	public List<Fourmi> getFourmies() {
 		return fourmies;
 	}
-	public List<Proie>  getProies() {
+	public List<Proie> getProies() {
 		return proies;
 	}
 	
