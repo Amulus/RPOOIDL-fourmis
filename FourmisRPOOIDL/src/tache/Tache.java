@@ -1,8 +1,5 @@
 package tache;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import fourmilliere.Fourmi;
 
 public abstract class Tache {
