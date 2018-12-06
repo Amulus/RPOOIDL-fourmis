@@ -15,7 +15,8 @@ public class Chasser extends Tache {
 	Proie proie;
 	int dureeCombat;
 
-	public Chasser(List<Proie> proies) {
+	public Chasser(Tache tache, List<Proie> proies) {
+		super(tache);
 		this.proies = proies;
 	}
 

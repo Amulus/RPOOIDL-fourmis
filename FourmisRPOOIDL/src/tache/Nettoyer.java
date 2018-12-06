@@ -11,7 +11,8 @@ public class Nettoyer extends Tache {
 	private int NombreDeMorts=0;
 	private boolean occupe;
 	private Fourmi fourmiMorte;
-	public Nettoyer(){
+	public Nettoyer(Tache tache){
+		super(tache);
 		LireParametres lecturefichier = new LireParametres();
 		this.NombreDeMorts= (int) lecturefichier.ChercherParametre("NombreCadavreMaxNettoyer");
 	}

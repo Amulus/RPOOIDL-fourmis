@@ -1,6 +1,7 @@
 package role;
 
 import fourmilliere.Fourmi;
+import tache.Tache;
 
 public class FourmiSexue extends Role {
 
@@ -9,7 +10,7 @@ public class FourmiSexue extends Role {
 	}
 
 	@Override
-	public void nouvelleTache() {
+	public void nouvelleTache(Tache tachePrecedente) {
 		// TODO Auto-generated method stub
 		
 	}
