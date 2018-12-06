@@ -50,6 +50,10 @@ public abstract class Etat {
 		return this.poid;
 	}
 	
+	public double getStockage() {
+		return this.stockage;
+	}
+	
 	public boolean estDehors() {
 		return this.estDehors;
 		

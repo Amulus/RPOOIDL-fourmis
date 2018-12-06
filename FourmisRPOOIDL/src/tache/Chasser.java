@@ -39,7 +39,7 @@ public class Chasser extends Tache {
 				
 				else if(this.rameneBouffe) {
 					fourmi.getCalculDeplacement().deplacementRetour();
-					if(fourmi.getCalculDeplacement().estSurLaFourmilliere()) {
+					if(fourmi.getCalculDeplacement().estSurFourmilliere()) {
 						((Adulte) fourmi.getEtat()).rentrer();
 						double nourriture = fourmi.getEtat().getStockage();
 						fourmi.getFourmilliere().getReserve().AjouterNourriture(nourriture);
