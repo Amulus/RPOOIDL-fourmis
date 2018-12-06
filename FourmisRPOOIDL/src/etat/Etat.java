@@ -7,6 +7,7 @@ public abstract class Etat {
 	
 	protected double poid = 0.0;
 	protected double nouritureMangée = 0.0;
+	protected double stockage = 0.0;
 	protected int tempsDehors = 0;
 	protected int tempsDehorsMax = 0;
 	Role role;
@@ -63,6 +64,11 @@ public abstract class Etat {
 	public void ajoutTempPasseDehors() {
 		this.tempsDehors = this.tempsDehors+1;
 	}
+	
+	public void setStockage(double value) {
+		this.stockage = value;
+	}
+	
 	public abstract void evoluer();
 	public abstract void step();
 	public abstract void manger();

@@ -187,12 +187,8 @@ public class CalculDeplacement {
 		return (int) Math.floor(Math.random() * 4);
 	}
 
-	public void deplacementChasse(List<Proie> proies, Fourmi fourmi) {
-		if(!testPositionProie(proies,fourmi))
-			chercherPheromoneChasseDeplacement();
-	}
 	
-	private boolean testPositionProie(List<Proie> proies, Fourmi fourmi) {
+	public boolean testPositionProie(List<Proie> proies, Fourmi fourmi) {
 		for(Proie proie : proies)
 			if(this.getXPoint() == proie.getPoint().x && this.getYPoint() == proie.getPoint().y && !proie.TropGros() && proie.estEnVie()){
 				if(this.getPhéromoneChasse(-1)==100){
@@ -229,7 +225,7 @@ public class CalculDeplacement {
 		chercherPheromoneRetourDeplacement();
 
 	}
-	private void chercherPheromoneChasseDeplacement() {
+	public void deplacementChasse() {
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneChasse(0));
 		deplacements.add(this.getPhéromoneChasse(1));

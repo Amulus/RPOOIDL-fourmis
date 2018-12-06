@@ -1,15 +1,24 @@
 package tache;
 
+import java.util.List;
+
 import etat.Adulte;
 import fourmilliere.Fourmi;
 import fourmilliere.Reserve;
 import proie.Proie;
 
 public class Chasser extends Tache {
+	
+	List<Proie> proies = null;
 	boolean rameneBouffe;
 	boolean combat;
 	Proie proie;
 	int dureeCombat;
+	
+	Chasser(List<Proie> proies){
+		this.proies = proies;
+	}
+	
 	@Override
 	public void step(Fourmi fourmi) {
 		// TODO Auto-generated method stub
@@ -17,40 +26,46 @@ public class Chasser extends Tache {
 		if(!etat.estDehors()) {
 			etat.sortir();
 		}
-		else {
-			if(this.rameneBouffe) {
-				if(fourmi.getEtat().estDehors() == false) {
-					Reserve reserve = fourmi.getFourmilliere().getReserve();
-					reserve.AjouterNourriture(5);
-					this.termine = true;
-				}
-				else {
-					fourmi.getCalculDeplacement().deplacementRetour();
-				}
+		
+			else {
+
 				
-			}
-			else if(this.combat) {
-				if(this.dureeCombat >= 180) {
-					this.combat = false;
-					this.proie = null;
-					fourmi.getCalculDeplacement().deplacementAleatoire();
-				}
-				else {
-					if(!true) {//si la proie nbFourmie < nbFourmieRequis
+				if(this.combat) {
+					if(!this.proie.estEnVie()) {
+						this.proie = null;
 						this.combat = false;
-						this.rameneBouffe = true;
 					}
 				}
-			}
-			else {
-				fourmi.getCalculDeplacement().deplacementAleatoire();
-			//	if(fourmi.getCalculDeplacement().detecterProie) {
-					this.combat = true;
-					//lancer pheromone
-		//		}
-			//	else {
-					fourmi.getCalculDeplacement().deplacementAleatoire();
-			//	}
+				
+				else if(this.rameneBouffe) {
+					fourmi.getCalculDeplacement().deplacementRetour();
+					if(fourmi.getCalculDeplacement().estSurLaFourmilliere()) {
+						((Adulte) fourmi.getEtat()).rentrer();
+						double nourriture = fourmi.getEtat().getStockage();
+						fourmi.getFourmilliere().getReserve().AjouterNourriture(nourriture);
+						fourmi.getEtat().setStockage(0.0);
+						this.termine = true;
+					}
+				}
+				
+				else {
+					Proie proieEventuel = fourmi.getCalculDeplacement().testPositionProie(this.proies, fourmi);
+					
+					if(proieEventuel == null) {
+						fourmi.getCalculDeplacement().deplacementChasse();
+					}
+					else {
+						this.proie = proieEventuel;
+						if(proieEventuel.VerifierVie()){
+							this.combat = true;
+						}
+						else {
+							fourmi.getEtat().setStockage(proieEventuel.getPoid());
+							this.rameneBouffe = true;
+							this.combat = false;
+						}
+					}
+				}
 			}
 		}
 	}
