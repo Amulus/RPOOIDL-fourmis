@@ -11,13 +11,14 @@ dureeEvolutionLarves=10
 dureeEvolutionNymphes=7
 NombreCadavreMaxNettoyer=2
 PoidProieMinimum=20
-PoidProieMaximum=150
+PoidProieMaximum=1300
 dureeDeVieReineMin=48
 dureeDeVieReineMax=120
 dureeDeVieFourmiMin=18
 dureeDeVieFourmiMax=30
 TailleFourmie=4
-TailleProie=10
+TailleProie=8
 TailleMondeMin=0
 TailleMondeMax=500
-.
+TempHarcelement=3
+PoidMaxFourmiesAttaque=900.0

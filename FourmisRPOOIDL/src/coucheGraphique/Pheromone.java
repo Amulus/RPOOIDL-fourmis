@@ -21,4 +21,13 @@ public class Pheromone {
 	public int avoirPheromoneRetour(){
 		return this.ForceRetour;
 	}
+
+	public void ajouterPheromoneRetourFourmiliere() {
+		this.ForceRetour=Integer.MAX_VALUE;
+		
+	}
+
+	public void clear() {
+		this.ForceChasse=0;
+	}
 }

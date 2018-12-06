@@ -20,6 +20,7 @@ public class LireParametres {
 			while (this.scanner.hasNextLine()) {
 				String LigneDufichier = this.scanner.nextLine();
 				if (LigneDufichier.contains(NomParametre)) {
+					scanner.close();
 					String StringValeurParametre = LigneDufichier.substring(LigneDufichier.indexOf("=") + 1);
 					if (StringValeurParametre.contains("."))
 						return Double.parseDouble(StringValeurParametre);

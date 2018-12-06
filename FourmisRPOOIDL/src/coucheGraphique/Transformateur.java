@@ -7,12 +7,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import fourmilliere.Fourmi;
+import proie.Proie;
 
 public abstract class Transformateur {
 	protected Monde world;
 	protected Rectangle bounds;
 	protected Color color;
-	protected List<Transformateur> submorphs = new ArrayList<Transformateur>();
+	protected List<Transformateur> dessins = new ArrayList<Transformateur>();
 	protected int deplacement=0;
 	protected Object object=null;
 	
@@ -35,7 +36,7 @@ public abstract class Transformateur {
 	}
 
 	public void draw(Graphics g) {
-		Iterator<Transformateur> itor = submorphs.iterator();
+		Iterator<Transformateur> itor = dessins.iterator();
 		while (itor.hasNext()) {
 			Transformateur m = itor.next();
 			m.draw(g);
@@ -47,15 +48,19 @@ public abstract class Transformateur {
 	}
 
 	public void addSubmorph(Transformateur m) {
-		if (submorphs.contains(m))
+		if (dessins.contains(m))
 			return;
-		submorphs.add(m);
+		dessins.add(m);
 	}
 
 	public Point getPosition() {
 		if(object==null)
 			return new Point(250,250);
-		return ((Fourmi)object).getCalculDeplacement().getPoint();
+		if(object.getClass() == Fourmi.class)
+			return ((Fourmi) object).getCalculDeplacement().getPoint();
+		if(object.getClass() == Proie.class)
+			return ((Proie) object).getPoint();
+		return new Point(250,250);
 	}
 
 	public void setPosition(Point p) {

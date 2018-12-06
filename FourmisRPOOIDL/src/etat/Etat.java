@@ -45,14 +45,23 @@ public abstract class Etat {
 	public boolean getFaim() {
 		return this.aFaim;
 	}
+	public double getPoid(){
+		return this.poid;
+	}
 	
 	public boolean estDehors() {
 		return this.estDehors;
 		
 	}
-	
+	public int tempsDehorsMax(){
+		return this.tempsDehorsMax;
+	}
 	public int tempsPasseDehors() {
 		return this.tempsDehors;
+	}
+
+	public void ajoutTempPasseDehors() {
+		this.tempsDehors = this.tempsDehors+1;
 	}
 	public abstract void evoluer();
 	public abstract void step();

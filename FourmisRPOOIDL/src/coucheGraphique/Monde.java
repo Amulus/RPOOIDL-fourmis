@@ -15,12 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import fourmilliere.Fourmi;
+import etat.Adulte;
 import fourmilliere.Fourmilliere;
 import proie.Proie;
 
 
 public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private static Pheromone INF =null;
 	private List<Fourmi> fourmies = new ArrayList<Fourmi>();
 	private List<Proie> proies = new ArrayList<Proie>();
 	private List<Transformateur> dessins = new LinkedList<Transformateur>();
@@ -29,6 +31,8 @@ public class Monde extends JPanel {
 	
 	public Monde(String name) {
 		this.name = name;
+		Monde.INF= new Pheromone();
+		INF.ajouterPheromoneRetourFourmiliere();
 	}
 	
 	public List<Fourmi> getFourmies() {
@@ -38,7 +42,7 @@ public class Monde extends JPanel {
 		return proies;
 	}
 	
-	public void open() {
+	public void open(Point CoordonneeFourmilliere) {
 		JFrame frame = new JFrame(name);
 		frame.setResizable(false);
 		WindowAdapter wa = new WindowAdapter() {
@@ -50,15 +54,17 @@ public class Monde extends JPanel {
 		frame.getContentPane().add(this);
 		frame.pack();
 		frame.setVisible(true);
-		initialiserTableau();
+		initialiserTableau(CoordonneeFourmilliere);
 		requestFocus();
 		
 	}
-	private void initialiserTableau(){
+	private void initialiserTableau(Point CoordonneeFourmilliere){
 		this.setTableauFeromones(new Pheromone[this.getWidth()][this.getHeight()]);
 		for(int i=0;i<this.getWidth();i++)
 			for(int j=0;j<this.getHeight();j++)
 				getTableauFeromones()[i][j]=new Pheromone();
+
+		TableauPheromones[CoordonneeFourmilliere.x][CoordonneeFourmilliere.y]=INF;
 	}
      public void add(Fourmi fourmie) {
     	 fourmies.add(fourmie);
@@ -70,6 +76,7 @@ public class Monde extends JPanel {
      public void remove(Fourmi fourmie) {
     	boolean trouve = find(fourmie);
     	if(trouve){
+    		((Adulte) fourmies.get(fourmies.indexOf(fourmie)).getEtat()).mourir();
     		fourmies.remove(fourmie);
     	}
      }
@@ -81,17 +88,15 @@ public class Monde extends JPanel {
      }
 
      public void remove(Proie proie) {
-    	Rect carre = find(proie);
-    	if(carre !=null){
-    		carre.setWorld(null);
+    	boolean trouve = find(proie);
+    	if(trouve)
     		proies.remove(proie);
-    	}
      }
 
-    private boolean find(Fourmi fourmie) {
+    private boolean find(Object object) {
     	for (int i=1; i < dessins.size();i++){
     		if(dessins.get(i).getClass() != Rect.class) return false;
-    		if(((Rect)dessins.get(i)).object.equals(fourmie)){
+    		if(((Rect)dessins.get(i)).object.equals(object)){
     			Rect carre =  ((Rect)dessins.get(i));
         		carre.setWorld(null);
         		dessins.remove(i);
@@ -100,13 +105,7 @@ public class Monde extends JPanel {
     	}
 		return false;
 	}
-    private Rect find(Proie proie) {
-    	for (int i=1; i < dessins.size();i++)
-    		if(((Rect)dessins.get(i)).object.equals(proie))
-    			return ((Rect)dessins.get(i));
-		return null;
-	}
-
+   
 	public void paint(Graphics g) {
         super.paint(g);
         for (Iterator<Transformateur> iter = dessins.iterator(); iter.hasNext();) {
@@ -140,13 +139,11 @@ public class Monde extends JPanel {
 		for (int i =0; i<dessins.size();i++ ) {
 			dessins.get(i).Update();
 		}
-		Transformateur test = dessins.get(0);
-		dessins.set(0, dessins.get(dessins.size()-1));
-		dessins.set(dessins.size()-1,test);
+		
 	}
 
-	public void add(Fourmilliere colonie) {
-		Ovale fourmilliere = new Ovale(new Color(150, 50, 0), new Point(250, 250), new Dimension(10, 10), true);
+	public void add(Fourmilliere colonie,Point position) {
+		Ovale fourmilliere = new Ovale(new Color(150, 50, 0), new Point(240,240), new Dimension(10, 10), true);
 		dessins.add(fourmilliere);
 		fourmilliere.setWorld(this);
 	}
@@ -163,6 +160,11 @@ public class Monde extends JPanel {
 				System.out.print("| "+TableauPheromones[i][j].avoirPheromoneRetour());
 			System.out.println("");
 		}
+	}
+
+	public void clearPheromoneChasse(int xPoint, int yPoint) {
+		TableauPheromones[xPoint][yPoint].clear();
+		
 	}
 
 

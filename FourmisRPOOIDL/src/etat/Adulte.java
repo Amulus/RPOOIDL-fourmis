@@ -98,6 +98,15 @@ public class Adulte extends Etat {
 	public double getPoid() {
 		return this.poid;
 	}
+	public void mourir(){
+		this.EstEnVie=false;
+	}
+
+	public void vie() {
+		this.EstEnVie=true;
+		this.tempsDehors=0;
+		
+	}
 	/*
 	public void jourSuivant() {
 		if(this.VerifierAlimentation()) 
@@ -157,5 +166,6 @@ public class Adulte extends Etat {
 			this.aFaim = false;
 		}
 	}
+
 
 }
