@@ -14,9 +14,18 @@ public class FourmiOuvriere extends Role {
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
 		if(this.fourmi.getEtat().getFaim()) {
+			this.tache = new Manger(tachePrecedente);
 		}
 		else {
-			
+			if(tachePrecedente.getType() == Tache.MANGER) {
+				this.tache = new Nettoyer(tachePrecedente);
+			}
+			else if(tachePrecedente.getType() == Tache.NETTOYER) {
+				this.tache = new Chasser(tachePrecedente,this.fourmi.getFourmilliere().getMonde().getProies());
+			}
+			else if(tachePrecedente.getType() == Tache.CHASSER) {
+				this.tache = new Nettoyer(tachePrecedente);
+			}
 		}
 		
 	}
