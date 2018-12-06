@@ -9,25 +9,13 @@ public class FourmiOuvriere extends Role {
 		super(fourmi);
 	}
 
-	public void nourrirLarve() {
-		this.tache = new NourirLarves();
-	}
-	
-	public void chasser() {
-		this.tache = new Chasser(fourmi.getFourmilliere().getMonde().getProies());
-	}
-	
-	public void nettoyer() {
-		this.tache = new Nettoyer();
-	}
 
 	@Override
-	public void nouvelleTache() {
+	public void nouvelleTache(Tache tachePrecedente) {
 		if(this.fourmi.getEtat().getFaim()) {
-			this.seNourir();
 		}
 		else {
-			this.chasser();
+			
 		}
 		
 	}

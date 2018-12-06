@@ -8,20 +8,17 @@ public abstract class Role {
 	Tache tache;
 	public Role(Fourmi fourmi){
 		this.fourmi=fourmi;
-		nouvelleTache();
+		nouvelleTache(null);
 	}
-	abstract public void nouvelleTache();
+	abstract public void nouvelleTache(Tache tache);
 	
 	public void step() {
 		if(tache.estTermine()) {
-			this.nouvelleTache();
+			this.nouvelleTache(this.getTache().getTachePrecedente());
 		}
 		tache.step(this.fourmi);
 	}
 	
-	public void seNourir() {
-		this.tache = new Manger();
-	}
 	public Tache getTache() {
 		return this.tache;
 	}

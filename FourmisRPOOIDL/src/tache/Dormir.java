@@ -5,6 +5,12 @@ import fourmilliere.Fourmi;
 
 public class Dormir extends Tache {
 	
+	public Dormir(Tache tachePrecedente) {
+		super(tachePrecedente);
+		this.typeTache=2;
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void step(Fourmi fourmi) {
 		if(fourmi.getEtat().getFaim()) {
@@ -14,8 +20,8 @@ public class Dormir extends Tache {
 		if(this.NbStep%9312==0 && this.NbStep>1) {
 			this.termine = true;
 			this.addStep();
-			if(fourmi.getEtat().getClass() == Adulte.class)
-				((Adulte) fourmi.getEtat()).getRole().nouvelleTache();
+			/*if(fourmi.getEtat().getClass() == Adulte.class)
+				((Adulte) fourmi.getEtat()).getRole().nouvelleTache();*/
 		}else{
 			this.addStep();
 		}

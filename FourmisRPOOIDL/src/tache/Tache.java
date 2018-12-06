@@ -1,12 +1,22 @@
 package tache;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fourmilliere.Fourmi;
 
 public abstract class Tache {
+	int typeTache;
+	Tache tachePrecedente;
 	protected int NbStep = 0;
 	protected boolean termine = false;
 	
+	
 	public abstract void step(Fourmi fourmis);
+	
+	Tache(Tache tachePrecedente){
+		this.tachePrecedente = tachePrecedente;
+	}
 	
 	public boolean estTermine() {
 		return this.termine;
@@ -18,5 +28,14 @@ public abstract class Tache {
 
 	public void addStep() {
 		NbStep = NbStep+1;
+	}
+	
+	public Tache getTachePrecedente() {
+		return tachePrecedente;
+		
+	}
+	
+	public int getType() {
+		return this.typeTache;
 	}
 }

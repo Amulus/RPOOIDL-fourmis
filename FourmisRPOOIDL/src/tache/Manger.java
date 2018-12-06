@@ -8,8 +8,9 @@ import role.*;
 
 public class Manger extends Tache {
 
-	public Manger(){
-		
+	public Manger(Tache tache){
+		super(tache);
+		this.typeTache = 1;
 	}
 	
 	@Override

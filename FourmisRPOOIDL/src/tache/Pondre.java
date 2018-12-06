@@ -4,6 +4,12 @@ import fourmilliere.Fourmi;
 import etat.Adulte;
 
 public class Pondre extends Tache {
+	
+	public Pondre(Tache tachePrecedente) {
+		super(tachePrecedente);
+		this.typeTache = 0;
+		// TODO Auto-generated constructor stub
+	}
 	private int oeufPondu = 0;
 	@Override
 	public void step(Fourmi fourmi) {
@@ -17,7 +23,6 @@ public class Pondre extends Tache {
 			this.termine = true;
 			oeufPondu=0;
 			this.addStep();
-			((Adulte) fourmi.getEtat()).getRole().nouvelleTache();
 		}
 		
 	}
