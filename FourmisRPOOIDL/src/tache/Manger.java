@@ -18,7 +18,10 @@ public class Manger extends Tache {
 		/*Tache nettoyer = new Nettoyer(fourmi.getFourmilliere().getDepot(), fourmi.getFourmilliere());
 		nettoyer.execute(fourmi);*/
 		if(((Adulte) fourmi.getEtat()).estDehors()){
-			//sedéplacerpourrentrer();
+			fourmi.getCalculDeplacement().deplacementRetour();
+			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
+				((Adulte) fourmi.getEtat()).rentrer();
+			}
 		}
 		else {
 			
