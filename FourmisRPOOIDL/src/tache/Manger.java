@@ -10,7 +10,7 @@ public class Manger extends Tache {
 
 	public Manger(Tache tache){
 		super(tache);
-		this.typeTache = 1;
+		this.typeTache = Tache.MANGER;
 	}
 	
 	@Override
