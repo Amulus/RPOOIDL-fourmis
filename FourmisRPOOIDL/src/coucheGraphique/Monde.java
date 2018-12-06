@@ -23,6 +23,7 @@ import proie.Proie;
 public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static Pheromone INF =null;
+	private Point Pointcolonie = null;
 	private List<Fourmi> fourmies = new ArrayList<Fourmi>();
 	private List<Proie> proies = new ArrayList<Proie>();
 	private List<Transformateur> dessins = new LinkedList<Transformateur>();
@@ -141,9 +142,13 @@ public class Monde extends JPanel {
 		}
 		
 	}
+	public boolean EstSurFourmillilere(Point Coordonneefourmie){
+		return (this.Pointcolonie.x == Coordonneefourmie.x && this.Pointcolonie.y == Coordonneefourmie.y);
+	}
 
 	public void add(Fourmilliere colonie,Point position) {
-		Ovale fourmilliere = new Ovale(new Color(150, 50, 0), new Point(240,240), new Dimension(10, 10), true);
+		this.Pointcolonie = position;
+		Ovale fourmilliere = new Ovale(new Color(150, 50, 0), position, new Dimension(10, 10), true);
 		dessins.add(fourmilliere);
 		fourmilliere.setWorld(this);
 	}

@@ -70,8 +70,8 @@ public class Simulation extends Ovale {
 				checkProie(jc);
 				
 				for (int i = 0; i < jc.getFourmies().size(); i++)
-					jc.getFourmies().get(i).getCalculDeplacement().deplacementChasse(jc.getProies(),
-							jc.getFourmies().get(i));
+					if(jc.getFourmies().get(i).getCalculDeplacement().testPositionProie(proies, jc.getFourmies().get(i)) == null)
+						jc.getFourmies().get(i).getCalculDeplacement().deplacementChasse();
 
 				try {
 					if (jc != null) {
@@ -84,13 +84,6 @@ public class Simulation extends Ovale {
 					e1.printStackTrace();
 				}
 			}
-		}
-
-		private boolean checkCoordonnees(Fourmi fourmi, Point CoordonneesFourilliere) {
-			Point positionFourmi = fourmi.getCalculDeplacement().getPoint();
-			if (positionFourmi.x == CoordonneesFourilliere.x && positionFourmi.y == CoordonneesFourilliere.y)
-				return false;
-			return true;
 		}
 
 		private void checkProie(Monde jc) {
