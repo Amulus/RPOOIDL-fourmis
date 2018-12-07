@@ -9,15 +9,15 @@ import java.util.List;
 import fourmilliere.Fourmi;
 import proie.Proie;
 
-public abstract class Transformateur {
-	protected Monde world;
+public abstract class Dessin {
+	protected Monde monde;
 	protected Rectangle bounds;
 	protected Color color;
-	protected List<Transformateur> dessins = new ArrayList<Transformateur>();
+	protected List<Dessin> dessins = new ArrayList<Dessin>();
 	protected int deplacement=0;
 	protected Object object=null;
 	
-	public Transformateur(Color color, Point pos, Dimension dim, Object object) {
+	public Dessin(Color color, Point pos, Dimension dim, Object object) {
 		this.color = color;
 		this.bounds = new Rectangle(dim);
 		setPosition(pos);
@@ -26,19 +26,19 @@ public abstract class Transformateur {
 	}
 
 	public void setWorld(Monde w) {
-		world = w;
+		monde = w;
 	}
 
 	public void setColor(Color c) {
 		color = c;
-		if (world != null)
-			world.repaint();
+		if (monde != null)
+			monde.repaint();
 	}
 
 	public void draw(Graphics g) {
-		Iterator<Transformateur> itor = dessins.iterator();
+		Iterator<Dessin> itor = dessins.iterator();
 		while (itor.hasNext()) {
-			Transformateur m = itor.next();
+			Dessin m = itor.next();
 			m.draw(g);
 		}
 	}
@@ -47,7 +47,7 @@ public abstract class Transformateur {
 		return (Rectangle) bounds.clone();
 	}
 
-	public void addSubmorph(Transformateur m) {
+	public void addSubmorph(Dessin m) {
 		if (dessins.contains(m))
 			return;
 		dessins.add(m);

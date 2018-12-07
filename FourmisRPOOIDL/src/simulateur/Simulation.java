@@ -39,6 +39,7 @@ public class Simulation extends Ovale {
 
 			Fourmilliere Colonie = new Fourmilliere(monde);
 
+			//Cree 100 fourmies pour le besoin de la simulation
 			for (int i = 1; i < 300; i++) {
 				Fourmi test = new Fourmi(Colonie);
 				test.changerEtat(new Adulte(test));
@@ -48,31 +49,42 @@ public class Simulation extends Ovale {
 			}
 
 			Point CoordonneesFourilliere = new Point(250, 250);
+			//Ajout de la colonie au monde
 			monde.add(Colonie, CoordonneesFourilliere);
 
 			monde.demarrer(CoordonneesFourilliere);
 
+			//Cree 10 proies et les ajoute au monde
 			for (int i = 1; i < 10; i++) {
 				Proie proie = new Proie();
 				proies.add(proie);
 				monde.add(proie);
 			}
+			
 			Thread Simulation = new Thread();
 			Simulation.start();
 			int CompteurJours = 0;
-
+			
+			//Permet de parcourir l'ensemble des fourmies du monde sans avoir d'execption de modification de taille de tableau.
 			ArrayList<Fourmi> fourmisEtapeAvant = new ArrayList<Fourmi>();
 			while (true) {
 
 				for(int i =0; i<Colonie.getFourmis().size();i++)
 					fourmisEtapeAvant.add(Colonie.getFourmis().get(i));
+				
+				//Ajoute ou supprime les proies et les fourmies au monde
 				checkFourmi(Colonie, monde,fourmisEtapeAvant);
 				checkProie(monde, CompteurJours);
+			
 				Colonie.step();
+				
+				//Permet d'ajouter du temp au proies agressées
 				if (CompteurJours == 388)
 					CompteurJours = 0;
 				CompteurJours++;
+				
 				try {
+					//Repaint le monde
 					if (monde != null) {
 						monde.uptade();
 						monde.repaint();
