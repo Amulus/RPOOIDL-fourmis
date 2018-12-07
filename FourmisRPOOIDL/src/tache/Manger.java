@@ -3,8 +3,6 @@ package tache;
 
 import etat.Adulte;
 import fourmilliere.Fourmi;
-import fourmilliere.Reserve;
-import role.*;
 
 public class Manger extends Tache {
 
