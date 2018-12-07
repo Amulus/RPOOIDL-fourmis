@@ -10,13 +10,15 @@ import proie.Proie;
 
 public class CalculDeplacement {
 
+	//Variables de gestion de deplacement
 	private Point Coordonnee = null;
 	private Dimension taille = null;
 	private Monde monde = null;
 	private int deplacement = -1;
 	private int deplacementAcienDeplacement = -1;
 	private ArrayList<Point> AnciensPoints = new ArrayList<Point>();
-
+	
+	//Initialise les objets qui vont s'afficher sur la fenetre
 	public CalculDeplacement(Point Coordonnee, Dimension taille, Monde monde) {
 		this.Coordonnee = Coordonnee;
 		this.taille = taille;
@@ -56,6 +58,7 @@ public class CalculDeplacement {
 		return this.taille;
 	}
 	
+	//Permet de se deplacer
 	public void moveRight(int gap) {
 		setXPoint(getXPoint() + gap);
 	}
@@ -71,6 +74,8 @@ public class CalculDeplacement {
 	public void moveUp(int gap) {
 		setYPoint(getYPoint() - gap);
 	}
+	
+	//Verifie si l'objet ne sort pas de la fenetre
 	private void VerifierMur() {
 		switch (this.deplacement) {
 		case 0:
@@ -93,7 +98,7 @@ public class CalculDeplacement {
 			break;
 		}
 	}
-	
+
 	private void deplacer() {
 		VerifierMur();
 		if (this.deplacement != -1) {
@@ -138,6 +143,7 @@ public class CalculDeplacement {
 		return 0;
 	}
 	
+	//Pose des pheromones de chasse sur sa postion et celles au alentours
 	private void PoserPheromoneChasse() {
 		if (this.deplacement != -1) {
 			if (getXPoint() + 1 < monde.getHeight())
@@ -151,7 +157,8 @@ public class CalculDeplacement {
 			this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint(), 1);
 		}
 	}
-	
+
+	//Pose un pheromone de retrour sur sa derniere postion
 	private void PoserPheromoneRetour() {
 		switch (deplacementAcienDeplacement) {
 		case 0:
@@ -190,6 +197,8 @@ public class CalculDeplacement {
 	public boolean estSurFourmilliere(){
 		return this.monde.EstSurFourmillilere(this.Coordonnee);
 	}
+	
+	//verifie si la fourmie est sur une proie
 	public Proie testPositionProie(List<Proie> proies, Fourmi fourmi) {
 		for(Proie proie : proies)
 			if(this.getXPoint() == proie.getPoint().x && this.getYPoint() == proie.getPoint().y && !proie.TropGros() && proie.estEnVie()){
@@ -233,6 +242,12 @@ public class CalculDeplacement {
 		DeplacementP(deplacements,false);
 	}
 
+	//Fonction de calcul de deplacement
+	//recupere une liste de pheromones, et determine le pheromone le plus fort
+	//si le max est 0 alors se deplacer aleatoirement
+	//sinon si la fourmie c'est deja deplacé sur la postion indiqué par le pheromone le plus fort
+	//	alors rappeler deplacement sans le pheromone max
+	//sinon se deplacer, ajouter notre deplacement aux cases de deplacements precedents et ajouter derrier soit un pheromone de retour si on chasse
 	private void DeplacementP(ArrayList<Integer> deplacements,boolean Chasser) {
 		int MaxPheromone = 0, AncienMax = 0;
 		for (int i = 0; i < deplacements.size() - 1; i++) {
@@ -261,7 +276,8 @@ public class CalculDeplacement {
 		}
 
 	}
-
+	
+	//Determine si la direction a faire est posible ou non
 	private Point ActionDirection(int direction) {
 		Point Actuel = this.Coordonnee;
 		switch (direction) {

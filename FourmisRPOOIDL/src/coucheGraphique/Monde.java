@@ -25,7 +25,7 @@ public class Monde extends JPanel {
 	private Ovale fourmilliere = null;
 	private List<Fourmi> fourmies = new ArrayList<Fourmi>();
 	private List<Proie> proies = new ArrayList<Proie>();
-	private List<Transformateur> dessins = new LinkedList<Transformateur>();
+	private List<Dessin> dessins = new LinkedList<Dessin>();
 	private Pheromone TableauPheromones[][];
 	String nom = "";
 
@@ -43,6 +43,7 @@ public class Monde extends JPanel {
 		return proies;
 	}
 
+	//demare l'affichage et bloque la fonction de changement de taille de fenetre
 	public void demarrer(Point CoordonneeFourmilliere) {
 		JFrame fenetre = new JFrame(nom);
 		fenetre.setResizable(false);
@@ -137,13 +138,13 @@ public class Monde extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		for (Iterator<Transformateur> iter = dessins.iterator(); iter.hasNext();) {
+		for (Iterator<Dessin> iter = dessins.iterator(); iter.hasNext();) {
 			iter.next().draw(g);
 		}
 	}
 
 	public void clear() {
-		for (Iterator<Transformateur> iter = dessins.iterator(); iter.hasNext();) {
+		for (Iterator<Dessin> iter = dessins.iterator(); iter.hasNext();) {
 			iter.next().setWorld(null);
 		}
 		fourmies.clear();

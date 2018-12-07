@@ -10,7 +10,7 @@ import fourmilliere.Fourmi;
 import proie.Proie;
 
 
-public class Rect extends Transformateur{
+public class Rect extends Dessin{
 
 	public Rect(Color color, Point pos, Dimension dim,Fourmi fourmie) {
 		super(color, pos, dim,fourmie);	
@@ -19,7 +19,7 @@ public class Rect extends Transformateur{
 	public Rect(Color color, Point pos, Dimension dim, Proie proie) {
 		super(color, pos, dim,proie);	
 	}
-
+	//Dessine le rectangle
 	public void draw(Graphics g) {
 		Color c = g.getColor();
 		g.setColor(color);
