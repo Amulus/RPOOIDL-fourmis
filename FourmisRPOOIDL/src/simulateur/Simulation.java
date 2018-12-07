@@ -117,9 +117,9 @@ public class Simulation extends Ovale {
 
 		private void checkFourmi(Fourmilliere Colonie, Monde jc) {
 			for (Fourmi fourmie : Colonie.getFourmis()) {
-				Etat fourmi = fourmie.getEtat();
-				if (fourmi.estAdulte()) {
-					if (fourmi.estDehors() && ((Adulte) fourmi).estEnvie())
+				Etat etatfourmi = fourmie.getEtat();
+				if (etatfourmi.estAdulte()) {
+					if (etatfourmi.estDehors() && ((Adulte) etatfourmi).estEnvie())
 						Ajout(fourmie, jc);
 					else
 						Remove(Colonie, fourmie, jc);
@@ -130,8 +130,6 @@ public class Simulation extends Ovale {
 		private void Remove(Fourmilliere Colonie, Fourmi fourmie, Monde monde) {
 			if (monde.getFourmies().contains(fourmie))
 				monde.remove(fourmie);
-			if (Colonie.getFourmis().contains(fourmie) && !Colonie.getMorts().contains(fourmie))
-				Colonie.getMorts().add(Colonie.getFourmis().get(Colonie.getFourmis().indexOf(fourmie)));
 		}
 
 		private void Ajout(Fourmi fourmie, Monde monde) {

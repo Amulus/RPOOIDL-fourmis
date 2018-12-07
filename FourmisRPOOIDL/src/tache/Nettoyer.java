@@ -1,8 +1,6 @@
 package tache;
 
-import fourmilliere.Depot;
 import fourmilliere.Fourmi;
-import fourmilliere.Fourmilliere;
 import outils.LireParametres;
 
 //Parcourir l'ensemble de larve et fourmi : check décédé et déplacer dans le dépot
@@ -34,8 +32,11 @@ public class Nettoyer extends Tache {
 	
 	public void attraperMort(Fourmi fourmi) {
 		this.occupe = true;
-		this.fourmiMorte = fourmi.getFourmilliere().getMorts().get(0);
-		fourmi.getFourmilliere().getMorts().remove(fourmiMorte);
+		if(fourmi.getFourmilliere().getMorts().size()>1){
+			this.fourmiMorte = fourmi.getFourmilliere().getMorts().get(0);
+			fourmi.getFourmilliere().getMorts().remove(fourmiMorte);
+		}else
+			this.occupe = false;
 	}
 	
 	public void deposerMort(Fourmi fourmi) {
