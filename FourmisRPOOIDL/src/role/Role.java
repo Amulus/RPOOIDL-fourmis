@@ -8,7 +8,6 @@ public abstract class Role {
 	Tache tache;
 	public Role(Fourmi fourmi){
 		this.fourmi=fourmi;
-		nouvelleTache(null);
 	}
 	abstract public void nouvelleTache(Tache tache);
 	
