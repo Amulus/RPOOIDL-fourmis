@@ -14,21 +14,31 @@ public class Chasser extends Tache {
 	boolean combat;
 	Proie proie;
 	int dureeCombat;
+	int dureeTache = 240;
 
 	public Chasser(Tache tache, List<Proie> proies) {
 		super(tache);
 		this.typeTache=Tache.CHASSER;
 		this.proies = proies;
+		this.dureeTache = 240;
 	}
 
 	@Override
 	public void step(Fourmi fourmi) {
 		// TODO Auto-generated method stub
 		Adulte etat = (Adulte) fourmi.getEtat();
+		dureeTache--;
 		if (!etat.estDehors()) {
 			etat.sortir();
 		}
-
+		
+		else if(this.dureeTache <= 0 ){
+			fourmi.getCalculDeplacement().deplacementRetour();
+			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
+				((Adulte) fourmi.getEtat()).rentrer();
+				this.termine = true;
+			}
+		}
 		else {
 
 			if (this.combat) {
