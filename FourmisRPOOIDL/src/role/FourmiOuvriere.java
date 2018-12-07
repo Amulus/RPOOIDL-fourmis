@@ -24,7 +24,7 @@ public class FourmiOuvriere extends Role {
 				this.tache = new Chasser(tachePrecedente,this.fourmi.getFourmilliere().getMonde().getProies());
 			}
 			else if(tachePrecedente.getType() == Tache.CHASSER) {
-				this.tache = new Nettoyer(tachePrecedente);
+				this.tache = new Manger(tachePrecedente);
 			}
 		}
 		
