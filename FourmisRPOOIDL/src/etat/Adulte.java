@@ -88,10 +88,14 @@ public class Adulte extends Etat {
 	public void sortir() {
 		this.estDehors = true;
 		this.tempsDehorsMax = GenererEntierMinMax(10,12);
+		this.fourmi.getFourmilliere().fourmisDedans--;
+		this.fourmi.getFourmilliere().fourmisDehors++;
 	}
 	
 	public void rentrer() {
 		this.estDehors = false;
+		this.fourmi.getFourmilliere().fourmisDedans++;
+		this.fourmi.getFourmilliere().fourmisDehors--;
 	}
 	
 	public double getPoid() {
@@ -110,46 +114,15 @@ public class Adulte extends Etat {
 		this.tempsDehors=0;
 		
 	}
-	/*
-	public void jourSuivant() {
-		if(this.VerifierAlimentation()) 
-			this.mourir();
-	}
 	
-	@Override
-	void heureSuivant() {
-		// TODO Auto-generated method stub
-		if(this.tempsDehors > this.tempsDehorsMax ) {
-			this.mourir();
-		}
-		
-	}
-
-	@Override
-	void minuteSuivant() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	void moisSuivant() {
-		// TODO Auto-generated method stub
-		this.dureeDeVieEnMois--;
-		if(this.dureeDeVieEnMois == 0) {
-			this.mourir();
-		}
-	}
-	 */
 
 	@Override
 	public void evoluer() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void step() {
-		// TODO Auto-generated method stub
 		if(this.estDehors){
 			if(this.role.getTache().getNbStep()%500==0 && this.role.getTache().getNbStep()>1 )
 				this.tempsDehors+=1;
@@ -168,7 +141,6 @@ public class Adulte extends Etat {
 
 	@Override
 	public void manger() {
-		// TODO Auto-generated method stub
 		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
 		if(reserve.PrendreNourriture(this.poid*0.33)) {
 			this.nouritureMangée=this.poid*0.33;

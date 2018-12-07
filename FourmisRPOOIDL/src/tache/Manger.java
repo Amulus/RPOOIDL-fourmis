@@ -10,7 +10,7 @@ public class Manger extends Tache {
 		super(tache);
 		this.typeTache = Tache.MANGER;
 	}
-	
+	//test
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();

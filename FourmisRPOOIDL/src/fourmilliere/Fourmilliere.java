@@ -11,6 +11,8 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
+	public int fourmisDehors = 0;
+	public int fourmisDedans = 0;
 	private int nombreEtapeAvantRepas = 388*23;
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
@@ -40,7 +42,7 @@ public class Fourmilliere {
 	}
 	
 	public void step() {
-		for(int i =0; i<fourmis.size();i++)
+		for(int i=0; i<fourmis.size();i++)
 			fourmisEtapeAvant.add(fourmis.get(i));
 		Iterator<Fourmi> it = this.fourmisEtapeAvant.iterator();
 		while(it.hasNext()) {
