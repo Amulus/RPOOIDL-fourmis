@@ -14,7 +14,7 @@ public abstract class Tache {
 	protected int NbStep = 0;
 	protected boolean termine = false;
 	
-	
+	//Classe qui ajoute une tache a une fourmie
 	public abstract void step(Fourmi fourmis);
 	
 	Tache(Tache tachePrecedente){

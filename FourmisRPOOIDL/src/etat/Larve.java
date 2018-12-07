@@ -25,7 +25,6 @@ public class Larve extends Etat {
 
 	public static double GenererUnPoidDeLarve(int MultiplicateurPoidLarveMin, int MultiplicateurPoidLarveMax,
 			int PoidFourmiMinimum, int PoidFourmiMaximum, double MultiplicateurDecimales) {
-		// Genere un nombre entre 3 et 4, correspond(max-min)+1+min
 		int multiplicateurDePoid = (int) Math
 				.floor(Math.random() * (MultiplicateurPoidLarveMax - MultiplicateurPoidLarveMin) + 1
 						+ MultiplicateurPoidLarveMin);
@@ -35,32 +34,18 @@ public class Larve extends Etat {
 	}
 	
 
-	//@Override
+	@Override
 	public void evoluer() {
 		this.fourmi.changerEtat(new Nymphe(this.fourmi));
 	}
 	
 	public boolean VerifierAlimentation(){
 		return this.Poid>NouritureMangée;
+	}
 
-	}
-	/*
-	public void jourSuivant() {
-		super.jourSuivant();
-		if(this.VerifierAlimentation()) 
-			this.mourir();
-		
-	}
-	public void mourir() {
-		this.EstEnVie = false;
-		this.nid.getFourmilliere().getMorts().putIfAbsent(this.getIdentifiant(), this);
-		this.nid.getFourmilliere().getLarves().remove(this.getIdentifiant());
-	}
-	*/
-
+	//Permet de faire une tache, ici juste attendre que le temp passe et manger si besoin 
 	@Override
 	public void step() {
-		// TODO Auto-generated method stub
 		if(this.dureeAjeun >= 388) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
@@ -76,9 +61,9 @@ public class Larve extends Etat {
 			this.evoluer();
 	}
 
+	//Permet a la larve de manger si le stock le permet
 	@Override
 	public void manger() {
-		// TODO Auto-generated method stub
 		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
 		if(reserve.PrendreNourriture(this.poid)) {
 			this.nouritureMangée=this.poid;

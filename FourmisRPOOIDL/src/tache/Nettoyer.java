@@ -7,12 +7,14 @@ public class Nettoyer extends Tache {
 	private int NombreDeMorts=0;
 	private boolean occupe;
 	private Fourmi fourmiMorte;
+	
 	public Nettoyer(Tache tache){
 		super(tache);
 		this.typeTache = Tache.NETTOYER;
 		LireParametres lecturefichier = new LireParametres();
 		this.NombreDeMorts= (int) lecturefichier.ChercherParametre("NombreCadavreMaxNettoyer");
 	}
+	
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();
@@ -28,6 +30,7 @@ public class Nettoyer extends Tache {
 		}
 	}
 	
+	//Recupere un mort et le place dans l'inventaire
 	public void attraperMort(Fourmi fourmi) {
 		this.occupe = true;
 		if(fourmi.getFourmilliere().getMorts().size()>1){
@@ -36,6 +39,7 @@ public class Nettoyer extends Tache {
 		}
 	}
 	
+	//Depose le mort dans le depot
 	public void deposerMort(Fourmi fourmi) {
 		this.occupe = false;
 		fourmi.getFourmilliere().getDepot().AjouterMort(this.fourmiMorte);

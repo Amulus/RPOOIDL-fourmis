@@ -15,8 +15,6 @@ public class Adulte extends Etat {
 	private Role role = null;
 	protected Boolean EstEnVie;
 	
-	
-	
 	private void initialiser(Fourmi fourmi) {
 		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
@@ -38,7 +36,7 @@ public class Adulte extends Etat {
 				(int) lecturefichier.ChercherParametre("PourcentageChanceReproducteurs"));
 	}
 	
-	
+	//Genere un role aleatoire
 	private void GenererUnRole( int PourcentageChanceOuvrier, int PourcentageChanceSoldat,
 			int PourcentageChanceSexue) {
 		int RoleAleatoire = (int) Math
@@ -52,6 +50,7 @@ public class Adulte extends Etat {
 				this.role = new FourmiOuvriere(this.fourmi);
 	}
 
+	//N'est pas utilisé mais permet a une fourmi de changer de role si besoin est
 	public void ChangerRoleSoldatEtOuvrier(Boolean Soldat){
 		if(Soldat)
 			this.role =new FourmiSoldat(this.fourmi);
@@ -59,14 +58,13 @@ public class Adulte extends Etat {
 			this.role =new FourmiOuvriere(this.fourmi);
 			
 	}
+	
 	public static double GenererUnPoidDeFourmi(int PoidFourmiMinimum, int PoidFourmiMaximum, double MultiplicateurDecimales) {
-		// Genere un nombre entre 1.5 et 2
 		return (double) Math.floor(Math.random() * (PoidFourmiMaximum - PoidFourmiMinimum) + 1 + PoidFourmiMinimum)
 				* MultiplicateurDecimales;
 
 	}
-	
-	//fonction qui génère un entier dans une fourchette de 2 entier
+
 	public int GenererEntierMinMax(int dureeMini, int dureeMaxi) {
 		return (int) Math.floor(Math.random() * (dureeMaxi - dureeMini) + 1 + dureeMini);
 	}
@@ -75,7 +73,7 @@ public class Adulte extends Etat {
 		return this.role;
 	}
 
-	
+	//Permet de changer de role a une fourmie pour lui attribuer le role de reinne utilisé dans l'initialisation de la fourmilliere
 	public void setReine() {
 		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.role = new FourmiReine(this.fourmi);
@@ -99,6 +97,7 @@ public class Adulte extends Etat {
 	public double getPoid() {
 		return this.poid;
 	}
+	//Ajoute la fourmie a la liste des fourmies mortes et supprime la fourmie de la liste des vivantes
 	public void mourir(){
 		this.EstEnVie=false;
 		if(!this.fourmi.getFourmilliere().getMorts().contains(this.fourmi))
@@ -116,9 +115,9 @@ public class Adulte extends Etat {
 	//cette fonction ne fait rien car la fourmi est Adulte
 	@Override
 	public void evoluer() {
-		
 	}
-	//on vérifie le temps passé dehors à chaque étape pour savoir si la fourmi meurt d'épuisement
+	
+	// Permet deffectuer une tache, on vérifie aussi le temps passé dehors pour savoir si la fourmi meurt d'épuisement ou si elle meurt de villiesse
 	@Override
 	public void step() {
 		if(this.estDehors){
@@ -137,6 +136,7 @@ public class Adulte extends Etat {
 		this.role.step();
 	}
 
+	//Permet a la fourmi de manger si le stock le permet
 	@Override
 	public void manger() {
 		Reserve reserve = this.fourmi.getFourmilliere().getReserve();

@@ -1,10 +1,6 @@
 package tache;
 
 import fourmilliere.Fourmi;
-import etat.Adulte;
-
-//tache pondre
-
 public class Pondre extends Tache {
 	
 	public Pondre(Tache tachePrecedente) {
@@ -12,6 +8,7 @@ public class Pondre extends Tache {
 		this.typeTache = Tache.PONDRE;
 	}
 	private int oeufPondu = 0;
+	//La fourmie reinne pond 100 oeufs puis termine la tache
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();
@@ -23,7 +20,6 @@ public class Pondre extends Tache {
 		else {
 			this.termine = true;
 			oeufPondu=0;
-			((Adulte)fourmi.getEtat()).getRole().nouvelleTache(this);
 		}
 		
 	}

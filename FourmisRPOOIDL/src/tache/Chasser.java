@@ -6,15 +6,14 @@ import etat.Adulte;
 import fourmilliere.Fourmi;
 import proie.Proie;
 
-//cette tâche permet aux fourmis ouvrière de chasser
+//cette tâche permet aux fourmies de chasser
 
 public class Chasser extends Tache {
 
 	List<Proie> proies = null;
 	boolean rameneNourriture;//Boolean pour savoir si elle a de la nourriture à ramener
-	boolean combat;//boolean pour savoir si elle est assigné à une proie
-	Proie proie;//la proie assigné à la fourmi
-	int dureeCombat;
+	boolean combat;//boolean pour savoir si elle est assigné à une proie donc en combat
+	Proie proie;//la proie que ombat la fourmie
 	int dureeTache = 240; //le nombre d'étape avant que la fourmi décide de rentrer à la fourmilière pour faire une autre tache
 
 	public Chasser(Tache tache, List<Proie> proies) {
@@ -23,13 +22,12 @@ public class Chasser extends Tache {
 		this.proies = proies;
 		this.dureeTache = 240;
 	}
-
 	
 	
-	//A chaque étape le fourmis éxécute une action suivant certain parametre : 
-	//Si elle à faim et qu'elle n'est pas assigné à une proie elle rentre à la fourmillière
-	//si elle est assigné à une proie elle ne fait rien
-	//si la proie qu'elle était assigné est morte, elle repart en chasse
+	//A chaque étape le fourmis éxécute une action suivant certains parametres : 
+	//Si elle a faim et qu'elle n'est pas en combat alors elle rentre à la fourmillière et et termine cette tache
+	//si elle est en combat elle ne fait rien et reste sur la proie jusqu'es dureeTache<=0, elle risque de mourrir par manque de nourriture
+	//si la proie qu'elle combattait est morte, elle chasse
 	//si elle tue la proie, elle ramene la nourriture et termine la tache
 	@Override
 	public void step(Fourmi fourmi) {
@@ -40,7 +38,7 @@ public class Chasser extends Tache {
 			etat.sortir();
 			dureeTache=240;
 		}
-		
+		//Permet a la fourmie de rentrer si elle chasser pendant trop longtemp
 		else if(this.dureeTache <= 0 ){
 			fourmi.getCalculDeplacement().deplacementRetour();
 			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
@@ -50,7 +48,7 @@ public class Chasser extends Tache {
 			}
 		}
 		else {
-
+			//Si elle est en combat
 			if (this.combat) {
 				if (!this.proie.estEnVie()) {
 					this.proie = null;
@@ -60,7 +58,7 @@ public class Chasser extends Tache {
 					this.dureeTache++;
 				}
 			}
-
+			//Si elle doit ramener de la nourriture
 			else if (this.rameneNourriture) {
 				fourmi.getCalculDeplacement().deplacementRetour();
 				if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
@@ -72,7 +70,8 @@ public class Chasser extends Tache {
 					this.addStep();
 				}
 			}
-
+			//test si quand elle se deplace elle est sur une proie alor sle combat est lancé
+			//test si la fourmie tue la proie
 			else {
 				Proie proieEventuel = fourmi.getCalculDeplacement().testPositionProie(this.proies, fourmi);
 

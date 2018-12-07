@@ -3,7 +3,7 @@ package etat;
 import fourmilliere.Fourmi;
 import role.Role;
 
-/*Classe Etat : elle stock les données liées  la fourmi
+/*Classe Etat : elle defini l'etat d'une fourmie dans son evolution
 */
 public abstract class Etat {
 	

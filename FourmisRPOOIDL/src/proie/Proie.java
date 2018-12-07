@@ -17,6 +17,7 @@ public class Proie {
 	private int tempHarcelement = MAX;
 	private ArrayList<Fourmi> fourmies = new ArrayList<Fourmi>();
 
+	//Une proie ne se deplace pas pour le momment
 	public Proie() {
 		LireParametres lecturefichier = new LireParametres();
 		this.Poid = GenererUnPoidDeProie((int) lecturefichier.ChercherParametre("PoidProieMaximum"),
@@ -31,8 +32,6 @@ public class Proie {
 		int x = GenererUnPoint(tailleMondeMax, tailleMondeMin);
 		int y = GenererUnPoint(tailleMondeMax, tailleMondeMin);
 		this.point = new Point(x, y);
-		
-
 	}
 
 	private double GenererUnPoidDeProie(int PoidProieMaximum, int PoidProieMinimum, double MultiplicateurDecimales) {
@@ -40,6 +39,7 @@ public class Proie {
 				* MultiplicateurDecimales;
 	}
 
+	//Positionne la proie sur la grille aleatoirement
 	private int GenererUnPoint(int TailleMondeMax, int TailleMondeMin) {
 		return (int) Math.floor(Math.random() * (TailleMondeMax - TailleMondeMin) + 1 + TailleMondeMin);
 	}
@@ -73,6 +73,7 @@ public class Proie {
 		return (this.Poid >= this.PoidMaxFourmiesAttaque);
 	}
 
+	//Si une fourmie est sur une proie elle est ajouté a la proie et teste si la proie est encore vivante
 	public void ajouterFourmie(Fourmi fourmie) {
 		if (!contains(fourmie) && this.EstEnVie==true)
 			fourmies.add(fourmie);
@@ -83,6 +84,7 @@ public class Proie {
 		VerifierVie();
 	}
 
+	//Verifie si la proie est encore vivante en fonction du poid cumulé des fourmies sur elle
 	public boolean VerifierVie() {
 		if (this.tempHarcelement > 0) {
 			double poidFourmies = 0.0;
@@ -102,7 +104,8 @@ public class Proie {
 	public boolean contains(Fourmi fourmi) {
 		return this.fourmies.contains(fourmi);
 	}
-
+	
+	//Diminue le tempHarcelement
 	public void ajouterTemp() {
 		if (this.tempHarcelement != MAX) {
 			this.tempHarcelement -= 1;

@@ -8,7 +8,6 @@ public class Nymphe extends Etat {
 	
 	public Nymphe(Fourmi fourmi) {
 		super(fourmi);
-		// TODO Auto-generated constructor stub
 		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = fourmi.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionNymphes");
@@ -19,9 +18,9 @@ public class Nymphe extends Etat {
 		this.estAdulte = true;
 	}
 
+	//Attend a chaque step de pouvoir evoluer
 	@Override
 	public void step() {
-		// TODO Auto-generated method stub
 		this.nombreStepExistence++;
 		if(this.nombreStepExistence == 388*this.nombreDeJourAvantEvolution);
 			this.evoluer();
@@ -29,14 +28,5 @@ public class Nymphe extends Etat {
 
 	@Override
 	public void manger() {
-		// TODO Auto-generated method stub
-		
 	}
-
-
-/*
-	public void jourSuivant() {
-		super.jourSuivant();
-	}
-*/
 }

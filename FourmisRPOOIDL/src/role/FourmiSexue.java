@@ -12,9 +12,9 @@ public class FourmiSexue extends Role {
 		this.tache = new Dormir(null);
 	}
 
+	//Le sexue ne fait que manger et dormir et n'est pas affiché a la simulation
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
-		// TODO Auto-generated method stub
 		if(this.fourmi.getEtat().getFaim()) {
 			this.tache = new Manger(tachePrecedente);
 		}

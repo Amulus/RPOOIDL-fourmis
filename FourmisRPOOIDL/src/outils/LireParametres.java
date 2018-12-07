@@ -11,6 +11,9 @@ public class LireParametres {
 	public LireParametres() {
 	}
 
+	//Permet de lire un fichier a l'emplacement CheminFichierParametres
+	//Et recupere le paramatere associé ou retourne null
+	
 	public Object ChercherParametre(String NomParametre) {
 		try {
 			File file = new File(this.CheminFichierParametres);

@@ -12,9 +12,9 @@ public class FourmiSoldat extends Role {
 		this.tache = new Dormir(null);
 	}
 
+	//Le soldat ne fait que manger et dormir et n'est pas affiché a la simulation
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
-		// TODO Auto-generated method stub
 		if(this.fourmi.getEtat().getFaim()) {
 			this.tache = new Manger(tachePrecedente);
 		}

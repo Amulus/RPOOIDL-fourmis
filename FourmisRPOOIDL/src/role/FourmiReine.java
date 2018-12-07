@@ -13,6 +13,7 @@ public class FourmiReine extends Role {
 		this.tache = new Pondre(null);
 	}
 
+	//La reine pond puis dort puis mange elle n'est pas affiché a la simulation
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
 		if(this.fourmi.getEtat().getFaim()) {

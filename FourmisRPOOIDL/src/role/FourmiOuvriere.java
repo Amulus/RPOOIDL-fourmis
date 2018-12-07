@@ -11,6 +11,7 @@ public class FourmiOuvriere extends Role {
 	}
 
 
+	//La fourmie ouvriere fait tout le boulot, chasser en premier puis manger et netoyer la fourmilliere
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
 		if(this.fourmi.getEtat().getFaim()) {

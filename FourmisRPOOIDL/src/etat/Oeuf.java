@@ -12,23 +12,19 @@ public class Oeuf extends Etat {
 		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionOeufs");
 		this.nombreStepAvantEvolution = 388*this.nombreDeJourAvantEvolution;
-		// TODO Auto-generated constructor stub
 	}
-	//@Override
 	public void evoluer() {
 		this.fourmi.changerEtat(new Larve(this.fourmi));
 	}
+	//Meme chose que nymphe
 	@Override
 	public void step() {
-		// TODO Auto-generated method stub
 		this.nombreStepExistence++;
 		if(this.nombreStepExistence >= 388*this.nombreDeJourAvantEvolution)
 			this.evoluer();
 	}
 	@Override
 	public void manger() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 

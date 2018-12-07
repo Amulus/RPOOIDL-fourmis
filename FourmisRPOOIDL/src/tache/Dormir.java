@@ -1,7 +1,7 @@
 package tache;
 
 import fourmilliere.Fourmi;
-//tache dormir : tant que la fourmi qui dort à pas faim, elle ne fait rien
+
 public class Dormir extends Tache {
 	
 	public Dormir(Tache tachePrecedente) {
@@ -9,6 +9,7 @@ public class Dormir extends Tache {
 		this.typeTache=Tache.DORMIR;
 	}
 
+	//ne fait rien pendant un tour, soit 388 step() ou si la fourmie a fait elle arrete de dormir
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();

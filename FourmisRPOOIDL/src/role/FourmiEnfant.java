@@ -12,6 +12,7 @@ public class FourmiEnfant extends Role {
 		this.tache = new Dormir(null);
 	}
 
+	//La fourmie enfant ne fait que se nourrir et dormir (Larve) elles ne sont pas affiché a la simulation
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
 		if(this.fourmi.getEtat().getFaim()) {
