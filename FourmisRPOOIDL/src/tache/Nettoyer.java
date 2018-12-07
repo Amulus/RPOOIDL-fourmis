@@ -19,7 +19,8 @@ public class Nettoyer extends Tache {
 	}
 	@Override
 	public void step(Fourmi fourmi) {
-		if(this.NombreDeMorts > 0) {
+		addStep();
+		for(int i=0;i<this.NombreDeMorts;i++) {
 			if(occupe) {
 				this.deposerMort(fourmi);
 				

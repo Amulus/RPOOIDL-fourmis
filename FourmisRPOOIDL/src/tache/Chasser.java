@@ -28,8 +28,10 @@ public class Chasser extends Tache {
 		// TODO Auto-generated method stub
 		Adulte etat = (Adulte) fourmi.getEtat();
 		dureeTache--;
+		addStep();
 		if (!etat.estDehors()) {
 			etat.sortir();
+			dureeTache=240;
 		}
 		
 		else if(this.dureeTache <= 0 ){
@@ -39,6 +41,7 @@ public class Chasser extends Tache {
 			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
 				((Adulte) fourmi.getEtat()).rentrer();
 				this.termine = true;
+				this.addStep();
 			}
 		}
 		else {

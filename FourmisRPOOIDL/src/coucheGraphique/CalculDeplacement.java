@@ -148,14 +148,14 @@ public class CalculDeplacement {
 				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() + 1, 1);
 			if (getYPoint() - 1 > 0)
 				this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint() - 1, 1);
-			this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint(), 100);
+			this.monde.ajoutPheromoneChasse(getXPoint(), getYPoint(), 1);
 		}
 	}
 	
 	private void PoserPheromoneRetour() {
 		switch (deplacementAcienDeplacement) {
 		case 0:
-			if (getXPoint() - 1 < 0)
+			if (getXPoint() - 1 > 0)
 				this.monde.ajoutPheromoneRetour(getXPoint() - 1, getYPoint());
 			break;
 
@@ -165,7 +165,7 @@ public class CalculDeplacement {
 			break;
 
 		case 2:
-			if (getYPoint() - 1 < 0)
+			if (getYPoint() - 1 > 0)
 				this.monde.ajoutPheromoneRetour(getXPoint(), getYPoint() - 1);
 			break;
 
@@ -193,18 +193,11 @@ public class CalculDeplacement {
 	public Proie testPositionProie(List<Proie> proies, Fourmi fourmi) {
 		for(Proie proie : proies)
 			if(this.getXPoint() == proie.getPoint().x && this.getYPoint() == proie.getPoint().y && !proie.TropGros() && proie.estEnVie()){
-				if(this.getPhéromoneChasse(-1)==100){
-					proie.ajouterFourmie(fourmi);
-					if(!proie.estEnVie())
-						this.clearPhéromoneChasse();
-					return proie;
-				}else{
 					this.PoserPheromoneChasse();
 					proie.ajouterFourmie(fourmi);
 					if(!proie.estEnVie())
 						this.clearPhéromoneChasse();
 					return proie;
-				}
 			}
 		return null;
 	}
@@ -214,9 +207,9 @@ public class CalculDeplacement {
 			this.monde.clearPheromoneChasse(getXPoint() - 1, getYPoint());
 		if (getXPoint() + 1 < monde.getHeight())
 			this.monde.clearPheromoneChasse(getXPoint() + 1, getYPoint());
-		if (getXPoint() - 1 < 0)
+		if (getYPoint() - 1 < 0)
 			this.monde.clearPheromoneChasse(getXPoint(), getYPoint() - 1);
-		if (getXPoint() + 1 <  monde.getWidth())
+		if (getYPoint() + 1 <  monde.getWidth())
 			this.monde.clearPheromoneChasse(getXPoint(), getYPoint() + 1);
 		this.monde.clearPheromoneChasse(getXPoint(), getYPoint());
 	}
@@ -228,7 +221,7 @@ public class CalculDeplacement {
 		deplacements.add(this.getPhéromoneChasse(1));
 		deplacements.add(this.getPhéromoneChasse(2));
 		deplacements.add(this.getPhéromoneChasse(3));
-		DeplacementP(deplacements);
+		DeplacementP(deplacements,true);
 	}
 	public void deplacementRetour() {
 		this.deplacementAcienDeplacement = this.deplacement;
@@ -237,10 +230,10 @@ public class CalculDeplacement {
 		deplacements.add(this.getPhéromoneRetour(1));
 		deplacements.add(this.getPhéromoneRetour(2));
 		deplacements.add(this.getPhéromoneRetour(3));
-		DeplacementP(deplacements);
+		DeplacementP(deplacements,false);
 	}
 
-	private void DeplacementP(ArrayList<Integer> deplacements) {
+	private void DeplacementP(ArrayList<Integer> deplacements,boolean Chasser) {
 		int MaxPheromone = 0, AncienMax = 0;
 		for (int i = 0; i < deplacements.size() - 1; i++) {
 			MaxPheromone = Math.max(deplacements.get(i), deplacements.get(i + 1));
@@ -257,11 +250,12 @@ public class CalculDeplacement {
 
 		if (AnciensPoints.contains(action)) {
 			deplacements.set(Direction, 0);
-			DeplacementP(deplacements);
+			DeplacementP(deplacements,Chasser);
 		} else {
 			AnciensPoints.add(action);
 			this.deplacement = Direction;
-			PoserPheromoneRetour();
+			if(Chasser)
+				PoserPheromoneRetour();
 			deplacer();
 			return;
 		}
@@ -314,6 +308,10 @@ public class CalculDeplacement {
 			return Actuel;
 		} else
 			return Actuel;
+	}
+
+	public void clearDeplacements() {
+		this.AnciensPoints=new ArrayList<Point>();
 	}
 
 }

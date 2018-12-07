@@ -32,6 +32,7 @@ public class Fourmilliere {
 		fourmiReine.changerEtat(adulte);
 		Fourmi premiereNymphe = new Fourmi(this);
 		Nymphe nymphe = new Nymphe(premiereNymphe);
+		this.Reserve.AjouterNourriture(9999);
 		premiereNymphe.changerEtat(nymphe);
 		this.ajoutFourmi(fourmiReine);
 		this.ajoutFourmi(premiereNymphe);
@@ -68,8 +69,8 @@ public class Fourmilliere {
 	}
 	
 	public void finDeVie(Fourmi fourmi) {
-		this.fourmis.remove(fourmi);
-		this.Depot.AjouterMort(fourmi);
+		if(fourmi.etat.estAdulte())
+			((Adulte)fourmi.etat).mourir();
 	}
 
 	public LireParametres getLireParametres() {
@@ -124,8 +125,8 @@ public class Fourmilliere {
 */
 
 	public void fourmisMorteDehors(Fourmi fourmi) {
-		// TODO Auto-generated method stub
-		this.fourmis.remove(fourmi);
+		if(fourmi.etat.estAdulte())
+			((Adulte)fourmi.etat).mourir();
 		
 	}
 

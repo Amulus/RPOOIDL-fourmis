@@ -11,7 +11,7 @@ public class Oeuf extends Etat {
 		this.nombreStepExistence = 0;
 		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.nombreDeJourAvantEvolution = (int)lecturefichier.ChercherParametre("dureeEvolutionOeufs");
-		this.nombreStepAvantEvolution = 388*24*this.nombreDeJourAvantEvolution;
+		this.nombreStepAvantEvolution = 388*this.nombreDeJourAvantEvolution;
 		// TODO Auto-generated constructor stub
 	}
 	//@Override
@@ -22,7 +22,7 @@ public class Oeuf extends Etat {
 	public void step() {
 		// TODO Auto-generated method stub
 		this.nombreStepExistence++;
-		if(this.nombreStepExistence >= 388*24*this.nombreDeJourAvantEvolution)
+		if(this.nombreStepExistence >= 388*this.nombreDeJourAvantEvolution)
 			this.evoluer();
 	}
 	@Override

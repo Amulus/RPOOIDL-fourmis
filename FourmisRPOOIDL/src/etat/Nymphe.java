@@ -23,7 +23,7 @@ public class Nymphe extends Etat {
 	public void step() {
 		// TODO Auto-generated method stub
 		this.nombreStepExistence++;
-		if(this.nombreStepExistence == 388*24*this.nombreDeJourAvantEvolution);
+		if(this.nombreStepExistence == 388*this.nombreDeJourAvantEvolution);
 			this.evoluer();
 	}
 
