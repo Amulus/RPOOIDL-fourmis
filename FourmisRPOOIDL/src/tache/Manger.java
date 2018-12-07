@@ -24,7 +24,6 @@ public class Manger extends Tache {
 			}
 		}
 		else {
-			
 			fourmi.getEtat().manger();
 			this.termine = true;
 		}

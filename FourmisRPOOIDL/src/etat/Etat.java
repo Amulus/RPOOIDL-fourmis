@@ -6,7 +6,7 @@ import role.Role;
 public abstract class Etat {
 	
 	protected double poid = 0.0;
-	protected double nouritureMangée = 0.0;
+	public double nouritureMangée = 0.0;
 	protected double stockage = 0.0;
 	protected int tempsDehors = 0;
 	protected int tempsDehorsMax = 0;

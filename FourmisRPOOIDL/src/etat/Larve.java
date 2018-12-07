@@ -81,6 +81,7 @@ public class Larve extends Etat {
 		// TODO Auto-generated method stub
 		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
 		if(reserve.PrendreNourriture(this.poid)) {
+			this.nouritureMangée=this.poid;
 			this.aFaim = false;
 		}
 		

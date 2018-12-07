@@ -101,6 +101,8 @@ public class Adulte extends Etat {
 		this.EstEnVie=false;
 		if(!this.fourmi.getFourmilliere().getMorts().contains(this.fourmi))
 			this.fourmi.getFourmilliere().getMorts().add(this.fourmi);
+		if(this.fourmi.getFourmilliere().getFourmis().contains(this.fourmi))
+			this.fourmi.getFourmilliere().getMorts().remove(this.fourmi);
 	}
 
 	public void vie() {
@@ -168,6 +170,7 @@ public class Adulte extends Etat {
 		// TODO Auto-generated method stub
 		Reserve reserve = this.fourmi.getFourmilliere().getReserve();
 		if(reserve.PrendreNourriture(this.poid*0.33)) {
+			this.nouritureMangée=this.poid*0.33;
 			this.aFaim = false;
 		}
 	}

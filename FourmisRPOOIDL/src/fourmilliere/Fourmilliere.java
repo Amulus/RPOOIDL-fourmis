@@ -44,27 +44,26 @@ public class Fourmilliere {
 			fourmisEtapeAvant.add(fourmis.get(i));
 		Iterator<Fourmi> it = this.fourmisEtapeAvant.iterator();
 		while(it.hasNext()) {
+			this.nombreEtapeAvantRepas-=1;
 			Fourmi fourmi = it.next();
-			if(this.nombreEtapeAvantRepas <= 0) {
-				if(verificationFaim(fourmi)) {
+			if(this.nombreEtapeAvantRepas <= 0){
+				if(verificationFaim(fourmi)) 
 					fourmi.step();
-				}
-			}
-			else {
+			}else 
 				fourmi.step();
-			}
 		}
+		if(this.nombreEtapeAvantRepas<=0)
+			this.nombreEtapeAvantRepas=1440;
 		fourmisEtapeAvant.clear();
 	}
 	
 	public boolean verificationFaim(Fourmi fourmi) {
 		boolean retour = true;
-		if(this.nombreEtapeAvantRepas <= 0 && fourmi.getEtat().estAdulte()) {
+		if(this.nombreEtapeAvantRepas <= 0 && fourmi.getEtat().estAdulte()) 
 			if(fourmi.getEtat().VerifierAlimentation()) {
 				this.finDeVie(fourmi);
 				retour = false;
 			}
-		}
 		return retour;
 	}
 	
