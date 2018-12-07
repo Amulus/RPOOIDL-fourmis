@@ -94,8 +94,8 @@ public class Simulation extends Ovale {
 				else
 					RemoveProie(proies, jc);
 			}
-			if(compteurPas >= 388*24)
-				for(int i=0; i<=50;i++){
+			if(jc.getProies().size()<10)
+				for(int i=0; i<=5;i++){
 					Proie proie = new Proie();
 					jc.add(proie);
 					AjoutProie(proie, jc);

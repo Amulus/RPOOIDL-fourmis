@@ -165,12 +165,12 @@ public class CalculDeplacement {
 			break;
 
 		case 2:
-			if (getXPoint() - 1 < 0)
+			if (getYPoint() - 1 < 0)
 				this.monde.ajoutPheromoneRetour(getXPoint(), getYPoint() - 1);
 			break;
 
 		case 3:
-			if (getXPoint() + 1 <  monde.getWidth())
+			if (getYPoint() + 1 <  monde.getWidth())
 				this.monde.ajoutPheromoneRetour(getXPoint(), getYPoint() + 1);
 			break;
 		default:
@@ -222,6 +222,7 @@ public class CalculDeplacement {
 	}
 	
 	public void deplacementChasse() {
+		this.deplacementAcienDeplacement = this.deplacement;
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneChasse(0));
 		deplacements.add(this.getPhéromoneChasse(1));
@@ -230,6 +231,7 @@ public class CalculDeplacement {
 		DeplacementP(deplacements);
 	}
 	public void deplacementRetour() {
+		this.deplacementAcienDeplacement = this.deplacement;
 		ArrayList<Integer> deplacements = new ArrayList<Integer>();
 		deplacements.add(this.getPhéromoneRetour(0));
 		deplacements.add(this.getPhéromoneRetour(1));

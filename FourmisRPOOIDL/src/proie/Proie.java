@@ -76,7 +76,7 @@ public class Proie {
 	public void ajouterFourmie(Fourmi fourmie) {
 		if (!contains(fourmie) && this.EstEnVie==true)
 			fourmies.add(fourmie);
-		if (fourmies.size()<1 && this.tempHarcelement==MAX && this.EstEnVie==true) {
+		if (this.tempHarcelement==MAX && this.EstEnVie==true) {
 			LireParametres lecturefichier = new LireParametres();
 			this.tempHarcelement = (int) lecturefichier.ChercherParametre("TempHarcelement");
 		}
