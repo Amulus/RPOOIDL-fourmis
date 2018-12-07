@@ -143,7 +143,9 @@ public class Monde extends JPanel {
 		
 	}
 	public boolean EstSurFourmillilere(Point Coordonneefourmie){
-		return (this.Pointcolonie.x == Coordonneefourmie.x && this.Pointcolonie.y == Coordonneefourmie.y);
+		//return (this.Pointcolonie.x == Coordonneefourmie.x && this.Pointcolonie.y == Coordonneefourmie.y);
+		return((Coordonneefourmie.x < this.Pointcolonie.x +10 && Coordonneefourmie.x > this.Pointcolonie.x -10)
+				&& Coordonneefourmie.y < this.Pointcolonie.x +10 && Coordonneefourmie.y > this.Pointcolonie.x -10);
 	}
 
 	public void add(Fourmilliere colonie,Point position) {
