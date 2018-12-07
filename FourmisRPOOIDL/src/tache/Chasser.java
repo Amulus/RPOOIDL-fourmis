@@ -33,6 +33,8 @@ public class Chasser extends Tache {
 		}
 		
 		else if(this.dureeTache <= 0 ){
+			//System.out.println("je rentre");
+			//System.out.println(fourmi.getCalculDeplacement().estSurFourmilliere());
 			fourmi.getCalculDeplacement().deplacementRetour();
 			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
 				((Adulte) fourmi.getEtat()).rentrer();
@@ -45,6 +47,9 @@ public class Chasser extends Tache {
 				if (!this.proie.estEnVie()) {
 					this.proie = null;
 					this.combat = false;
+				}
+				else {
+					this.dureeTache++;
 				}
 			}
 

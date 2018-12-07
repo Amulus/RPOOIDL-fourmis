@@ -59,10 +59,14 @@ public class Simulation extends Ovale {
 			Thread Simulation = new Thread();
 			Simulation.start();
 			int CompteurJours =0,CompteurPas=0;
+			int compteurStep = 0;
 			while(true){
+				
 				checkFourmi(Colonie, jc);
 				checkProie(jc,CompteurJours,CompteurPas);
 				Colonie.step();
+				compteurStep++;
+				//System.out.println("Etape numero : "+compteurStep);
 				if(CompteurJours==388)
 					CompteurJours=0;
 				if(CompteurPas==388*24)
