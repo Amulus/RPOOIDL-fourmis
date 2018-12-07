@@ -73,6 +73,14 @@ public abstract class Etat {
 		this.stockage = value;
 	}
 	
+	public Role getRole() {
+		return this.role;
+	}
+	
+	public void setRole(Role nouveauRole) {
+		this.role = nouveauRole;
+	}
+	
 	public abstract void evoluer();
 	public abstract void step();
 	public abstract void manger();

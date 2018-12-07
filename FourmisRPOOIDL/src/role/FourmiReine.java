@@ -14,7 +14,7 @@ public class FourmiReine extends Role {
 
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
-		if (tachePrecedente !=null && tachePrecedente.getType() == Tache.PONDRE) {
+		if (tachePrecedente.getType() == Tache.PONDRE) {
 			this.tache = new Dormir(tachePrecedente);
 		} else {
 			this.tache = new Pondre(tachePrecedente);

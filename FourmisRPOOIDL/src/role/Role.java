@@ -21,4 +21,7 @@ public abstract class Role {
 	public Tache getTache() {
 		return this.tache;
 	}
+	public void setTache(Tache tache) {
+		this.tache = tache;
+	}
 }
