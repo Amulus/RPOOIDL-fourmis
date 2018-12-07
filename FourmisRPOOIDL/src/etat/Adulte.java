@@ -118,7 +118,7 @@ public class Adulte extends Etat {
 	public void evoluer() {
 		
 	}
-
+	//on vérifie le temps passé dehors à chaque étape pour savoir si la fourmi meurt d'épuisement
 	@Override
 	public void step() {
 		if(this.estDehors){
