@@ -1,7 +1,7 @@
 package tache;
 
 import fourmilliere.Fourmi;
-
+//tache dormir : tant que la fourmi qui dort à pas faim, elle ne fait rien
 public class Dormir extends Tache {
 	
 	public Dormir(Tache tachePrecedente) {

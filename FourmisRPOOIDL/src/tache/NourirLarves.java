@@ -1,7 +1,7 @@
 package tache;
 
 import fourmilliere.Fourmi;
-
+//tache non utilisé
 public class NourirLarves extends Tache {
 
 	NourirLarves(Tache tachePrecedente) {

@@ -11,8 +11,8 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
-	public int fourmisDehors = 0;
-	public int fourmisDedans = 0;
+	public int fourmisDehors = 0;//variable de test
+	public int fourmisDedans = 0;//variable de test
 	private int nombreEtapeAvantRepas = 388*23;
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
@@ -21,7 +21,7 @@ public class Fourmilliere {
 	private Monde monde =null;
 	private Reserve Reserve;
 	
-	private LireParametres lectureFichier = new LireParametres();
+	private LireParametres lectureFichier = new LireParametres();//on récupère les paramètres de la fourmillière dans le fichier de configuration
 
 	public Fourmilliere(Monde monde) {
 		this.fourmis = new ArrayList<Fourmi>();
