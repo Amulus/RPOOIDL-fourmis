@@ -17,13 +17,13 @@ public class FourmiOuvriere extends Role {
 			this.tache = new Manger(tachePrecedente);
 		}
 		else {
-			if(tachePrecedente.getType() == Tache.MANGER) {
+			if(tachePrecedente!= null &&tachePrecedente.getType() == Tache.MANGER) {
 				this.tache = new Nettoyer(tachePrecedente);
 			}
-			else if(tachePrecedente.getType() == Tache.NETTOYER) {
+			else if(tachePrecedente!= null &&tachePrecedente.getType() == Tache.NETTOYER) {
 				this.tache = new Chasser(tachePrecedente,this.fourmi.getFourmilliere().getMonde().getProies());
 			}
-			else if(tachePrecedente.getType() == Tache.CHASSER) {
+			else if(tachePrecedente== null || tachePrecedente.getType() == Tache.CHASSER) {
 				this.tache = new Nettoyer(tachePrecedente);
 			}
 		}

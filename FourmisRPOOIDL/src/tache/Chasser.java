@@ -59,6 +59,7 @@ public class Chasser extends Tache {
 					this.combat = true;
 				} else {
 					fourmi.getEtat().setStockage(proieEventuel.getPoid());
+					proieEventuel.mourrir();
 					this.rameneBouffe = true;
 					this.combat = false;
 				}
