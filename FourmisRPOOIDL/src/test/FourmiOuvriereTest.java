@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import coucheGraphique.Monde;
 import etat.Adulte;
-import fourmilliere.Depot;
 import fourmilliere.Fourmi;
 import fourmilliere.Fourmilliere;
 import role.FourmiOuvriere;

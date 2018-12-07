@@ -22,15 +22,15 @@ import proie.Proie;
 public class Monde extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private static Pheromone INF = null;
-	private Point Pointcolonie = null;
+	private Ovale fourmilliere = null;
 	private List<Fourmi> fourmies = new ArrayList<Fourmi>();
 	private List<Proie> proies = new ArrayList<Proie>();
 	private List<Transformateur> dessins = new LinkedList<Transformateur>();
 	private Pheromone TableauPheromones[][];
-	String name = "";
+	String nom = "";
 
-	public Monde(String name) {
-		this.name = name;
+	public Monde(String nom) {
+		this.nom = nom;
 		Monde.INF = new Pheromone();
 		INF.ajouterPheromoneRetourFourmiliere();
 	}
@@ -43,18 +43,18 @@ public class Monde extends JPanel {
 		return proies;
 	}
 
-	public void open(Point CoordonneeFourmilliere) {
-		JFrame frame = new JFrame(name);
-		frame.setResizable(false);
+	public void demarrer(Point CoordonneeFourmilliere) {
+		JFrame fenetre = new JFrame(nom);
+		fenetre.setResizable(false);
 		WindowAdapter wa = new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		};
-		frame.addWindowListener(wa);
-		frame.getContentPane().add(this);
-		frame.pack();
-		frame.setVisible(true);
+		fenetre.addWindowListener(wa);
+		fenetre.getContentPane().add(this);
+		fenetre.pack();
+		fenetre.setVisible(true);
 		initialiserTableau(CoordonneeFourmilliere);
 		requestFocus();
 
@@ -173,15 +173,13 @@ public class Monde extends JPanel {
 	}
 
 	public boolean EstSurFourmillilere(Point Coordonneefourmie) {
-		// return (this.Pointcolonie.x == Coordonneefourmie.x &&
-		// this.Pointcolonie.y == Coordonneefourmie.y);
-		return ((Coordonneefourmie.x < this.Pointcolonie.x + 10 && Coordonneefourmie.x > this.Pointcolonie.x - 10)
-				&& Coordonneefourmie.y < this.Pointcolonie.x + 10 && Coordonneefourmie.y > this.Pointcolonie.x - 10);
+		return ((Coordonneefourmie.x < this.fourmilliere.getX() + this.fourmilliere.bounds.height && Coordonneefourmie.x > this.fourmilliere.getX() - this.fourmilliere.bounds.height)
+				&& Coordonneefourmie.y < this.fourmilliere.getY() + this.fourmilliere.bounds.width && Coordonneefourmie.y > this.fourmilliere.getY() - this.fourmilliere.bounds.width);
 	}
 
 	public void add(Fourmilliere colonie, Point position) {
-		this.Pointcolonie = position;
 		Ovale fourmilliere = new Ovale(new Color(150, 50, 0), position, new Dimension(10, 10), true);
+		this.fourmilliere = fourmilliere;
 		dessins.add(fourmilliere);
 		fourmilliere.setWorld(this);
 	}

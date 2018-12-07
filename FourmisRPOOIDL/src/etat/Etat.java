@@ -36,7 +36,6 @@ public abstract class Etat {
 	}
 	
 	public int getStep() {
-		// TODO Auto-generated method stub
 		return this.nombreStepExistence;
 	}
 	public int getNombreStepAvantEvolution() {

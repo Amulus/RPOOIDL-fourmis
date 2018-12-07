@@ -14,9 +14,6 @@ public class Manger extends Tache {
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();
-		//fourmi.getFourmilliere().getReserve().PrendreNourriture( fourmi.getPoid()*0.333);
-		/*Tache nettoyer = new Nettoyer(fourmi.getFourmilliere().getDepot(), fourmi.getFourmilliere());
-		nettoyer.execute(fourmi);*/
 		if(((Adulte) fourmi.getEtat()).estDehors()){
 			fourmi.getCalculDeplacement().deplacementRetour();
 			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {

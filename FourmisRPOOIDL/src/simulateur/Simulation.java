@@ -25,52 +25,57 @@ public class Simulation extends Ovale {
 
 	public static void main(String[] args) {
 
-		test bidule = new test();
-		bidule.tester();
+		simulation Simulation = new simulation();
+		Simulation.demarrer();
 	}
 
-	public static class test extends Thread {
+	public static class simulation extends Thread {
 
-		public void tester() {
-			Monde jc = new Monde("Simulation d'une fourmilliere");
-			jc.setBackground(new Color(100, 125, 0));
-			jc.setPreferredSize(new Dimension(500, 500));
+		public void demarrer() {
 
-			Fourmilliere Colonie = new Fourmilliere(jc);
+			Monde monde = new Monde("Simulation d'une fourmilliere");
+			monde.setBackground(new Color(100, 125, 0));
+			monde.setPreferredSize(new Dimension(500, 500));
+
+			Fourmilliere Colonie = new Fourmilliere(monde);
 
 			for (int i = 1; i < 300; i++) {
 				Fourmi test = new Fourmi(Colonie);
 				test.changerEtat(new Adulte(test));
 				((Adulte) test.getEtat()).sortir();
 				Colonie.getFourmis().add(test);
-				test.getCalculDeplacement().setMonde(jc);
+				test.getCalculDeplacement().setMonde(monde);
 			}
 
 			Point CoordonneesFourilliere = new Point(250, 250);
-			jc.add(Colonie, CoordonneesFourilliere);
+			monde.add(Colonie, CoordonneesFourilliere);
 
-			jc.open(CoordonneesFourilliere);
+			monde.demarrer(CoordonneesFourilliere);
 
 			for (int i = 1; i < 10; i++) {
 				Proie proie = new Proie();
 				proies.add(proie);
-				jc.add(proie);
+				monde.add(proie);
 			}
 			Thread Simulation = new Thread();
 			Simulation.start();
 			int CompteurJours = 0;
+
+			ArrayList<Fourmi> fourmisEtapeAvant = new ArrayList<Fourmi>();
 			while (true) {
 
-				checkFourmi(Colonie, jc);
-				checkProie(jc, CompteurJours);
+				for(int i =0; i<Colonie.getFourmis().size();i++)
+					fourmisEtapeAvant.add(Colonie.getFourmis().get(i));
+				checkFourmi(Colonie, monde,fourmisEtapeAvant);
+				checkProie(monde, CompteurJours);
 				Colonie.step();
 				if (CompteurJours == 388)
 					CompteurJours = 0;
 				CompteurJours++;
 				try {
-					if (jc != null) {
-						jc.uptade();
-						jc.repaint();
+					if (monde != null) {
+						monde.uptade();
+						monde.repaint();
 					}
 					Thread.sleep(1);
 				} catch (InterruptedException e1) {
@@ -80,49 +85,50 @@ public class Simulation extends Ovale {
 
 		}
 
-		private void checkProie(Monde jc, int CompteurJours) {
-			for (Proie proie : jc.getProies())
+
+		private void checkProie(Monde monde, int CompteurJours) {
+			for (Proie proie : monde.getProies())
 				proies.add(proie);
 			for (Proie proies : proies) {
 				if (CompteurJours >= 388) {
 					proies.ajouterTemp();
 				}
 				if (proies.estEnVie())
-					AjoutProie(proies, jc);
+					AjoutProie(proies, monde);
 				else
-					RemoveProie(proies, jc);
+					RemoveProie(proies, monde);
 			}
-			if (jc.getProies().size() < 10)
+			if (monde.getProies().size() < 10)
 				for (int i = 0; i <= 5; i++) {
 					Proie proie = new Proie();
-					jc.add(proie);
-					AjoutProie(proie, jc);
+					monde.add(proie);
+					AjoutProie(proie, monde);
 				}
 			proies.clear();
 		}
 
-		private void RemoveProie(Proie proies, Monde jc) {
-			if (jc.getProies().contains(proies))
-				jc.remove(proies);
+		private void RemoveProie(Proie proies, Monde monde) {
+			if (monde.getProies().contains(proies))
+				monde.remove(proies);
 
 		}
 
-		private void AjoutProie(Proie proies, Monde jc) {
-			if (jc.getProies().contains(proies))
+		private void AjoutProie(Proie proies, Monde monde) {
+			if (monde.getProies().contains(proies))
 				return;
 			else
-				jc.add(proies);
+				monde.add(proies);
 
 		}
 
-		private void checkFourmi(Fourmilliere Colonie, Monde jc) {
-			for (Fourmi fourmie : Colonie.getFourmis()) {
+		private void checkFourmi(Fourmilliere Colonie, Monde monde,ArrayList<Fourmi>fourmisEtapeAvant) {
+			for (Fourmi fourmie : fourmisEtapeAvant) {
 				Etat etatfourmi = fourmie.getEtat();
 				if (etatfourmi.estAdulte()) {
 					if (etatfourmi.estDehors() && ((Adulte) etatfourmi).estEnvie())
-						Ajout(fourmie, jc);
+						Ajout(fourmie, monde);
 					else
-						Remove(Colonie, fourmie, jc);
+						Remove(Colonie, fourmie, monde);
 				}
 			}
 		}

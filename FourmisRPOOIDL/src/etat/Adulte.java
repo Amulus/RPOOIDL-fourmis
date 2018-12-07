@@ -102,7 +102,7 @@ public class Adulte extends Etat {
 		if(!this.fourmi.getFourmilliere().getMorts().contains(this.fourmi))
 			this.fourmi.getFourmilliere().getMorts().add(this.fourmi);
 		if(this.fourmi.getFourmilliere().getFourmis().contains(this.fourmi))
-			this.fourmi.getFourmilliere().getMorts().remove(this.fourmi);
+			this.fourmi.getFourmilliere().getFourmis().remove(this.fourmi);
 	}
 
 	public void vie() {
@@ -151,12 +151,13 @@ public class Adulte extends Etat {
 	public void step() {
 		// TODO Auto-generated method stub
 		if(this.estDehors){
-			if(this.role.getTache().getNbStep()%100==0 && this.role.getTache().getNbStep()!=0 )
-				this.tempsDehors++;
+			if(this.role.getTache().getNbStep()%500==0 && this.role.getTache().getNbStep()>1 )
+				this.tempsDehors+=1;
 			if(this.tempsDehors>this.tempsDehorsMax) {
 				this.fourmi.getFourmilliere().fourmisMorteDehors(this.fourmi);
 			}
-		}
+		}else
+			this.tempsDehors=0;
 		if(this.role.getTache().getNbStep()%6==0 && this.role.getTache().getNbStep()!=0 )
 			this.dureeMinuteEnVie++;
 		if( this.dureeMinuteEnVie >= 6*24*30*this.dureeDeVieEnMois) {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import etat.Adulte;
 import fourmilliere.Fourmi;
-import fourmilliere.Reserve;
 import proie.Proie;
 
 public class Chasser extends Tache {
@@ -25,7 +24,6 @@ public class Chasser extends Tache {
 
 	@Override
 	public void step(Fourmi fourmi) {
-		// TODO Auto-generated method stub
 		Adulte etat = (Adulte) fourmi.getEtat();
 		dureeTache--;
 		addStep();
@@ -35,8 +33,6 @@ public class Chasser extends Tache {
 		}
 		
 		else if(this.dureeTache <= 0 ){
-			//System.out.println("je rentre");
-			//System.out.println(fourmi.getCalculDeplacement().estSurFourmilliere());
 			fourmi.getCalculDeplacement().deplacementRetour();
 			if (fourmi.getCalculDeplacement().estSurFourmilliere()) {
 				((Adulte) fourmi.getEtat()).rentrer();

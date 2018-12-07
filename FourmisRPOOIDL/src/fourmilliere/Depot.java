@@ -8,7 +8,7 @@ public class Depot {
 	}
 	public void AjouterMort(Fourmi morte){
 		this.fourmilliere.getMorts().remove(morte);
-		this.NombreDeMorts++;
+		this.NombreDeMorts+=1;
 	}
 	//Predateur A ajouter
 	

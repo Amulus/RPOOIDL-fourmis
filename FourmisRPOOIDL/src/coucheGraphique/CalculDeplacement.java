@@ -115,7 +115,7 @@ public class CalculDeplacement {
 			}
 		}
 	}
-	public int getPhéromoneChasse(int Position) {
+	private int getPhéromoneChasse(int Position) {
 		if (Position == 0 && getXPoint() + 1 < monde.getHeight())
 			return this.monde.getPheromoneChasse(getXPoint() + 1, getYPoint());
 		if (Position == 1 && getXPoint() - 1 > 0)
