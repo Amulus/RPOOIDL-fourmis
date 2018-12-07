@@ -16,7 +16,6 @@ public abstract class Tache {
 	protected int NbStep = 0;
 	protected boolean termine = false;
 	
-	List<Couple<Integer,Object>> listAction = new ArrayList<Couple<Integer,Object>>();
 	
 	public abstract void step(Fourmi fourmis);
 	

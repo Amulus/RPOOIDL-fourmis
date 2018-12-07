@@ -13,7 +13,8 @@ public class Proie {
 	protected boolean EstEnVie = false;
 	private Dimension dimension = null;
 	private Point point = null;
-	private int tempHarcelement = 0;
+	private int MAX= 999;
+	private int tempHarcelement = MAX;
 	private ArrayList<Fourmi> fourmies = new ArrayList<Fourmi>();
 
 	public Proie() {
@@ -73,9 +74,9 @@ public class Proie {
 	}
 
 	public void ajouterFourmie(Fourmi fourmie) {
-		if (!contains(fourmie))
+		if (!contains(fourmie) && this.EstEnVie==true)
 			fourmies.add(fourmie);
-		if (fourmies.size() == 1) {
+		if (fourmies.size()<1 && this.tempHarcelement==MAX && this.EstEnVie==true) {
 			LireParametres lecturefichier = new LireParametres();
 			this.tempHarcelement = (int) lecturefichier.ChercherParametre("TempHarcelement");
 		}
@@ -88,11 +89,11 @@ public class Proie {
 			for (Fourmi fourmie : fourmies)  {
 				poidFourmies += fourmie.getEtat().getPoid();
 			}
-			if (poidFourmies >= this.Poid / 2) {
-				this.mourrir();
+			if (poidFourmies >= this.Poid) {
+				this.EstEnVie=false;
 				return false;
 			}
-			return true;
+			return this.EstEnVie;
 		}
 		this.mourrir();
 		return false;
@@ -103,10 +104,9 @@ public class Proie {
 	}
 
 	public void ajouterTemp() {
-		if (this.tempHarcelement > 0) {
+		if (this.tempHarcelement != MAX) {
 			this.tempHarcelement -= 1;
-			if (this.tempHarcelement <= 0)
-				this.mourrir();
+			VerifierVie();
 		}
 	}
 }

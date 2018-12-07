@@ -38,7 +38,7 @@ public class Simulation extends Ovale {
 
 			Fourmilliere Colonie = new Fourmilliere(jc);
 
-			for (int i = 1; i < 100; i++) {
+			for (int i = 1; i < 300; i++) {
 				Fourmi test = new Fourmi(Colonie);
 				test.changerEtat(new Adulte(test));
 				((Adulte) test.getEtat()).sortir();
@@ -46,7 +46,7 @@ public class Simulation extends Ovale {
 				test.getCalculDeplacement().setMonde(jc);
 			}
 
-			for (int i = 1; i < 100; i++) {
+			for (int i = 1; i < 10; i++) {
 				Proie proie = new Proie();
 				proies.add(proie);
 				jc.add(proie);
@@ -58,10 +58,17 @@ public class Simulation extends Ovale {
 
 			Thread Simulation = new Thread();
 			Simulation.start();
+			int CompteurJours =0,CompteurPas=0;
 			while(true){
 				checkFourmi(Colonie, jc);
-				checkProie(jc);
+				checkProie(jc,CompteurJours,CompteurPas);
 				Colonie.step();
+				if(CompteurJours==388)
+					CompteurJours=0;
+				if(CompteurPas==388*24)
+					CompteurPas=0;
+				CompteurPas++;
+				CompteurJours++;
 				try {
 					if (jc != null) {
 						jc.uptade();
@@ -75,13 +82,25 @@ public class Simulation extends Ovale {
 
 		}
 
-		private void checkProie(Monde jc) {
+		private void checkProie(Monde jc,int CompteurJours, int compteurPas) {
+			for(Proie proie : jc.getProies())
+				proies.add(proie);
 			for (Proie proies : proies) {
+				if(CompteurJours >= 388){
+					proies.ajouterTemp();
+				}
 				if (proies.estEnVie())
 					AjoutProie(proies, jc);
 				else
 					RemoveProie(proies, jc);
 			}
+			if(compteurPas >= 388*24)
+				for(int i=0; i<=50;i++){
+					Proie proie = new Proie();
+					jc.add(proie);
+					AjoutProie(proie, jc);
+				}
+			proies.clear();
 		}
 
 		private void RemoveProie(Proie proies, Monde jc) {
