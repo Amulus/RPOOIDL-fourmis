@@ -11,6 +11,8 @@ import outils.LireParametres;
 
 public class Fourmilliere {
 
+	public int fourmisDehors = 0;
+	public int fourmisDedans = 0;
 	private int nombreEtapeAvantRepas = 388*23;
 	private List<Fourmi> morts = new ArrayList<Fourmi>();
 	private List<Fourmi> fourmis = new ArrayList<Fourmi>();
@@ -47,6 +49,7 @@ public class Fourmilliere {
 			this.nombreEtapeAvantRepas-=1;
 			Fourmi fourmi = it.next();
 			if(this.nombreEtapeAvantRepas <= 0){
+				this.affichage();
 				if(verificationFaim(fourmi)) 
 					fourmi.step();
 			}else 
@@ -100,28 +103,15 @@ public class Fourmilliere {
 	public void ajoutFourmi(Fourmi fourmi) {
 		this.fourmis.add(fourmi);
 	}
-	/*
+	
 	public void affichage(){
-		System.out.println("Nombre d'ouefs: "+this.nid.nombreOeuf());
-		System.out.println("Nombre de larves: "+this.nid.nombreDeLarve());
-		System.out.println("Nombre de Nymphes: "+this.nid.nombreDeNymphe());
-		System.out.println("Nombre de Fourmies: "+this.nombreDeFourmis());
-		int NombreOuvrieres = 0,NombreSoldats = 0,NombreReproducteurs = 0,NombreReine=0;
-		for(int i=0; i< this.fourmis.size();i++){
-			if(this.fourmis.get(i).getNumeroRole()==0){NombreReine++; break;}	
-			if(this.fourmis.get(i).getNumeroRole()==1){NombreOuvrieres++; break;}
-			if(this.fourmis.get(i).getNumeroRole()==2){NombreSoldats++; break;}
-			if(this.fourmis.get(i).getNumeroRole()==3){NombreReproducteurs++; break;}	
-		}
-		System.out.println("Nombre de Fourmies Reine: "+NombreReine);
-		System.out.println("Nombre de Fourmies Ouvrieres: "+NombreOuvrieres);
-		System.out.println("Nombre de Fourmies Soldats: "+NombreSoldats);
-		System.out.println("Nombre de Fourmies Reproducteurs: "+NombreReproducteurs);
-		System.out.println("Nourriture dans la Reserve: "+this.Reserve.getReserveNouriture());
-		System.out.println("Nombre de Morts: "+this.Depot.getNombreDeMorts());
+		System.out.println("Nombre de fourmi : "+this.fourmis.size());
+		System.out.println("Nombre de fourmi morte : "+this.morts.size());
+		System.out.println("Nombre de fourmi dedans : "+this.fourmisDedans);
+		System.out.println("Nombre de fourmi dehors : "+this.fourmisDehors);
 		
 	}
-*/
+
 
 	public void fourmisMorteDehors(Fourmi fourmi) {
 		if(fourmi.etat.estAdulte())

@@ -88,10 +88,14 @@ public class Adulte extends Etat {
 	public void sortir() {
 		this.estDehors = true;
 		this.tempsDehorsMax = GenererEntierMinMax(10,12);
+		this.fourmi.getFourmilliere().fourmisDedans--;
+		this.fourmi.getFourmilliere().fourmisDehors++;
 	}
 	
 	public void rentrer() {
 		this.estDehors = false;
+		this.fourmi.getFourmilliere().fourmisDedans++;
+		this.fourmi.getFourmilliere().fourmisDehors--;
 	}
 	
 	public double getPoid() {
