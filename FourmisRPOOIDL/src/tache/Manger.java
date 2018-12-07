@@ -10,7 +10,7 @@ public class Manger extends Tache {
 		super(tache);
 		this.typeTache = Tache.MANGER;
 	}
-	//test
+	//Si la fourmi est dehors, elle rentre à la fourmillière sinon elle mange
 	@Override
 	public void step(Fourmi fourmi) {
 		addStep();

@@ -3,6 +3,8 @@ package etat;
 import fourmilliere.Fourmi;
 import role.Role;
 
+/*Classe Etat : elle stock les données liées  la fourmi
+*/
 public abstract class Etat {
 	
 	protected double poid = 0.0;
@@ -23,6 +25,7 @@ public abstract class Etat {
 		this.fourmi = fourmi;
 		
 	}
+	
 	public boolean VerifierAlimentation(){
 		boolean retour = (this.poid*0.333>nouritureMangée);
 		this.nouritureMangée = 0.0;

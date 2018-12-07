@@ -3,12 +3,16 @@ package role;
 import fourmilliere.Fourmi;
 import tache.*;
 
+//classe qui représente le role de la fourmi, elle est stroké dans son état
+
 public abstract class Role {
 	Fourmi fourmi;
 	Tache tache;
 	public Role(Fourmi fourmi){
 		this.fourmi=fourmi;
 	}
+	
+	//fonction qui attribue une nouvelle tache à la fourmi lorsque la précèdente se termine
 	abstract public void nouvelleTache(Tache tache);
 	
 	public void step() {

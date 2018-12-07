@@ -2,6 +2,7 @@ package role;
 
 import fourmilliere.Fourmi;
 import tache.Dormir;
+import tache.Manger;
 import tache.Pondre;
 import tache.Tache;
 
@@ -14,7 +15,10 @@ public class FourmiReine extends Role {
 
 	@Override
 	public void nouvelleTache(Tache tachePrecedente) {
-		if (tachePrecedente.getType() == Tache.PONDRE) {
+		if(this.fourmi.getEtat().getFaim()) {
+			this.tache = new Manger(tachePrecedente);
+		}
+		else if (tachePrecedente.getType() == Tache.PONDRE) {
 			this.tache = new Dormir(tachePrecedente);
 		} else {
 			this.tache = new Pondre(tachePrecedente);

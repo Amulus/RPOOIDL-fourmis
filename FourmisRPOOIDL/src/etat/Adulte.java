@@ -65,6 +65,8 @@ public class Adulte extends Etat {
 				* MultiplicateurDecimales;
 
 	}
+	
+	//fonction qui génère un entier dans une fourchette de 2 entier
 	public int GenererEntierMinMax(int dureeMini, int dureeMaxi) {
 		return (int) Math.floor(Math.random() * (dureeMaxi - dureeMini) + 1 + dureeMini);
 	}
@@ -73,7 +75,7 @@ public class Adulte extends Etat {
 		return this.role;
 	}
 
-
+	
 	public void setReine() {
 		LireParametres lecturefichier = this.fourmi.getFourmilliere().getLireParametres();
 		this.role = new FourmiReine(this.fourmi);
@@ -115,7 +117,7 @@ public class Adulte extends Etat {
 		
 	}
 	
-
+	//cette fonction ne fait rien car la fourmi est Adulte
 	@Override
 	public void evoluer() {
 		
