@@ -160,7 +160,7 @@ public class Adulte extends Etat {
 		if( this.dureeMinuteEnVie >= 6*24*30*this.dureeDeVieEnMois) {
 			this.fourmi.getFourmilliere().finDeVie(this.fourmi);
 		}
-		this.role.getTache().step(this.fourmi);
+		this.role.step();
 	}
 
 	@Override

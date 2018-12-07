@@ -13,7 +13,7 @@ public abstract class Role {
 	
 	public void step() {
 		if(tache.estTermine()) {
-			this.nouvelleTache(this.getTache().getTachePrecedente());
+			this.nouvelleTache(this.getTache());
 		}
 		tache.step(this.fourmi);
 	}
